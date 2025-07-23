@@ -30,3 +30,4 @@
   <p class="text-grey"><%= link_to model.user.name, { user_id: model.user_id } %></p>
 <% end %>
 </td>
+<td><%= render partial: 'index_tr_actions', locals: { model: model } %></td>
