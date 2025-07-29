@@ -8,6 +8,8 @@ module Auth
       else
         attribute :id, :string, default: -> { SecureRandom.uuid_v7 }
       end
+      attribute :ip_address, :string
+      attribute :user_agent, :string
       attribute :identity, :string, index: true
       attribute :expire_at, :datetime
       attribute :access_counter, :integer, default: 0
