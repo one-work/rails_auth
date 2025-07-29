@@ -83,18 +83,6 @@ module Auth
       logger.debug "\e[35m  Login by account #{account.id} as user: #{account.user_id}  \e[0m"
     end
 
-    def login_by_token
-      token = Auth::AuthorizedToken.find_by token: params[:auth_token]
-      if token
-        account = token.account
-        account.user || account.build_user
-        account.confirmed = true
-        account.save
-
-        login_by_account(account)
-      end
-    end
-
     private
     def authenticated?
       resume_session
