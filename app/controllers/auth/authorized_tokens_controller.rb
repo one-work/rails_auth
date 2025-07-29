@@ -7,8 +7,7 @@ module Auth
     end
 
     def create
-      user = User.authenticate_by(params.permit(:mobile_number, :password))
-      if user
+      if @account.can_login_by_password?(params[:password])
         start_new_session_for user
         redirect_to after_authentication_url
       else
@@ -22,8 +21,8 @@ module Auth
     end
 
     private
-    def set_xx
-
+    def set_account
+      @account = Account.confirmed.find params[:identity]
     end
 
   end
