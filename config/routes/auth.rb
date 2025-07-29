@@ -2,8 +2,6 @@ get 'login' => 'auth/authorized_tokens#new'
 
 
 namespace 'auth', defaults: { business: 'auth' } do
-
-
   resources :authorized_tokens
 
   controller :sign do
@@ -29,7 +27,7 @@ namespace 'auth', defaults: { business: 'auth' } do
       post 'reset/:token' => :update
     end
   end
-  resources :users, only: [:index, :show]
+  resources :users
 
   namespace :admin, defaults: { namespace: 'admin' } do
     root 'home#index'
