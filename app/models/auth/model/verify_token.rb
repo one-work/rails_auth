@@ -8,14 +8,14 @@ module Auth
     included do
       attribute :type, :string
       attribute :token, :string
-      attribute :expire_at, :datetime
+      attribute :expires_at, :datetime
       attribute :identity, :string, index: true
       attribute :access_counter, :integer, default: 0
       attribute :uuid, :string, default: SecureRandom.uuid
 
       belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
 
-      scope :valid, -> { where('expire_at >= ?', 1.minutes.since).order(expire_at: :desc) }
+      scope :valid, -> { where('expires_at >= ?', 1.minutes.since).order(expires_at: :desc) }
 
       validates :token, presence: true
       validates :identity, presence: true
@@ -25,12 +25,12 @@ module Auth
     end
 
     def clean_when_expired
-      VerifyTokenCleanJob.set(wait_until: expire_at).perform_later(self)
+      VerifyTokenCleanJob.set(wait_until: expires_at).perform_later(self)
     end
 
     def update_token
       self.token ||= SecureRandom.uuid
-      self.expire_at ||= 14.days.since
+      self.expires_at ||= 14.days.since
       self
     end
 
@@ -41,17 +41,17 @@ module Auth
     end
 
     def expired?(now = Time.current)
-      return true if self.expire_at.blank?
-      self.expire_at < now
+      return true if self.expires_at.blank?
+      self.expires_at < now
     end
 
     def effective?(now = Time.current)
-      expire_at.present? && expire_at > now
+      expires_at.present? && expires_at > now
     end
 
     def verify_token?(now = Time.current)
-      return false if self.expire_at.blank?
-      if now > self.expire_at
+      return false if self.expires_at.blank?
+      if now > self.expires_at
         self.errors.add(:token, 'The token has expired')
         return false
       end
