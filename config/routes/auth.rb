@@ -1,4 +1,11 @@
+get 'login' => 'auth/authorized_tokens#new'
+
+
 namespace 'auth', defaults: { business: 'auth' } do
+
+
+  resources :authorized_tokens
+
   controller :sign do
     post :code
     get :bind

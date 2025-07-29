@@ -96,12 +96,53 @@ module Auth
     end
 
     private
+    def authenticated?
+      resume_session
+    end
+
+    def require_authentication
+      resume_session || request_authentication
+    end
+
+    def resume_session
+      Current.session ||= find_session_by_cookie
+    end
+
+    def find_session_by_cookie
+      if cookies.signed[:session_id]
+        Session.find_by(id: cookies.signed[:session_id])
+      end
+    end
+
+    def request_authentication
+      session[:return_to_after_authenticating] = request.url
+      redirect_to '/login'
+    end
+
+    def after_authentication_url
+      session.delete(:return_to_after_authenticating) || root_url
+    end
+
+    def start_new_session_for(user)
+      user.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip).tap do |session|
+        Current.session = session
+        cookies.signed.permanent[:session_id] = { value: session.id, httponly: true, same_site: :lax }
+      end
+    end
+
+    def terminate_session
+      Current.session.destroy
+      cookies.delete(:session_id)
+    end
+
     def set_auth_token
       return unless defined?(@current_authorized_token) && @current_authorized_token
-
-      headers['Authorization'] = @current_authorized_token.id
       session[:auth_token] = @current_authorized_token.id
       logger.debug "\e[35m  Set session Auth token: #{session[:auth_token]}  \e[0m"
+    end
+
+    def set_session_for_json
+      headers['Authorization'] = @current_authorized_token.id
     end
 
   end

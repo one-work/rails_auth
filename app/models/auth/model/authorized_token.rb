@@ -11,7 +11,7 @@ module Auth
       attribute :ip_address, :string
       attribute :user_agent, :string
       attribute :identity, :string, index: true
-      attribute :expire_at, :datetime
+      attribute :expires_at, :datetime, default: -> { Time.current + 1.weeks }
       attribute :access_counter, :integer, default: 0
       attribute :mock_user, :boolean, default: false
       attribute :business, :string
@@ -29,10 +29,9 @@ module Auth
 
       has_many :sames, class_name: self.name, primary_key: [:identity, :uid, :session_id], foreign_key: [:identity, :uid, :session_id]
 
-      scope :valid, -> { where('expire_at >= ?', Time.current).order(expire_at: :desc) }
-      scope :expired, -> { where('expire_at < ?', Time.current) }
+      scope :valid, -> { where('expires_at >= ?', Time.current).order(expires_at: :desc) }
+      scope :expired, -> { where('expires_at < ?', Time.current) }
 
-      after_initialize :init_expire_at, if: :new_record?
       before_validation :sync_identity, if: -> { uid.present? && uid_changed? }
       before_validation :sync_user_id, if: -> { identity.present? && identity_changed? }
       before_create :decode_from_jwt, if: -> { identity.blank? && uid.blank? }
@@ -42,7 +41,7 @@ module Auth
     end
 
     def clean_when_expired
-      AuthorizedTokenCleanJob.set(wait_until: expire_at).perform_later(self)
+      AuthorizedTokenCleanJob.set(wait_until: expires_at).perform_later(self)
     end
 
     def online?
@@ -55,10 +54,6 @@ module Auth
         self.destroy!
         r
       end
-    end
-
-    def init_expire_at
-      self.expire_at = 1.weeks.since
     end
 
     def sync_online_or_offline
@@ -78,17 +73,17 @@ module Auth
     end
 
     def expired?(now = Time.current)
-      return true if self.expire_at.blank?
-      self.expire_at < now
+      return true if self.expires_at.blank?
+      self.expires_at < now
     end
 
     def effective?(now = Time.current)
-      expire_at.present? && expire_at > now
+      expires_at.present? && expires_at > now
     end
 
     def verify_token?(now = Time.current)
-      return false if self.expire_at.blank?
-      if now > self.expire_at
+      return false if self.expires_at.blank?
+      if now > self.expires_at
         self.errors.add(:token, 'The token has expired')
         return false
       end

@@ -3,9 +3,6 @@ module Auth
     extend ActiveSupport::Concern
 
     included do
-      include ActiveModel::SecurePassword
-      has_secure_password validations: false
-
       attribute :name, :string
       attribute :password_digest, :string
       attribute :locale, :string, default: I18n.default_locale
@@ -29,6 +26,8 @@ module Auth
       has_one_attached :avatar
 
       validates :password, confirmation: true, length: { in: 6..72 }, allow_blank: true
+
+      has_secure_password validations: false
 
       before_save :invalid_authorized_token, if: -> { password_digest_changed? }
     end
