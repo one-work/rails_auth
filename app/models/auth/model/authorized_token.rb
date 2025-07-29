@@ -48,12 +48,10 @@ module Auth
       online_at.present? && offline_at.blank?
     end
 
-    def refresh
-      self.class.transaction do
-        r = sames.create!
-        self.destroy!
-        r
-      end
+    def refresh!
+      self.id = SecureRandom.uuid_v7
+      self.expires_at = Time.current + 1.weeks
+      self.save
     end
 
     def sync_online_or_offline

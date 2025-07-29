@@ -126,7 +126,7 @@ module Auth
     def start_new_session_for(user)
       user.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip).tap do |session|
         Current.session = session
-        cookies.signed.permanent[:session_id] = { value: session.id, httponly: true, same_site: :lax }
+        xx(session)
       end
     end
 
@@ -135,14 +135,22 @@ module Auth
       cookies.delete(:session_id)
     end
 
+    def xx(session)
+      cookies.signed.permanent[:session_id] = { value: session.id, httponly: true, same_site: :lax }
+    end
+
     def set_auth_token
-      return unless defined?(@current_authorized_token) && @current_authorized_token
-      session[:auth_token] = @current_authorized_token.id
+      return unless Current.session
+      if Current.session.expired?
+        Current.session.refresh!
+        xx(Current.session)
+      end
       logger.debug "\e[35m  Set session Auth token: #{session[:auth_token]}  \e[0m"
     end
 
     def set_session_for_json
       headers['Authorization'] = @current_authorized_token.id
+      logger.debug "\e[35m  Set session Auth token: #{session[:auth_token]}  \e[0m"
     end
 
   end
