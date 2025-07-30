@@ -11,7 +11,7 @@ module Auth
 
       belongs_to :user, optional: true
 
-      has_many :authorized_tokens, ->(o) { where(user_id: o.user_id) }, primary_key: :identity, foreign_key: :identity, dependent: :delete_all
+      has_many :sessions, primary_key: [:identity, :user_id], foreign_key: [:identity, :user_id], dependent: :delete_all
       has_many :verify_tokens, primary_key: :identity, foreign_key: :identity, dependent: :delete_all
       has_many :oauth_users, primary_key: :identity, foreign_key: :identity, inverse_of: :account
 

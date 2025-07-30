@@ -8,7 +8,7 @@ module Auth
 
     def create
       if @account.can_login_by_password?(params[:password])
-        start_new_session_for @account.user
+        start_new_session_for @account
         redirect_to after_authentication_url
       else
         redirect_to('/login', alert: '账号密码错误！')
