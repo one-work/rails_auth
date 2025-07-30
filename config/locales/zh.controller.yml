@@ -1,6 +1,11 @@
 zh:
   auth:
     title: 用户/登录
+    sessions:
+      new:
+        title: 登录
+      create:
+        title: 登录
     sign:
       sign:
         title: 登录/注册
@@ -23,9 +28,6 @@ zh:
         join: 注册
         token: 验证码登录
         success: 登录成功
-      login_new:
-        title: 登录
-        login: 登录
       logout:
         title: 退出登录
       token:
