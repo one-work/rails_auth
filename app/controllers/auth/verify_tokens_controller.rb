@@ -8,13 +8,11 @@ module Auth
 
     private
     def set_new_verify_token
-      @verify_token = VerifyToken.new(verify_token_params)
-    end
-
-    def verify_token_params
-      params.permit(
-        :identity
-      )
+      if params[:identity].to_s.include?('@')
+        @verify_token = EmailToken.new(params.permit(:identity))
+      else
+        @verify_token = MobileToken.new(params.permit(:identity))
+      end
     end
 
   end

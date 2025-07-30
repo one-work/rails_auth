@@ -68,19 +68,5 @@ module Auth
       save
     end
 
-    class_methods do
-      def build_with_identity(identity)
-        verify_token = self.valid.find_by(identity: identity)
-        return verify_token if verify_token
-
-        type = if identity.to_s.include?('@')
-          'Auth::EmailToken'
-        else
-          'Auth::MobileToken'
-        end
-        self.new(type: type, identity: identity)
-      end
-    end
-
   end
 end

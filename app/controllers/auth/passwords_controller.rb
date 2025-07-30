@@ -3,23 +3,13 @@ module Auth
     before_action :set_user_by_token, only: [:edit, :update]
 
     def create
-      @verify_token = VerifyToken.valid.find_by(mobile_number: params[:mobile_number], token: params[:token])
+      @verify_token = VerifyToken.valid.find_by(identity: params[:identity], token: params[:token])
       user = @verify_token&.user
       if user
         redirect_to action: 'edit', token: user.password_reset_token
       else
         redirect_to({ action: 'new' }, alert: '请确认账号是否正确或是否注册!')
       end
-    end
-
-    def create
-      @account = Account.find_by(identity: params[:identity])
-      if @account
-        @account.reset_notice
-      end
-    end
-
-    def edit
     end
 
     def update
