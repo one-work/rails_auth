@@ -14,7 +14,7 @@ module Auth
       attribute :uuid, :string, default: SecureRandom.uuid
 
       belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
-      has_one :user, through: :account, optional: true
+      has_one :user, through: :account
 
       scope :valid, -> { where('expires_at >= ?', 1.minutes.since).order(expires_at: :desc) }
 
