@@ -6,7 +6,7 @@
     <div class="control">
       <%= text_field_tag :identity, nil, required: true, autofocus: true, placeholder: Auth::Account.human_attribute_name(:identity), form: '', class: 'input is-medium' %>
     </div>
-    <div class="field is-grouped">
+    <div class="field is-grouped mt-4">
       <div class="control is-expanded">
         <%= text_field_tag :token, nil, placeholder: '请输入验证码', class: 'input is-medium' %>
       </div>
