@@ -15,7 +15,7 @@ module Auth
 
       has_many :accounts, inverse_of: :user, dependent: :nullify
       has_many :verify_tokens, through: :accounts
-      has_many :authorized_tokens, through: :accounts
+      has_many :sessions, through: :accounts
       has_many :oauth_users
       has_many :confirmed_accounts, -> { where(confirmed: true) }, class_name: 'Account'
       accepts_nested_attributes_for :accounts
@@ -29,7 +29,7 @@ module Auth
 
       has_secure_password validations: false
 
-      before_save :invalid_authorized_token, if: -> { password_digest_changed? }
+      before_save :terminate_session, if: -> { password_digest_changed? }
     end
 
     ##
@@ -58,8 +58,8 @@ module Auth
       oauth_users.map(&:info_blank?).all? true
     end
 
-    def invalid_authorized_token
-      self.authorized_tokens.destroy
+    def terminate_session
+      self.sessions.destroy
     end
 
     def account_identities

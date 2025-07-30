@@ -1,5 +1,5 @@
 module Auth
-  module Model::AuthorizedToken
+  module Model::Session
     extend ActiveSupport::Concern
 
     included do
