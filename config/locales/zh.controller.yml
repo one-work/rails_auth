@@ -17,13 +17,6 @@ zh:
       bind:
         title: 绑定账号
         next: 下一步
-      join:
-        title: 注册
-        subtitle: 创建您的账户
-        register: 注册
-      join_new:
-        title: 注册
-        subtitle: 创建您的账户
       login:
         title: 登录
         forget: 忘记密码？
@@ -50,6 +43,12 @@ zh:
         back: 返回首页
       edit:
         title: 重置密码
+    users:
+      new:
+        title: 注册
+        subtitle: 创建您的账户
+      create:
+        title: 注册
     board:
       title: 用户
       home:

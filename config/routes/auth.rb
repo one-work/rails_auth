@@ -1,4 +1,5 @@
 get 'login' => 'auth/sessions#new'
+get 'join' => 'auth/users#new'
 
 namespace 'auth', defaults: { business: 'auth' } do
   resource :sessions
