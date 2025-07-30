@@ -4,8 +4,8 @@ module Auth
 
     def create
       @verify_token = VerifyToken.valid.find_by(identity: params[:identity], token: params[:token])
-      user = @verify_token&.user
-      if user
+      @user = @verify_token&.user
+      if @user
       else
         redirect_to({ action: 'new' }, alert: '请确认账号是否正确或是否注册!')
       end
