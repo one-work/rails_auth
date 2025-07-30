@@ -2,12 +2,13 @@
   <%=
     button_to(
       { action: 'create' },
-      class: 'button ml-2',
+      class: 'button is-medium',
+      params: { identity: nil },
       form: {
         data: {
           controller: 'button-to count-down',
           button_to_mappings_value: { identity: 'identity' }.to_json,
-          count_down_time_value: 60
+          count_down_time_value: 11
         },
         id: 'verify_token'
       },
