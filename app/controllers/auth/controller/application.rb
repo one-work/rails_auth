@@ -12,7 +12,7 @@ module Auth
       check_jwt_token if params[:auth_jwt_token]
       return if current_user
 
-      redirect_to url_for(controller: '/auth/sign', action: 'login', identity: params[:identity], state: state_enter(destroyable: false).id)
+      redirect_to controller: 'auth/sessions', action: 'new', identity: params[:identity], state: state_enter(destroyable: false).id
     end
 
     def check_jwt_token

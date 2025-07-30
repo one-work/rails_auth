@@ -1,8 +1,7 @@
-get 'login' => 'auth/authorized_tokens#new'
-
+get 'login' => 'auth/sessions#new'
 
 namespace 'auth', defaults: { business: 'auth' } do
-  resources :authorized_tokens
+  resources :sessions
 
   controller :sign do
     post :code
