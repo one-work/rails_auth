@@ -2,6 +2,8 @@ get 'login' => 'auth/sessions#new'
 
 namespace 'auth', defaults: { business: 'auth' } do
   resources :sessions
+  resources :passwords
+  resources :users
 
   controller :sign do
     post :code
@@ -17,16 +19,6 @@ namespace 'auth', defaults: { business: 'auth' } do
     post :token
     match :logout, via: [:get, :post]
   end
-
-  scope :password, controller: :password, as: 'password' do
-    get 'forget' => :new
-    post 'forget' => :create
-    scope as: 'reset' do
-      get 'reset/:token' => :edit
-      post 'reset/:token' => :update
-    end
-  end
-  resources :users
 
   namespace :admin, defaults: { namespace: 'admin' } do
     root 'home#index'

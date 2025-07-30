@@ -1,10 +1,6 @@
 module Auth
   class VerifyTokensController < BaseController
-    skip_before_action :require_authentication
     before_action :set_new_verify_token, only: [:new, :create]
-
-    def new
-    end
 
     def create
       @verify_token.save
@@ -17,7 +13,7 @@ module Auth
 
     def verify_token_params
       params.permit(
-        :mobile_number
+        :identity
       )
     end
 

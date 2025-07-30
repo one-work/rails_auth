@@ -39,7 +39,7 @@ zh:
         title: 验证码登录
       code:
         title: 发送验证码
-    password:
+    passwords:
       new:
         title: 重置密码
         next: 下一步

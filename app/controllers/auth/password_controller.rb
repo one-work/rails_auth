@@ -1,15 +1,7 @@
 module Auth
   class PasswordController < BaseController
 
-    def new
-    end
 
-    def create
-      @account = Account.find_by(identity: params[:identity])
-      if @account
-        @account.reset_notice
-      end
-    end
 
     def edit
       reset_token = AuthorizedToken.find(params[:token])
