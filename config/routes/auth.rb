@@ -4,6 +4,7 @@ namespace 'auth', defaults: { business: 'auth' } do
   resources :sessions
   resources :passwords
   resources :users
+  resources :verify_tokens
 
   controller :sign do
     post :code
