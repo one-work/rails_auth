@@ -1,7 +1,7 @@
 get 'login' => 'auth/sessions#new'
 
 namespace 'auth', defaults: { business: 'auth' } do
-  resources :sessions
+  resource :sessions
   resources :passwords, param: :token
   resources :users
   resources :verify_tokens

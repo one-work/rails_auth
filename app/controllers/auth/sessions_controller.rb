@@ -19,7 +19,6 @@ module Auth
 
     def destroy
       terminate_session
-      redirect_to '/login'
     end
 
     private

@@ -6,6 +6,8 @@ zh:
         title: 登录
       create:
         title: 登录
+      destroy:
+        title: 退出登录
     sign:
       sign:
         title: 登录/注册
@@ -28,8 +30,6 @@ zh:
         join: 注册
         token: 验证码登录
         success: 登录成功
-      logout:
-        title: 退出登录
       token:
         title: 验证码登录
         forget: 忘记密码？
