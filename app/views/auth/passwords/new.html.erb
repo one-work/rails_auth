@@ -4,11 +4,11 @@
   <% end %>
   <div data-controller="form" class="panel-block background-white flex-direction-column">
     <div class="control">
-      <%= text_field_tag :identity, nil, required: true, autofocus: true, placeholder: Auth::Account.human_attribute_name(:identity), form: '', class: 'input is-medium' %>
+      <%= text_field_tag :identity, nil, required: true, autofocus: true, placeholder: Auth::Account.human_attribute_name(:identity), form: 'password_form', class: 'input is-medium' %>
     </div>
     <div class="field is-grouped mt-4">
       <div class="control is-expanded">
-        <%= text_field_tag :token, nil, placeholder: '请输入验证码', class: 'input is-medium' %>
+        <%= text_field_tag :token, nil, form: 'password_form', placeholder: '请输入验证码', class: 'input is-medium' %>
       </div>
       <div class="control">
         <%= button_to({ controller: 'verify_tokens', action: 'create' }, params: { identity: nil }, class: 'button is-medium is-primary', form: { id: 'verify_token', data: { controller: 'button-to', button_to_mappings_value: { identity: 'identity' }.to_json } }) do %>

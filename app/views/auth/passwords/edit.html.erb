@@ -1,7 +1,7 @@
 <div class="three wide column">
   <h2 class="ui block top attached centered header"><%= t('.title') %></h2>
   <div class="ui bottom attached segment">
-    <%= form_with model: Auth::User.new, scope: '', url: { action: 'update', token: params[:token] }, label: nil, placeholder: true, wrap: { input: nil }, all: { input: 'field' } do |f| %>
+    <%= form_with model: @user, scope: '', url: { action: 'update' }, label: nil, placeholder: true, wrap: { input: nil }, all: { input: 'field' } do |f| %>
       <%= f.password_field :password %>
       <%= f.password_field :password_confirmation %>
       <%= f.submit class: 'ui fluid primary button' %>

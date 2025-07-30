@@ -14,6 +14,7 @@ module Auth
       attribute :uuid, :string, default: SecureRandom.uuid
 
       belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
+      has_one :user, through: :account, optional: true
 
       scope :valid, -> { where('expires_at >= ?', 1.minutes.since).order(expires_at: :desc) }
 
@@ -30,7 +31,7 @@ module Auth
 
     def update_token
       self.token ||= SecureRandom.uuid
-      self.expires_at ||= 14.days.since
+      self.expires_at = Time.current + 10.minutes
       self
     end
 

@@ -4,7 +4,6 @@ module Auth
 
     def update_token
       self.token = rand(100000..999999)
-      self.expire_at = 10.minutes.since
       super
       self
     end
