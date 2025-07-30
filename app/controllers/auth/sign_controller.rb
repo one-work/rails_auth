@@ -6,9 +6,6 @@ module Auth
     before_action :set_confirmed_account, only: [:login], if: -> { params[:identity].present? }
     before_action :set_verify_token, only: [:password, :token]
 
-    def login_new
-    end
-
     def code
       @verify_token = VerifyToken.build_with_identity(params[:identity])
 
@@ -130,18 +127,7 @@ module Auth
       q
     end
 
-    def render_login
-      state = Com::State.find_by(id: params[:state])
-      if state&.get?
-        state.update user_id: current_user.id, destroyable: true
-        render 'state_visit_get', layout: 'raw', locals: { state: state }, message: t('.success')
-      elsif state
-        render 'state_visit', layout: 'raw', locals: { state: state }, message: t('.success')
-      else
-        url = RailsAuth.config.default_return.call(@account.user)
-        render 'visit', layout: 'raw', locals: { url:  url }, message: t('.success')
-      end
-    end
+
 
     def check_login
       if current_user && !request.format.json?

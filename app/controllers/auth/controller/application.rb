@@ -10,9 +10,7 @@ module Auth
     private
     def require_user(app = nil)
       check_jwt_token if params[:auth_jwt_token]
-      return if current_user
-
-      redirect_to controller: 'auth/sessions', action: 'new', identity: params[:identity], state: state_enter(destroyable: false).id
+      resume_session || request_authentication
     end
 
     def check_jwt_token
@@ -22,7 +20,8 @@ module Auth
     def current_user
       return @current_user if defined?(@current_user)
       check_jwt_token if params[:auth_jwt_token]
-      @current_user = current_authorized_token&.user
+      resume_session
+      @current_user = Current.user
       logger.debug "\e[35m  Current User: #{@current_user&.id}  \e[0m"
       @current_user
     end
@@ -101,7 +100,7 @@ module Auth
 
     def request_authentication
       session[:return_to_after_authenticating] = request.url
-      redirect_to '/login'
+      redirect_to controller: 'auth/sessions', action: 'new', identity: params[:identity], state: state_enter(destroyable: false).id
     end
 
     def after_authentication_url
