@@ -1,7 +1,11 @@
 <div class="mx-auto">
   <h4 class="title is-2 text-centered text-primary"><%= t('.title') %></h4>
-  <%= form_with scope: nil, url: { action: 'create' }, wrap: { input: 'control', submit: 'control' }, all: { normal: nil, required: nil, submit: nil }, before_wrap: { submit: nil }, id: 'password_form', class: 'panel-block background-white flex-direction-column' do |f| %>
-    <%= f.text_field :identity, placeholder: Auth::Account.human_attribute_name(:identity) %>
-    <%= f.submit t('.next'), class: 'button is-medium is-fullwidth is-primary mt-4' %>
+  <%= form_with scope: nil, url: { action: 'create' }, id: 'password_form', class: 'panel-block background-white flex-direction-column' do %>
   <% end %>
+  <div class="control">
+    <%= text_field_tag :identity, nil, autofocus: true, placeholder: Auth::Account.human_attribute_name(:identity), class: 'input' %>
+  </div>
+  <div class="control">
+    <%= submit_tag t('.next'), class: 'button is-medium is-fullwidth is-primary mt-4' %>
+  </div>
 </div>
