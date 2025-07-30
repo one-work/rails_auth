@@ -6,7 +6,6 @@ module Auth
       @verify_token = VerifyToken.valid.find_by(identity: params[:identity], token: params[:token])
       user = @verify_token&.user
       if user
-        redirect_to action: 'edit', token: user.password_reset_token
       else
         redirect_to({ action: 'new' }, alert: '请确认账号是否正确或是否注册!')
       end
