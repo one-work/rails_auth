@@ -29,7 +29,7 @@ module Auth
 
       has_many :sames, class_name: self.name, primary_key: [:identity, :uid, :session_id], foreign_key: [:identity, :uid, :session_id]
 
-      scope :valid, -> { where('expires_at >= ?', Time.current).order(expires_at: :desc) }
+      scope :effective, -> { where('expires_at >= ?', Time.current).order(expires_at: :desc) }
       scope :expired, -> { where('expires_at < ?', Time.current) }
 
       before_validation :sync_identity, if: -> { uid.present? && uid_changed? }
