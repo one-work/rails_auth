@@ -43,7 +43,7 @@ module Auth
     end
 
     def select
-      @current_authorized_token.update identity: @account.identity
+      @Current.session.update identity: @account.identity
     end
 
     private
