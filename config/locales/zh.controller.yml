@@ -46,7 +46,6 @@ zh:
     users:
       new:
         title: 注册
-        subtitle: 创建您的账户
       create:
         title: 注册
     board:

@@ -2,8 +2,7 @@
   <%= svg_tag 'angle-left', class: 'icon' %>
   <span>返回登录</span>
 <% end %>
-<h2 class="title is-2 text-centered text-primary mb-4"><%= t('.title') %></h2>
-<h6 class="subtitle text-centered is-6 mb-4"><%= t('.subtitle') %></h6>
+<h2 class="title is-3 text-centered text-primary mb-4"><%= t('.title') %></h2>
 <%= form_with theme: nil, scope: nil, url: { action: 'create' }, id: 'join_form' do |f| %>
   <%= f.hidden_field :state, value: params[:state] %>
 <% end %>
