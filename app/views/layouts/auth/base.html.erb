@@ -1,12 +1,11 @@
 <%= render layout: 'layouts/application_head' do %>
   <%= render 'nav_bar' %>
-  <main class="columns is-vcentered mb-0">
-    <div class="column is-8 p-0 is-fullheight">
-      <div class="background-login"></div>
+  <main class="has-animate-background">
+    <div class="has-column-centered is-fullheight">
+      <turbo-frame id="box" refresh="morph" data-turbo-action="advance" class="box" style="width: 400px">
+        <%= yield %>
+      </turbo-frame>
     </div>
-    <turbo-frame id="main" refresh="morph" data-turbo-action="advance" class="column is-4 p-6 has-column-centered has-animate-background">
-      <%= yield %>
-    </turbo-frame>
   </main>
   <%= render 'footer' %>
 <% end %>
