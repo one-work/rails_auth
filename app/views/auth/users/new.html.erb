@@ -1,3 +1,6 @@
+<%= link_to({ controller: 'sessions', action: 'new' }) do %>
+
+<% end %>
 <h2 class="title is-2 text-centered text-primary mb-4"><%= t('.title') %></h2>
 <h6 class="subtitle text-centered is-6 mb-4"><%= t('.subtitle') %></h6>
 <%= form_with theme: nil, scope: nil, url: { action: 'create' }, id: 'join_form' do |f| %>
