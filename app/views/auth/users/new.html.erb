@@ -23,5 +23,5 @@
   <div id="password_confirm" class="field control">
     <%= password_field_tag :password_confirmation, nil, placeholder: Auth::User.human_attribute_name(:password_confirmation), autocomplete: 'off', class: 'input is-medium' %>
   </div>
-  <%= submit_tag t('auth.users.create.title'), form: 'join_form', class: 'button is-primary is-medium is-fullwidth mt-2' %>
+  <%= submit_tag t('auth.users.create.title'), form: 'join_form', class: 'button is-primary is-medium is-fullwidth mt-5' %>
 </div>
