@@ -3,7 +3,7 @@ module Auth
     extend ActiveSupport::Concern
 
     included do
-      helper_method :current_user, :current_client, :current_account, :current_authorized_token
+      helper_method :current_user, :current_client, :current_account, :current_session
       after_action :set_auth_token
     end
 
@@ -14,7 +14,7 @@ module Auth
     end
 
     def check_jwt_token
-      @current_authorized_token = AuthorizedToken.find_or_create_by(encrypted_token: params[:auth_jwt_token])
+      @current_session = Session.find_or_create_by(encrypted_token: params[:auth_jwt_token])
     end
 
     def current_user
@@ -45,7 +45,7 @@ module Auth
     def current_client
       return @current_client if defined?(@current_client)
       return unless current_account
-      @current_client = current_authorized_token&.member
+      @current_client = current_session&.member
       logger.debug "\e[35m  Current Client: #{@current_client&.id}  \e[0m"
       @current_client
     end
@@ -54,27 +54,29 @@ module Auth
       Current.session.account
     end
 
-    def current_authorized_token
-      return @current_authorized_token if defined?(@current_authorized_token)
-      token = params[:auth_token].presence || request.headers['Authorization'].to_s.split(' ').last.presence || session[:auth_token]
+    def current_session
+      return @current_session if defined?(@current_session)
+      token = params[:auth_token].presence || cookies.signed[:session_id]
 
       return unless token
-      authorized_token = AuthorizedToken.find_by(id: token)
-      if authorized_token&.expired?
-        @current_authorized_token = authorized_token.refresh
-      elsif authorized_token.nil?
-        session.delete :auth_token
+      session = Session.find_by(id: token)
+      if session&.expired?
+        @current_session = session.refresh
       else
-        @current_authorized_token = authorized_token
+        @current_session = session
       end
-      logger.debug "\e[35m  Current Authorized Token: #{@current_authorized_token&.id}, Destroyed: #{@current_authorized_token&.destroyed?}  \e[0m"
-      @current_authorized_token
+      logger.debug "\e[35m  Current Authorized Token: #{@current_session&.id}, Destroyed: #{@current_session&.destroyed?}  \e[0m"
+      @current_session
+    end
+    
+    def current_session_json
+      request.headers['Authorization'].to_s.split(' ').last.presence
     end
 
     def login_by_account(account)
       @current_account = account
       @current_user = @current_account.user
-      @current_authorized_token = @current_account.authorized_token
+      @current_session = @current_account.session
 
       logger.debug "\e[35m  Login by account #{account.id} as user: #{account.user_id}  \e[0m"
     end
@@ -133,7 +135,7 @@ module Auth
     end
 
     def set_session_for_json
-      headers['Authorization'] = @current_authorized_token.id
+      headers['Authorization'] = @current_session.id
       logger.debug "\e[35m  Set session Auth token: #{session[:auth_token]}  \e[0m"
     end
 
