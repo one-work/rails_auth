@@ -68,10 +68,6 @@ module Auth
       logger.debug "\e[35m  Current Authorized Token: #{@current_session&.id}, Destroyed: #{@current_session&.destroyed?}  \e[0m"
       @current_session
     end
-    
-    def current_session_json
-      request.headers['Authorization'].to_s.split(' ').last.presence
-    end
 
     def login_by_account(account)
       @current_account = account
@@ -91,7 +87,16 @@ module Auth
     end
 
     def resume_session
-      Current.session ||= find_session_by_cookie
+      if request.format.json?
+        Current.session ||= find_session_by_header
+      else
+        Current.session ||= find_session_by_cookie
+      end
+    end
+
+    def find_session_by_header
+      token = request.headers['Authorization'].to_s.split(' ').last.presence
+      Session.find_by(id: token)
     end
 
     def find_session_by_cookie
