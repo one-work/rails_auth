@@ -29,7 +29,7 @@ module Auth
 
       belongs_to :account, -> { where(confirmed: true) }, foreign_key: :identity, primary_key: :identity, inverse_of: :oauth_users, optional: true
 
-      has_many :authorized_tokens, ->(o) { where(o.filter_hash) }, primary_key: :uid, foreign_key: :uid, dependent: :delete_all
+      has_many :sessions, primary_key: [:uid, :appid, :identity], foreign_key: [:uid, :appid, :identity], dependent: :delete_all
       belongs_to :same_oauth_user, ->(o) { where.not(id: o.id) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid, optional: true
       has_many :same_oauth_users, class_name: self.name, primary_key: :unionid, foreign_key: :unionid
 
@@ -99,7 +99,7 @@ module Auth
     end
 
     def sync_to_authorized_tokens
-      authorized_tokens.update_all(identity: identity)
+      sessions.update_all(identity: identity)
     end
 
     def save_info(info_params)
@@ -108,12 +108,9 @@ module Auth
     def strategy
     end
 
-    def authorized_token
-      authorized_tokens.find(&->(i){ i.effective? }) || authorized_tokens.create
-    end
-
     def auth_token
-      authorized_token.id
+      session = sessions.effective.take || sessions.create
+      session.id
     end
 
     def auth_jwt_token
