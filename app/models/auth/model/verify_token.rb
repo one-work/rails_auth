@@ -22,6 +22,7 @@ module Auth
       validates :identity, presence: true
 
       after_initialize :update_token, if: -> { new_record? }
+      after_create_commit :send_out
       after_create_commit :clean_when_expired
     end
 
@@ -62,11 +63,6 @@ module Auth
 
     def send_out
       raise 'should implement in subclass'
-    end
-
-    def send_out!
-      send_out
-      save
     end
 
   end

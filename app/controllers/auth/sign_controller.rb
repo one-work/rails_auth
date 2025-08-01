@@ -6,29 +6,11 @@ module Auth
     before_action :set_confirmed_account, only: [:login], if: -> { params[:identity].present? }
     before_action :set_verify_token, only: [:password, :token]
 
-    def code
-      @verify_token = VerifyToken.build_with_identity(params[:identity])
-
-      if @verify_token.send_out!
-        render 'code', locals: { message: t('.sent') }
-      else
-        render 'code_token', locals: { message: @verity_token.error_text }, status: :bad_request
-      end
-    end
-
     def bind
     end
 
     def bind_create
       @oauth_user.can_login?(login_params)
-    end
-
-    def password
-      if @verify_token
-        render :password
-      else
-        render :password_wrong
-      end
     end
 
     def join
@@ -126,8 +108,6 @@ module Auth
       end
       q
     end
-
-
 
     def check_login
       if current_user && !request.format.json?

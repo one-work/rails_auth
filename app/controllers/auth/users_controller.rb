@@ -13,6 +13,7 @@ module Auth
         redirect_to({ action: 'new' }, alert: '验证码不正确或已过期！')
       end
     end
+
     private
     def set_new_user
       @user = User.new(user_params)
