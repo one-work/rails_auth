@@ -6,7 +6,7 @@
 <% end %>
 <div id="alert"></div>
 <div>
-  <%= link_to t('auth.sign.token_login.title'), { controller: 'auth/sign', action: 'token_login_new' }, id: 'mobile_confirm', class: 'text-grey' %>
+  <%= link_to t('auth.sessions.token_new.title'), { action: 'token_new' }, class: 'text-grey' %>
   <%= link_to t('auth.passwords.new.title'), { controller: 'auth/passwords', action: 'new' }, class: 'text-grey is-pulled-right' %>
 </div>
 <div>

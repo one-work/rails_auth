@@ -2,7 +2,10 @@ get 'login' => 'auth/sessions#new'
 get 'join' => 'auth/users#new'
 
 namespace 'auth', defaults: { business: 'auth' } do
-  resource :sessions
+  resource :sessions do
+    get :token_new
+    post :token_create
+  end
   resources :passwords, param: :token
   resources :users, only: [:new, :create]
   resources :verify_tokens

@@ -6,6 +6,10 @@ zh:
         title: 登录
       create:
         title: 登录
+      token_new:
+        title: 验证码登录
+      token_create:
+        title: 验证码登录
       destroy:
         title: 退出登录
     sign:
@@ -24,16 +28,8 @@ zh:
         token: 验证码登录
         success: 登录成功
       token:
-        title: 验证码登录
         forget: 忘记密码？
-        sent: 验证码已发送
         login: 登录
-      token_login:
-        title: 验证码登录
-      token_login_new:
-        title: 验证码登录
-      code:
-        title: 发送验证码
     passwords:
       new:
         title: 重置密码
