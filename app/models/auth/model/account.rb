@@ -3,7 +3,6 @@ module Auth
     extend ActiveSupport::Concern
 
     included do
-      attribute :type, :string
       attribute :identity, :string, index: true
       attribute :confirmed, :boolean, default: false
       attribute :source, :string
@@ -20,6 +19,9 @@ module Auth
       scope :confirmed, -> { where(confirmed: true) }
 
       validates :identity, presence: true, uniqueness: { scope: [:user_id] }
+
+      normalizes :identity, with: -> (email) { email.strip.downcase }
+
 
       # belongs_to 的 autosave 是在 before_save 中定义的
       #
@@ -80,27 +82,8 @@ module Auth
       verify_tokens.find(&:effective?) || verify_tokens.create
     end
 
-    def reset_token
-    end
-
     def reset_notice
       p 'Should implement in subclass'
-    end
-
-    class_methods do
-
-      def build_with_identity(identity)
-        account = self.find_by(identity: identity)
-        return account if account
-
-        type = if identity.to_s.include?('@')
-          'Auth::EmailAccount'
-        else
-          'Auth::MobileAccount'
-        end
-        self.new(type: type, identity: identity)
-      end
-
     end
 
   end
