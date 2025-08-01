@@ -20,10 +20,14 @@ module Auth
     end
 
     def user_params
-      params.permit(
+      _p = params.permit(
         :password,
         :password_confirmation
       )
+      _p.merge! accounts_attributes: [{
+        identity: params[:identity],
+        confirmed: true
+      }]
     end
 
   end

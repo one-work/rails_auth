@@ -18,7 +18,7 @@ module Auth
       scope :with_user, -> { where.not(user_id: nil) }
       scope :confirmed, -> { where(confirmed: true) }
 
-      validates :identity, presence: true, uniqueness: { scope: [:user_id] }
+      validates :identity, presence: true, uniqueness: { scope: [:confirmed, :source] }
 
       normalizes :identity, with: -> (email) { email.strip.downcase }
 

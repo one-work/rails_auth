@@ -3,7 +3,7 @@
   <span>返回登录</span>
 <% end %>
 <h2 class="title is-3 text-centered text-primary mb-4"><%= t('.title') %></h2>
-<%= form_with theme: nil, scope: nil, url: { action: 'create' }, id: 'join_form' do |f| %>
+<%= form_with url: { action: 'create' }, id: 'join_form' do |f| %>
   <%= f.hidden_field :state, value: params[:state] %>
 <% end %>
 <div data-controller="form">
