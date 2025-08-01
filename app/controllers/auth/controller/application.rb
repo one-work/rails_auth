@@ -131,6 +131,8 @@ module Auth
       if Current.session.expired?
         Current.session.refresh!
         xx(Current.session)
+      elsif cookies[:session_id].blank?
+        xx(Current.session)
       end
       logger.debug "\e[35m  Set session Auth token: #{session[:auth_token]}  \e[0m"
     end
