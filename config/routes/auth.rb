@@ -4,7 +4,7 @@ get 'join' => 'auth/users#new'
 namespace 'auth', defaults: { business: 'auth' } do
   resource :sessions
   resources :passwords, param: :token
-  resources :users
+  resources :users, only: [:new, :create]
   resources :verify_tokens
 
   controller :sign do

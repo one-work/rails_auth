@@ -7,10 +7,10 @@ module Auth
 
       if @verify_token
         unless @user.save
-          redirect_to({ action: 'new' }, alert: @user.errors.full_messages.join(', '))
+          render 'alert_message', locals: { message: @user.errors.full_messages.join(', ') }
         end
       else
-        redirect_to({ action: 'new' }, alert: '验证码不正确或已过期！')
+        render 'alert_message', locals: { message: '验证码不正确或已过期！' }
       end
     end
 
