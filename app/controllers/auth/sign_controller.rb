@@ -13,35 +13,6 @@ module Auth
       @oauth_user.can_login?(login_params)
     end
 
-    def join
-      @verify_token = VerifyToken.find_by(uuid: params[:uuid])
-      @account = Account.build_with_identity(@verify_token.identity)
-
-      if @account.can_login_by_token?(login_params)
-        login_by_account @account
-
-        render_login
-      else
-        flash.now[:error] = @account.error_text.presence || @account.user.error_text
-        render 'alert', status: :unauthorized
-      end
-    end
-
-    def login
-      if @account&.can_login_by_password?(params[:password])
-        login_by_account @account
-
-        render_login
-      else
-        if @account
-          flash.now[:error] = @account.error_text.presence || @account.user.error_text
-        else
-          flash.now[:error] = '账号密码错误'
-        end
-        render 'alert', status: :unauthorized
-      end
-    end
-
     def token_login_new
     end
 
@@ -62,11 +33,6 @@ module Auth
         flash.now[:error] = '你的账号还未注册'
         render 'alert', status: :unauthorized
       end
-    end
-
-    def logout
-      Current.session&.destroy
-      session.delete :auth_token
     end
 
     private

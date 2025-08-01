@@ -1,10 +1,10 @@
-<div id="alert"></div>
 <h2 class="title is-3 text-centered text-primary mb-6"><%= t('site_name') %></h2>
 <%= form_with scope: nil, url: { action: 'create' }, wrap: { input: 'field control' }, all: { normal: nil }, id: 'login_form', class: 'block' do |f| %>
   <%= f.hidden_field :state, value: params[:state] %>
   <%= f.text_field :identity, placeholder: Auth::Account.human_attribute_name(:identity), id: nil, autofocus: true, class: 'input is-medium' %>
   <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), class: 'input is-medium' %>
 <% end %>
+<div id="alert"></div>
 <div>
   <%= link_to t('auth.sign.token_login.title'), { controller: 'auth/sign', action: 'token_login_new' }, id: 'mobile_confirm', class: 'text-grey' %>
   <%= link_to t('auth.passwords.new.title'), { controller: 'auth/passwords', action: 'new' }, class: 'text-grey is-pulled-right' %>
