@@ -1,6 +1,6 @@
 module Auth
   class SessionsController < BaseController
-    before_action :set_account, only: [:create]
+    before_action :set_account, only: [:create, :token_create]
     rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to '/login', alert: "Try again later." }
 
     def create
@@ -12,6 +12,20 @@ module Auth
           flash.now[:error] = @account.error_text.presence || @account.user.error_text
         else
           flash.now[:error] = '账号密码错误'
+        end
+        render 'alert', status: :unauthorized
+      end
+    end
+
+    def token_create
+      if @account.can_login_by_token?(params[:password])
+        start_new_session_for @account
+        render_login
+      else
+        if @account
+          flash.now[:error] = @account.error_text.presence || @account.user.error_text
+        else
+          flash.now[:error] = '验证码错误'
         end
         render 'alert', status: :unauthorized
       end

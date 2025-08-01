@@ -13,17 +13,6 @@ module Auth
       @oauth_user.can_login?(login_params)
     end
 
-    def token_login_new
-    end
-
-    def token_login
-      @verify_token = VerifyToken.build_with_identity(params[:identity])
-
-      if @verify_token.send_out!
-        render 'token_login', locals: { message: t('.sent') }
-      end
-    end
-
     def token
       @account = @verify_token&.account
       if @account && @account&.user
