@@ -51,6 +51,7 @@ module Auth
     end
 
     def current_account
+      resume_session
       Current.session.account
     end
 
