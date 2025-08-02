@@ -1,4 +1,4 @@
-<%= form_with theme: 'search', model: Auth::AuthorizedToken.new, data: { switch_target: 'src' }, class: 'field display-none' do |f| %>
+<%= form_with theme: 'search', model: Auth::Session.new, data: { switch_target: 'src' }, class: 'field display-none' do |f| %>
   <div class="field-body">
     <%= f.text_field :identity %>
     <%= f.text_field :uid, style: 'width: 28ch' %>

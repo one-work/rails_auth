@@ -79,7 +79,7 @@ zh:
       home:
         index:
           title: 用户数据
-      authorized_tokens:
+      sessions:
         index:
           title: 登录密钥
       users:

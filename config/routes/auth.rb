@@ -65,7 +65,7 @@ namespace 'auth', defaults: { business: 'auth' } do
         get :month
       end
     end
-    resources :authorized_tokens
+    resources :sessions
     resources :apps
   end
 
