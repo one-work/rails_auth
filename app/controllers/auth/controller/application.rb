@@ -139,6 +139,8 @@ module Auth
         xx(Current.session)
       elsif cookies[:session_id].blank?
         xx(Current.session)
+      else
+        xx(Current.session)
       end
       logger.debug "\e[35m  Set session Auth token: #{session[:auth_token]}  \e[0m"
     end
