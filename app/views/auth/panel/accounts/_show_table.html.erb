@@ -3,20 +3,10 @@
   <dd><%= @account.user_id %></dd>
 </div>
 <div>
-  <dt><%= Auth::Account.human_attribute_name(:type) %></dt>
-  <dd><%= @account.type_i18n %></dd>
-</div>
-<div>
   <dt><%= Auth::Account.human_attribute_name(:identity) %></dt>
   <dd><%= @account.identity %></dd>
 </div>
 <div>
   <dt><%= Auth::Account.human_attribute_name(:confirmed) %></dt>
   <dd><%= @account.confirmed %></dd>
-</div>
-<div>
-  <dt><%= Auth::User.human_attribute_name(:verify_tokens) %></dt>
-  <td>
-    <%= render 'auth/panel/users/verify_tokens', target: @account %>
-  </td>
 </div>
