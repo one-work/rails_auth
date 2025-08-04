@@ -92,9 +92,8 @@ module Auth
         token = request.headers['Authorization'].to_s.split(' ').last.presence
       elsif params[:auth_token].present?
         token = params[:auth_token]
-      elsif cookies.key?[:session_id]
+      elsif cookies[:session_id]
         token = cookies.signed[:session_id]
-        Current.session ||= find_session_by_cookie
       else
         return
       end
