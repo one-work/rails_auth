@@ -89,22 +89,17 @@ module Auth
 
     def resume_session
       if request.format.json?
-        Current.session ||= find_session_by_header
-      else
+        token = request.headers['Authorization'].to_s.split(' ').last.presence
+      elsif params[:auth_token].present?
+        token = params[:auth_token]
+      elsif cookies.key?[:session_id]
+        token = cookies.signed[:session_id]
         Current.session ||= find_session_by_cookie
+      else
+        return
       end
-    end
 
-    def find_session_by_header
-      token = request.headers['Authorization'].to_s.split(' ').last.presence
-      Session.find_by(id: token)
-    end
-
-    def find_session_by_cookie
-      token = params[:auth_token].presence || cookies&.signed[:session_id]
-      if token
-        Session.find_by(id: token)
-      end
+      Current.session ||= Session.find_by(id: token)
     end
 
     def request_authentication
