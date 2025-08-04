@@ -101,7 +101,7 @@ module Auth
     end
 
     def find_session_by_cookie
-      token = params[:auth_token].presence || cookies.signed[:session_id]
+      token = params[:auth_token].presence || cookies&.signed[:session_id]
       if token
         Session.find_by(id: token)
       end
