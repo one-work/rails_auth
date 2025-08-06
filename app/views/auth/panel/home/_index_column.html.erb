@@ -1,0 +1,23 @@
+<div class="fixed-grid has-6-cols">
+  <p></p>
+  <div class="grid">
+    <%= link_to({ controller: 'auth/panel/home', action: 'dashboard' }, class: 'cell button is-fullwidth') do %>
+      <span><%= t('auth.panel.home.dashboard.title') %></span>
+    <% end %>
+  </div>
+  <p></p>
+  <div class="grid">
+    <%= link_to({ controller: 'auth/panel/apps' }, class: 'cell button is-fullwidth') do %>
+      <span><%= t('auth.panel.apps.index.title') %></span>
+    <% end %>
+    <%= link_to({ controller: 'auth/panel/sessions' }, class: 'cell button is-fullwidth') do %>
+      <span><%= t('auth.panel.sessions.index.title') %></span>
+    <% end %>
+    <%= link_to({ controller: 'auth/panel/accounts' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: 'cell button is-fullwidth') do %>
+      <span><%= t('auth.panel.accounts.index.title') %></span>
+    <% end %>
+    <%= link_to({ controller: 'auth/panel/oauth_users' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: 'cell button is-fullwidth') do %>
+      <span><%= t('auth.panel.oauth_users.index.title') %></span>
+    <% end %>
+  </div>
+</div>
