@@ -31,7 +31,7 @@
       >发送验证码</button>
     <% end %>
     <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title'), confirm: '删除后此账号无法用于登录' }, class: 'button') do %>
-      <i class="fa-solid fa-trash text-danger"></i>
+      <%= svg_tag 'trash', class: 'icon text-danger' %>
     <% end unless model.last? %>
     <%= button_to({ action: 'select', id: model.id }, method: :put, aria: { label: t('.select') }, class: 'button') do %>
       <i class="fa-solid fa-chevron-circle-right text-link"></i>

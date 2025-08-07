@@ -49,10 +49,10 @@
         <% end %>
       </td>
       <td>
-        <%= link_to admin_user_path(user), aria: { label: t('.show.title') }, class: 'button is-small is-rounded is-light' do %>
-          <i class="fa-solid fa-circle-info"></i>
+        <%= link_to admin_user_path(user), aria: { label: t('.show.title') }, class: 'button is-small is-borderless' do %>
+          <%= svg_tag 'circle-info', class: 'icon text-info' %>
         <% end %>
-        <%= link_to admin_accounts_path(user_id: user.id), aria: { label: t('auth.admin.accounts.index.title') }, class: 'button is-small is-rounded is-light' do %>
+        <%= link_to admin_accounts_path(user_id: user.id), aria: { label: t('auth.admin.accounts.index.title') }, class: 'button is-small is-borderless' do %>
           <i class="fa-regular fa-portrait"></i>
         <% end %>
       </td>
