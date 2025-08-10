@@ -1,7 +1,9 @@
 <%= render layout: 'layouts/phone_head' do %>
   <main>
     <%= render 'alert' %>
-    <%= yield %>
+    <div class="p-3">
+      <%= yield %>
+    </div>
   </main>
   <%= render 'tab_bar_footer' %>
   <%= render 'tab_bar' %>
