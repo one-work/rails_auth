@@ -18,7 +18,7 @@
       <td><%= user_tagged.user.name %></td>
       <td>
         <%= link_to admin_user_tag_user_tagged_path(@user_tag, user_tagged), method: :delete, aria: { label: t('.destroy.title') }, data: { turbo_confirm: t('.destroy.confirm') }, class: 'button is-small is-borderless' do %>
-          <%= svg_tag 'trash', class: 'icon' %>
+          <%= svg_tag 'trash' %>
         <% end %>
       </td>
     </tr>

@@ -1,5 +1,5 @@
 <%= button_to({ action: 'destroy' }, method: :delete, class: 'text-danger has-column-centered', form: { data: { turbo_confirm: t('.destroy.confirm') }, class: 'cell' }) do %>
-  <%= svg_tag 'trash', class: 'icon' %>
+  <%= svg_tag 'trash' %>
   <span><%= t('auth.board.oauth_users.unbind.title') %></span>
 <% end %>
 <%= button_to({ action: 'edit' }, class: 'cell has-column-centered') do %>
