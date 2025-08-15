@@ -108,8 +108,11 @@ module Auth
     def strategy
     end
 
+    def session
+      sessions.effective.take || sessions.create
+    end
+
     def auth_token
-      session = sessions.effective.take || sessions.create
       session.id
     end
 
