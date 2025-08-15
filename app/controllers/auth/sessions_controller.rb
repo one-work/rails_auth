@@ -1,6 +1,7 @@
 module Auth
   class SessionsController < BaseController
     before_action :set_account, only: [:create, :token_create]
+    before_action :require_user, only: [:destroy]
     rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to '/login', alert: "Try again later." }
 
     def create
