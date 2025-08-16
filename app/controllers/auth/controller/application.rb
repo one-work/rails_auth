@@ -88,12 +88,12 @@ module Auth
     end
 
     def resume_session
-      if request.format.json?
-        token = request.headers['Authorization'].to_s.split(' ').last.presence
+      if cookies[:session_id]
+        token = cookies.signed[:session_id]
       elsif params[:auth_token].present?
         token = params[:auth_token]
-      elsif cookies[:session_id]
-        token = cookies.signed[:session_id]
+      elsif request.format.json?
+        token = request.headers['Authorization'].to_s.split(' ').last.presence
       else
         return
       end
