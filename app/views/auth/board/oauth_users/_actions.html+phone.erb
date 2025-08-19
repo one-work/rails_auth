@@ -3,7 +3,7 @@
   <span><%= t('auth.board.oauth_users.unbind.title') %></span>
 <% end %>
 <%= button_to({ action: 'edit' }, class: 'cell has-column-centered') do %>
-  <i class="fa-solid fa-pencil"></i>
+  <%= svg_tag 'pencil' %>
   <span><%= t('.edit.title') %></span>
 <% end %>
 <%= link_to({ action: 'show' }, class: 'cell has-column-centered') do %>
