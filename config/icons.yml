@@ -1,7 +1,9 @@
 regular:
   - angle-left
   - check
+  - chevron-right
   - key
   - pencil
+  - right-from-bracket
   - trash-can
   - users

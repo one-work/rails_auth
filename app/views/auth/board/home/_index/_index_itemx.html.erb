@@ -4,7 +4,7 @@
     <span class="ml-1"><%= t('auth.board.accounts.index.title') %></span>
   </div>
   <div class="media-right">
-    <i class="fa-solid fa-chevron-right"></i>
+    <%= svg_tag 'chevron-right' %>
   </div>
 <% end %>
 <%= link_to({ controller: 'board/oauth_users' }, class: 'media') do %>
@@ -13,7 +13,7 @@
     <span class="pl-1"><%= t('auth.board.oauth_users.index.title') %></span>
   </div>
   <div class="media-right">
-    <i class="fa-solid fa-chevron-right"></i>
+    <%= svg_tag 'chevron-right' %>
   </div>
 <% end %>
 
@@ -23,7 +23,7 @@
     <span class="pl-1"><%= t('profiled.my.profiles.qrcode.title') %></span>
   </div>
   <div class="media-right">
-    <i class="fa-solid fa-chevron-right"></i>
+    <%= svg_tag 'chevron-right' %>
   </div>
 <% end %>
 
@@ -33,7 +33,7 @@
     <span class="pl-1"><%= t('profiled.my.profiles.show.title') %></span>
   </div>
   <div class="media-right">
-    <i class="fa-solid fa-chevron-right"></i>
+    <%= svg_tag 'chevron-right' %>
   </div>
 <% end %>
 
@@ -43,6 +43,6 @@
     <span class="pl-1"><%= t('trade.my.wallet_templates.index.title') %></span>
   </div>
   <div class="media-right">
-    <i class="fa-solid fa-chevron-right"></i>
+    <%= svg_tag 'chevron-right' %>
   </div>
 <% end %>

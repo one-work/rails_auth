@@ -11,7 +11,7 @@
       <span><%= t('auth.board.users.show.title') %></span>
     </div>
     <div class="media-right">
-      <i class="fa-solid fa-chevron-right"></i>
+      <%= svg_tag 'chevron-right' %>
     </div>
   </div>
   <div
@@ -26,7 +26,7 @@
       <span>手机号登录</span>
     </div>
     <div class="media-right">
-      <i class="fa-solid fa-chevron-right"></i>
+      <%= svg_tag 'chevron-right' %>
     </div>
   </div>
 <% else %>
@@ -36,7 +36,7 @@
       <span class="ml-1"><%= t('auth.board.users.show.title') %></span>
     </div>
     <div class="media-right">
-      <i class="fa-solid fa-chevron-right"></i>
+      <%= svg_tag 'chevron-right' %>
     </div>
   <% end %>
 <% end %>
@@ -46,7 +46,7 @@
     <span class="ml-1"><%= t('auth.board.accounts.index.title') %></span>
   </div>
   <div class="media-right">
-    <i class="fa-solid fa-chevron-right"></i>
+    <%= svg_tag 'chevron-right' %>
   </div>
 <% end %>
 <% if request.variant.include?(:wechat) %>
@@ -56,7 +56,7 @@
       <span class="ml-1"><%= t('wechat.board.wechat_users.index.title') %></span>
     </div>
     <div class="media-right">
-      <i class="fa-solid fa-chevron-right"></i>
+      <%= svg_tag 'chevron-right' %>
     </div>
   <% end %>
 <% else %>
@@ -66,7 +66,7 @@
       <span class="ml-1"><%= t('auth.board.oauth_users.index.title') %></span>
     </div>
     <div class="media-right">
-      <i class="fa-solid fa-chevron-right"></i>
+      <%= svg_tag 'chevron-right' %>
     </div>
   <% end %>
 <% end %>
@@ -84,7 +84,7 @@
       <span class="ml-1"><%= '设置打印机' %></span>
     </div>
     <div class="media-right">
-      <i class="fa-solid fa-chevron-right"></i>
+      <%= svg_tag 'chevron-right' %>
     </div>
   </div>
 <% end %>
