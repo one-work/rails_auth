@@ -128,11 +128,7 @@ module Auth
     end
 
     def set_auth_token
-      unless Current.session
-        logger.debug "\e[35m  Delete Cookies: #{cookies}  \e[0m"
-        cookies.delete(:session_id)
-        return
-      end
+      return unless Current.session
 
       if Current.session.expired?
         Current.session.refresh!
