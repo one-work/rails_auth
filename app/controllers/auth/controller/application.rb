@@ -127,7 +127,11 @@ module Auth
     end
 
     def set_auth_token
-      return unless Current.session
+      unless Current.session
+        cookies.delete(:session_id)
+        return
+      end
+
       if Current.session.expired?
         Current.session.refresh!
         xx(Current.session)
