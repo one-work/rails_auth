@@ -142,7 +142,7 @@ module Auth
       else
         xx(Current.session)
       end
-      logger.debug "\e[35m  Set session Auth token: #{session[:auth_token]}  \e[0m"
+      logger.debug "\e[35m  Set session Auth token: #{cookies[:session_id]}  \e[0m"
     end
 
     def set_session_for_json
