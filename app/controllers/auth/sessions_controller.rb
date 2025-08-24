@@ -24,11 +24,11 @@ module Auth
         render_login
       else
         if @account
-          flash.now[:error] = @account.error_text.presence || @account.user.error_text
+          message = @account.error_text.presence || @account.user.error_text
         else
-          flash.now[:error] = '验证码错误'
+          message = '验证码错误'
         end
-        render 'alert', status: :unauthorized
+        render 'alert_message', status: :unauthorized, locals: { message: message }
       end
     end
 
