@@ -79,6 +79,8 @@ zh:
       home:
         index:
           title: 用户数据
+        dashboard:
+          title: 用户数据
       sessions:
         index:
           title: 登录密钥
