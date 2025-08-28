@@ -1,6 +1,6 @@
 <td>
   <%= button_to({ controller: 'users', action: 'show', id: model.user_id }, text: true) do %>
-    <i class="fa-solid fa-user"></i>
+    <%= svg_tag 'user' %>
     <span class="ml-1"><%= model.user.name %></span>
   <% end if model.user %>
 </td>
