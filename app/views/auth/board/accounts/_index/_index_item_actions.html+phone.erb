@@ -11,7 +11,7 @@
       </div>
     <% end %>
     <%= button_to({ action: 'actions', id: model.id }, class: 'button is-borderless') do %>
-      <i class="fa-solid fa-lg fa-ellipsis-h"></i>
+      <%= svg_tag 'ellipsis-vertical' %>
     <% end %>
   </div>
 </div>
