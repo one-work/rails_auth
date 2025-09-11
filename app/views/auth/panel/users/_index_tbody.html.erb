@@ -59,11 +59,11 @@
   </div>
   <div data-show-target="item" class="visibility-hidden">
     <%= button_to({ action: 'edit_user_tags', id: model.id }, class: 'button is-small is-borderless') do %>
-      <i class="fa-solid fa-user-tag text-success"></i>
+      <%= svg_tag 'user-tag' %>
       <span class="ml-1"><%= t('.edit_user_tags.title') %></span>
     <% end %>
     <%= button_to({ action: 'edit_role', id: model.id }, class: 'button is-small is-borderless') do %>
-      <i class="fa-solid fa-user-lock"></i>
+      <%= svg_tag 'user-lock' %>
       <span class="ml-1"><%= t('.edit_role.title') %></span>
     <% end %>
   </div>
