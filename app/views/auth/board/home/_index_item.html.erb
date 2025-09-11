@@ -7,7 +7,7 @@
     class="media"
   >
     <div class="media-content">
-      <i class="fa-solid fa-fw fa-user text-primary"></i>
+      <%= svg_tag 'user' %>
       <span><%= t('auth.board.users.show.title') %></span>
     </div>
     <div class="media-right">
@@ -32,7 +32,7 @@
 <% else %>
   <%= link_to({ controller: 'users', action: 'show' }, class: 'media') do %>
     <div class="media-content">
-      <i class="fa-solid fa-fw fa-user text-primary"></i>
+      <%= svg_tag 'user' %>
       <span class="ml-1"><%= t('auth.board.users.show.title') %></span>
     </div>
     <div class="media-right">
@@ -42,7 +42,7 @@
 <% end %>
 <%= link_to({ controller: 'accounts' }, class: 'media') do %>
   <div class="media-content">
-    <i class="fa-solid fa-fw fa-users text-primary"></i>
+    <%= svg_tag 'users' %>
     <span class="ml-1"><%= t('auth.board.accounts.index.title') %></span>
   </div>
   <div class="media-right">
