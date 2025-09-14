@@ -1,11 +1,11 @@
 <div class="box as-bar">
   <% if request.subdomain == 'admin' %>
     <%= link_to('/', class: 'px-4') do %>
-      <%= svg_tag 'angle-left' %>
+      <%= svg_tag 'angle-left', kind: 'regular' %>
     <% end %>
   <% else %>
     <%= link_to({ controller: '/my/home' }, class: 'px-4') do %>
-      <%= svg_tag 'angle-left' %>
+      <%= svg_tag 'angle-left', kind: 'regular' %>
     <% end %>
   <% end %>
   <span class="weui-title"><%= t('.title') %></span>
