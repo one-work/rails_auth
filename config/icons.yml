@@ -5,6 +5,7 @@ regular:
   - ellipsis-vertical
   - eye
   - key
+  - mobile
   - pencil
   - right-from-bracket
   - trash
@@ -13,3 +14,5 @@ regular:
   - user-lock
   - user-tag
   - users
+brands:
+  - weixin

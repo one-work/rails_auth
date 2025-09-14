@@ -22,7 +22,7 @@
     class="media"
   >
     <div class="media-content">
-      <i class="fa-solid fa-fw fa-mobile text-primary"></i>
+      <%= svg_tag 'mobile' %>
       <span>手机号登录</span>
     </div>
     <div class="media-right">
@@ -52,7 +52,7 @@
 <% if request.variant.include?(:wechat) %>
   <%= link_to({ controller: 'wechat/board/wechat_users' }, class: 'media') do %>
     <div class="media-content">
-      <i class="fa-brands fa-fw fa-weixin text-primary"></i>
+      <%= svg_tag 'weixin', kind: 'brands' %>
       <span class="ml-1"><%= t('wechat.board.wechat_users.index.title') %></span>
     </div>
     <div class="media-right">
@@ -62,29 +62,11 @@
 <% else %>
   <%= link_to({ controller: 'oauth_users' }, class: 'media') do %>
     <div class="media-content">
-      <i class="fa-brands fa-fw fa-weixin text-primary"></i>
+      <%= svg_tag 'weixin', kind: 'brands' %>
       <span class="ml-1"><%= t('auth.board.oauth_users.index.title') %></span>
     </div>
     <div class="media-right">
       <%= svg_tag 'chevron-right' %>
     </div>
   <% end %>
-<% end %>
-<% if request.variant.include?(:mini_program) %>
-  <div
-    data-controller="mini-program"
-    data-mini-program-nav-value="true"
-    data-mini-program-url-value="/pages/print/index"
-    data-mini-program-data-value="<%= { url: url_for(controller: 'bluetooth/devices', action: 'test', only_path: false) }.to_json %>"
-    data-action="click->mini-program#link"
-    class="media"
-  >
-    <div class="media-content">
-      <i class="fa-solid fa-fw fa-print text-primary"></i>
-      <span class="ml-1"><%= '设置打印机' %></span>
-    </div>
-    <div class="media-right">
-      <%= svg_tag 'chevron-right' %>
-    </div>
-  </div>
 <% end %>
