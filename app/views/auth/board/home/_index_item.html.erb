@@ -4,7 +4,7 @@
     data-mini-program-nav-value="true"
     data-mini-program-url-value="/pages/profile/index"
     data-action="click->mini-program#navTo"
-    class="media"
+    class="media as-link"
   >
     <div class="media-content">
       <%= svg_tag 'user' %>
@@ -19,7 +19,7 @@
     data-mini-program-nav-value="true"
     data-mini-program-url-value="/pages/mobile/index"
     data-action="click->mini-program#navTo"
-    class="media"
+    class="media as-link"
   >
     <div class="media-content">
       <%= svg_tag 'mobile' %>
@@ -30,7 +30,7 @@
     </div>
   </div>
 <% else %>
-  <%= link_to({ controller: 'users', action: 'show' }, class: 'media') do %>
+  <%= link_to({ controller: 'users', action: 'show' }, class: 'media as-link') do %>
     <div class="media-content">
       <%= svg_tag 'user' %>
       <span class="ml-1"><%= t('auth.board.users.show.title') %></span>
@@ -40,7 +40,7 @@
     </div>
   <% end %>
 <% end %>
-<%= link_to({ controller: 'accounts' }, class: 'media') do %>
+<%= link_to({ controller: 'accounts' }, class: 'media as-link') do %>
   <div class="media-content">
     <%= svg_tag 'users' %>
     <span class="ml-1"><%= t('auth.board.accounts.index.title') %></span>
@@ -50,7 +50,7 @@
   </div>
 <% end %>
 <% if request.variant.include?(:wechat) %>
-  <%= link_to({ controller: 'wechat/board/wechat_users' }, class: 'media') do %>
+  <%= link_to({ controller: 'wechat/board/wechat_users' }, class: 'media as-link') do %>
     <div class="media-content">
       <%= svg_tag 'weixin', kind: 'brands' %>
       <span class="ml-1"><%= t('wechat.board.wechat_users.index.title') %></span>
@@ -60,7 +60,7 @@
     </div>
   <% end %>
 <% else %>
-  <%= link_to({ controller: 'oauth_users' }, class: 'media') do %>
+  <%= link_to({ controller: 'oauth_users' }, class: 'media as-link') do %>
     <div class="media-content">
       <%= svg_tag 'weixin', kind: 'brands' %>
       <span class="ml-1"><%= t('auth.board.oauth_users.index.title') %></span>
