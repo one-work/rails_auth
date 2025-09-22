@@ -15,8 +15,6 @@ zh:
           zh: 中文
           en: English
       auth/account:
-        type:
-          Auth::EmailAccount: 邮箱账号
-          Auth::MobileAccount: 手机账号
-          Auth::DeviceAccount: 设备标识
-          Auth::ThirdpartyAccount: 第三方授权
+        confirmed:
+          true: 已验证
+          false: 待验证
