@@ -60,7 +60,7 @@ module Auth
     end
 
     def init_account
-      account || build_account(type: 'Auth::MobileAccount', user_id: user_id)
+      account || build_account(user_id: user_id)
     end
 
     def init_user
