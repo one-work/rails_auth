@@ -2,6 +2,8 @@ light:
   - angle-left
   - check
   - chevron-right
+  - circle-check
+  - circle-question
   - ellipsis-vertical
   - eye
   - key
