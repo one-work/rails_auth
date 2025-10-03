@@ -153,17 +153,6 @@ module Auth
       user.can_login?(password)
     end
 
-    def xx
-      if params[:device_id]
-        account = DeviceAccount.find_by identity: params[:device_id]
-        self.user = account.user if account
-      end
-    end
-
-    def authorized_token
-      authorized_tokens.find(&:effective?) || authorized_tokens.create
-    end
-
     def once_token
       auth_token
     end
