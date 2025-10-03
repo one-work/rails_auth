@@ -24,10 +24,12 @@ module Auth
         :password,
         :password_confirmation
       )
-      _p.merge! accounts_attributes: [{
-        identity: params[:identity],
-        confirmed: true
-      }]
+      _p.merge! accounts_attributes: [
+        {
+          identity: params[:identity],
+          confirmed: true
+        }
+      ]
     end
 
   end

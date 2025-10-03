@@ -42,7 +42,6 @@ module Auth
 
       normalizes :identity, with: -> (email) { email.strip.downcase }
 
-      validates :uid, presence: true
       validates :identity, uniqueness: { scope: [:confirmed, :source] }
 
       after_validation :init_user, if: -> { confirmed? && confirmed_changed? }
