@@ -42,16 +42,11 @@ module Auth
 
       normalizes :identity, with: -> (email) { email.strip.downcase }
 
-
       validates :uid, presence: true
       validates :identity, uniqueness: { scope: [:confirmed, :source] }
 
-
-
-      before_save :auto_link, if: -> { unionid.present? && unionid_changed? }
-      before_save :init_account, if: -> { identity_changed? }
       after_validation :init_user, if: -> { confirmed? && confirmed_changed? }
-
+      before_save :auto_link, if: -> { unionid.present? && unionid_changed? }
       after_save :sync_to_authorized_tokens, if: -> { saved_change_to_identity? }
       after_save :sync_name_to_user, if: -> { name.present? && saved_change_to_name? }
       after_save_commit :sync_avatar_to_user_later, if: -> { avatar_url.present? && saved_change_to_avatar_url? }
@@ -72,10 +67,6 @@ module Auth
 
     def can_login?(params)
       self.identity = params[:identity]
-    end
-
-    def init_account
-      account || build_account(user_id: user_id)
     end
 
     def init_user
@@ -132,7 +123,7 @@ module Auth
     end
 
     def auth_jwt_token
-      authorized_token.generate_jwt_token
+      session.generate_jwt_token
     end
 
     def last?
