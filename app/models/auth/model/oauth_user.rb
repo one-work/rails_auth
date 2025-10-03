@@ -18,7 +18,7 @@ module Auth
       attribute :expires_at, :datetime
       attribute :refresh_token, :string
       attribute :extra, :json, default: {}
-      attribute :identity, :string, index: true
+      attribute :identity, :string, default: '', index: true
       attribute :online_at, :datetime
       attribute :offline_at, :datetime
       attribute :confirmed, :boolean
