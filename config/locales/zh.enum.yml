@@ -5,6 +5,9 @@ zh:
         type:
           Auth::GithubUser: Github用户
           Auth::FacebookUser: Facebook用户
+        confirmed:
+          true: 已验证
+          false: 待验证
         provider:
           github: Github
           facebook: Factbook
@@ -14,7 +17,3 @@ zh:
         locale:
           zh: 中文
           en: English
-      auth/account:
-        confirmed:
-          true: 已验证
-          false: 待验证
