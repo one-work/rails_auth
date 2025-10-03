@@ -5,13 +5,13 @@
   </div>
   <p>
     <span class="tag"><%= model.type_i18n %></span>
-    <% if model.respond_to?(:app) %>
-      <span><%= model.app&.name %></span>
+    <% if model.respond_to?(:app) && model.app %>
+      <span><%= model.app.name %></span>
     <% end %>
   </p>
 </td>
 <td>
-  <p><%= model.account&.identity %></p>
+  <p><%= model.identity %></p>
   <p class="family-monospace text-grey"><%= model.uid %></p>
 </td>
 <td>
