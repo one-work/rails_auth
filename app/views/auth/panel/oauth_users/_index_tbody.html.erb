@@ -27,6 +27,18 @@
     <%= svg_tag 'user' %>
     <span class="ml-1"><%= model.user.name %></span>
   <% end %>
-  <p class="text-grey"><%= link_to model.user.name, { user_id: model.user_id } %></p>
+  <%= link_to({ user_id: model.user_id }) do %>
+    <%= svg_tag 'users' %>
+    <span class="ml-1">同账号</span>
+  <% end %>
 <% end %>
+</td>
+<td>
+  <%= render partial: 'index_tr_actions', locals: { model: model } %>
+  <div data-show-target="item" class="visibility-hidden">
+    <%= link_to({ controller: 'sessions', uid: model.uid }, class: 'button is-small is-borderless') do %>
+      <%= svg_tag 'eye' %>
+      <span class="ml-1"><%= t('.sessions.index.title') %></span>
+    <% end %>
+  </div>
 </td>
