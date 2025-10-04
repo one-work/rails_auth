@@ -3,6 +3,6 @@
   <%= ef.text_field :identity %>
   <%= ef.hidden_field :confirmed, value: true %>
 <% end %>
-<%= render 'com/attachments/list_field', f: f, target: f.object.avatar %>
+<%= render partial: 'com/attachments/list_field', locals: { target: f.object.avatar, f: f } %>
 <%= f.text_field :password %>
 <%= f.check_box :disabled %>
