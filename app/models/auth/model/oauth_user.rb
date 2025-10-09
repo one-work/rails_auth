@@ -42,7 +42,7 @@ module Auth
 
       normalizes :identity, with: -> (email) { email.strip.downcase }
 
-      validates :identity, uniqueness: { scope: [:confirmed, :source] }
+      validates :identity, uniqueness: { scope: [:confirmed, :source, :id] }
 
       after_validation :init_user, if: -> { confirmed? && confirmed_changed? }
       before_save :auto_link, if: -> { unionid.present? && unionid_changed? }
