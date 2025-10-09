@@ -46,7 +46,7 @@ module Auth
 
       after_validation :init_user, if: -> { confirmed? && confirmed_changed? }
       before_save :auto_link, if: -> { unionid.present? && unionid_changed? }
-      after_save :sync_to_authorized_tokens, if: -> { saved_change_to_identity? }
+      after_update :sync_to_authorized_tokens, if: -> { saved_change_to_identity? }
       after_save :sync_name_to_user, if: -> { name.present? && saved_change_to_name? }
       after_save_commit :sync_avatar_to_user_later, if: -> { avatar_url.present? && saved_change_to_avatar_url? }
     end
