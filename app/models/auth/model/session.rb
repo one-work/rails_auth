@@ -24,7 +24,7 @@ module Auth
 
       belongs_to :user, optional: true
       belongs_to :auth_app, class_name: 'App', foreign_key: :auth_appid, primary_key: :appid, optional: true
-      belongs_to :oauth_user, foreign_key: :uid, primary_key: :uid, optional: true
+      belongs_to :oauth_user, foreign_key: [:uid, :identity], primary_key: [:uid, :identity], optional: true
       belongs_to :account, -> { where(confirmed: true) }, foreign_key: :identity, primary_key: :identity, optional: true
 
       has_many :sames, class_name: self.name, primary_key: [:identity, :uid, :session_id], foreign_key: [:identity, :uid, :session_id]
