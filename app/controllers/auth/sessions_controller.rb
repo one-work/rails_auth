@@ -5,7 +5,7 @@ module Auth
     rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to '/login', alert: "Try again later." }
 
     def create
-      if @account.can_login_by_password?(params[:password])
+      if @account&.can_login_by_password?(params[:password])
         start_new_session_for @account
         render_login
       else
