@@ -1,4 +1,4 @@
-<tr data-controller="show" data-action="mouseenter->show#show mouseleave->show#hide">
+<tr data-controller="show">
   <%= yield %>
   <td>
     <%= button_to "/auth/#{model}", data: { turbo: false }, class: 'button is-small is-info' do %>
