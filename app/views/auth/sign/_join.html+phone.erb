@@ -1,4 +1,4 @@
-<%= form_with theme: 'weui', scope: nil, url: { action: 'join' } do |f| %>
+<%= form_with theme: 'default_phone', scope: nil, url: { action: 'join' } do |f| %>
   <% params.permit(:uid, :request_id, :state).each do |key, value| %>
     <%= f.hidden_field key, value: value, autocomplete: 'off' %>
   <% end %>
