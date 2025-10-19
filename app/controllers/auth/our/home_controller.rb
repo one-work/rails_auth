@@ -1,5 +1,5 @@
 module Auth
-  class Our::HomeController < My::HomeController
+  class Our::HomeController < Board::HomeController
 
     def index
     end
