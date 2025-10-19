@@ -44,8 +44,7 @@ module Auth
 
     def current_client
       return @current_client if defined?(@current_client)
-      return unless current_account
-      @current_client = current_session&.member
+      @current_client = Current.session.member
       logger.debug "\e[35m  Current Client: #{@current_client&.id}  \e[0m"
       @current_client
     end
