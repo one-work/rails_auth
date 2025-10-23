@@ -15,6 +15,7 @@ module Auth
       attribute :access_counter, :integer, default: 0
       attribute :mock_user, :boolean, default: false
       attribute :business, :string
+      attribute :appid, :string
       attribute :uid, :string
       attribute :session_id, :string
       attribute :online_at, :datetime
