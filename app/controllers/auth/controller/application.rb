@@ -91,6 +91,7 @@ module Auth
         token = params[:auth_token]
       elsif cookies[:session_id]
         token = cookies.signed[:session_id]
+        logger.debug "\e[35m  Session ID: #{token}  \e[0m"
       elsif request.format.json?
         token = request.headers['Authorization'].to_s.split(' ').last.presence
       else
