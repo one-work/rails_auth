@@ -2,7 +2,7 @@
   <span><%= t('auth.board.title') %></span>
 </div>
 <div class="menu-list">
-  <%= link_to t('auth.board.users.show.title'), { controller: 'auth/board/users', action: 'show' }, class: active_helper(controllers: ['auth/board/users'], active: 'is-active') %>
-  <%= link_to t('auth.board.accounts.index.title'), { controller: 'auth/board/accounts' }, class: active_helper(controllers: ['accounts'], active: 'is-active') %>
-  <%= link_to t('auth.board.oauth_users.index.title'), { controller: 'auth/board/oauth_users' }, class: active_helper(controllers: ['oauth_users'], active: 'is-active') %>
+  <%= link_to t('auth.board.users.show.title'), { controller: 'auth/board/users', action: 'show' }, data: { turbo_frame: 'body' }, class: active_helper(controllers: ['auth/board/users'], active: 'is-active') %>
+  <%= link_to t('auth.board.accounts.index.title'), { controller: 'auth/board/accounts' }, data: { turbo_frame: 'body' }, class: active_helper(controllers: ['accounts'], active: 'is-active') %>
+  <%= link_to t('auth.board.oauth_users.index.title'), { controller: 'auth/board/oauth_users' }, data: { turbo_frame: 'body' }, class: active_helper(controllers: ['oauth_users'], active: 'is-active') %>
 </div>
