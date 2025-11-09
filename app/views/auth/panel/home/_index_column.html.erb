@@ -6,6 +6,9 @@
   <%= link_to({ controller: 'auth/panel/users' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
     <span><%= t('auth.panel.users.index.title') %></span>
   <% end %>
+  <%= link_to({ controller: 'auth/panel/user_tags' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('auth.panel.user_tags.index.title') %></span>
+  <% end %>
 </div>
 <p class="size-7 text-grey mb-1">账号信息</p>
 <div class="grid">

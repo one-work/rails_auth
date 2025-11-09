@@ -91,6 +91,9 @@ zh:
           title: 用户标签
         edit_role:
           title: 权限管理
+      user_tags:
+        index:
+          title: 用户标签
       accounts:
         index:
           title: 账号

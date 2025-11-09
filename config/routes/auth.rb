@@ -67,6 +67,9 @@ namespace 'auth', defaults: { business: 'auth' } do
     end
     resources :sessions
     resources :apps
+    resources :user_tags do
+      resources :user_taggeds
+    end
   end
 
   namespace :our, defaults: { namespace: 'our' } do

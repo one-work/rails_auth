@@ -1,22 +1,10 @@
 module Auth
-  class Admin::UserTaggedsController < Admin::BaseController
+  class Panel::UserTaggedsController < Panel::BaseController
     before_action :set_user_tag
     before_action :set_user_tagged, only: [:show, :edit, :update]
 
     def index
       @user_taggeds = @user_tag.user_taggeds.page(params[:page])
-    end
-
-    def new
-      @user_tagged = @user_tag.user_taggeds.build
-    end
-
-    def create
-      @user_tagged = @user_tag.user_taggeds.build(user_id: params[:user_id])
-
-      unless @user_tagged.save
-        render :new, locals: { model: @user_tagged }, status: :unprocessable_entity
-      end
     end
 
     def search
@@ -41,6 +29,16 @@ module Auth
 
     def set_user_tagged
       @user_tagged = @user_tag.user_taggeds.find params[:id]
+    end
+
+    def set_new_user_tagged
+      @user_tagged = @user_tag.user_taggeds.build(user_tagged_params)
+    end
+
+    def user_tagged_params
+      params.fetch(:user_tagged, {}).permit(
+        :user_id
+      )
     end
 
   end
