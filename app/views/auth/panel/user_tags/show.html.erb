@@ -16,12 +16,7 @@
         <p><%= Auth::User.human_attribute_name(:last_login_ip) %></p>
       </th>
       <th><%= Auth::User.human_attribute_name(:oauth_users) %></th>
-      <th>
-        <%= button_to({ controller: 'auth/panel/users', action: 'new' }, class: 'button is-small is-link') do %>
-          <%= svg_tag 'plus' %>
-          <span class="ml-1"><%= t('.new.title') %></span>
-        <% end %>
-      </th>
+      <th></th>
     </tr>
   </thead>
 
