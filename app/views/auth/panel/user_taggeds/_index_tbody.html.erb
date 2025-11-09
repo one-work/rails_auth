@@ -1,4 +1,4 @@
-<td><%= user_tagged.user.name %></td>
+<td><%= model.user.id %></td>
 <td>
   <%= link_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, data: { turbo_confirm: t('.destroy.confirm') }, class: 'button is-small is-borderless') do %>
     <%= svg_tag 'trash' %>

@@ -1,4 +1,4 @@
-<%= form_with theme: 'modal', model: @user, url: { action: 'update_user_tags' } do |f| %>
+<%= form_with theme: 'modal', model: @user, url: { action: 'update' } do |f| %>
   <%= render 'modal_header' %>
   <section class="modal-card-body">
     <%= render 'error_messages', target: f.object %>
