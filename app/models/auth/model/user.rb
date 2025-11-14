@@ -50,10 +50,6 @@ module Auth
       end
     end
 
-    def valid_providers
-      OauthUser.options_i18n(:provider).values.map(&:to_s) - oauth_providers
-    end
-
     def info_blank?
       oauth_users.map(&:info_blank?).all? true
     end
@@ -64,10 +60,6 @@ module Auth
 
     def account_identities
       (confirmed_accounts.map(&:identity) + oauth_users.pluck(:identity).compact).uniq
-    end
-
-    def oauth_providers
-      oauth_users.pluck(:provider).compact
     end
 
     def avatar_url

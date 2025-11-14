@@ -5,6 +5,17 @@ module Auth
 
     def index
       @oauth_users = current_user.oauth_users.where.not(type: 'Auth::Account').order(appid: :asc)
+      @oauth_apps = []
+
+      github_app = GithubApp.where(default_params).take
+      if github_app
+        @oauth_apps << { name: 'Github', app: github_app }
+      end
+
+      wechat_app = Wechat::App.where(default_params).take
+      if wechat_app
+        @oauth_apps << { name: '微信', app: wechat_app }
+      end
     end
 
     def create
