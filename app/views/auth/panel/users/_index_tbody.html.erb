@@ -36,7 +36,7 @@
 </td>
 <td>
   <%= form_with theme: 'switch', model: model, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
-    <%= f.check_box :disabled, data: { input_target: 'checkbox' }, id: nil %>
+    <%= f.check_box :disabled, data: { action: 'input#submit' }, id: nil %>
   <% end %>
 </td>
 <td>
