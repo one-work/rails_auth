@@ -1,4 +1,4 @@
-<%= image_tag 'logo.png', class: 'image' %>
+<%= image_tag 'logo.png', class: 'image mx-auto' %>
 <%= form_with scope: nil, url: { action: 'create' }, wrap: { input: 'field control' }, all: { normal: nil }, id: 'login_form', class: 'block' do |f| %>
   <%= f.hidden_field :state, value: params[:state] %>
   <%= f.text_field :identity, placeholder: Auth::Account.human_attribute_name(:identity), id: nil, autofocus: true, class: 'input is-medium' %>
