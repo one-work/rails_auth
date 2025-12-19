@@ -1,0 +1,3 @@
+<li><%= link_to t('.user_tags.index.title'), { controller: 'user_tags' } %></li>
+<li><%= link_to @user_tag.name, { controller: 'user_tags', action: 'show', id: @user_tag.id } %></li>
+<li class="is-active"><%= t('.title') %></li>

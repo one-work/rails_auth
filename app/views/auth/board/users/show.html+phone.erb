@@ -1,0 +1,22 @@
+<dl class="as-show as-boxed">
+  <div>
+    <dt><%= Auth::User.human_attribute_name(:avatar) %></dt>
+    <dd>
+      <%= link_to({ action: 'edit', item: 'image' }) do %>
+        <%= image_tag @user.avatar, class: 'image is-64x64' if @user.avatar.attached? %>
+      <% end %>
+    </dd>
+  </div>
+  <%= link_to({ action: 'edit', item: 'name' }) do %>
+    <dt><%= Auth::User.human_attribute_name(:name) %></dt>
+    <dd><%= @user.name %></dd>
+  <% end %>
+  <div>
+    <dt><%= Auth::User.human_attribute_name(:accounts) %></dt>
+    <dd>
+    <% @user.accounts.each do |account| %>
+      <p><%= account.identity %></p>
+    <% end %>
+    </dd>
+  </div>
+</dl>

@@ -1,0 +1,4 @@
+<% if params[:user_id] %>
+  <li><%= link_to t('auth.panel.users.index.title'), { controller: 'users' } %></li>
+<% end %>
+<li class="is-active"><%= t('.title') %></li>

@@ -1,0 +1,10 @@
+<div class="fixed-grid has-6-cols">
+  <div class="grid">
+    <%= link_to({ controller: 'oauth_users' }, class: 'cell button is-fullwidth') do %>
+      <span><%= t('.oauth_users.index.title') %></span>
+    <% end %>
+    <%= link_to({ controller: 'user_tags' }, class: 'cell button is-fullwidth') do %>
+      <span><%= t('.user_tags.index.title') %></span>
+    <% end %>
+  </div>
+</div>

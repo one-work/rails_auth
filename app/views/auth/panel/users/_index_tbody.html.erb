@@ -1,0 +1,69 @@
+<td>
+  <p>
+    <%= link_to({ action: 'show', id: model.id }, class: 'is-several') do %>
+      <%= image_tag model.avatar, class: 'image is-24x24' if model.avatar.attached? %>
+      <span class="is-text"><%= model.name %></span>
+    <% end %>
+  </p>
+  <% model.accounts.each do |account| %>
+    <p>
+      <%= link_to({ controller: 'accounts', user_id: model.id }, class: 'is-several') do %>
+        <i class="fa-solid fa-portrait"></i>
+        <span title="<%= account.identity %>" class="is-text"><%= account.identity %></span>
+      <% end %>
+    </p>
+  <% end %>
+  <% model.oauth_users.each do |oauth_user| %>
+    <p>
+      <%= link_to({ controller: 'oauth_users', user_id: model.id }, class: 'is-several') do %>
+        <span class="family-monospace text-grey"><%= oauth_user.uid %></span>
+        <span class="tags has-addons display-inline-flex">
+          <span class="tag is-light"><%= oauth_user.type_i18n %></span>
+          <span class="tag is-info"><%= oauth_user.app_name %></span>
+        </span>
+      <% end %>
+    </p>
+  <% end %>
+</td>
+<td>
+  <p><%= model.locale %></p>
+  <p><%= model.timezone %></p>
+</td>
+<td>
+  <p><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></p>
+  <p><time data-controller="time"><%= model.last_login_at&.to_fs(:iso8601) %></time></p>
+  <p><%= model.last_login_ip %></p>
+</td>
+<td>
+  <%= form_with theme: 'switch', model: model, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
+    <%= f.check_box :disabled, data: { action: 'input#submit' }, id: nil %>
+  <% end %>
+</td>
+<td>
+  <% model.roles.each do |role| %>
+    <span class="tag"><%= role.name %></span>
+  <% end %>
+</td>
+<td>
+  <div data-show-target="item" class="visibility-hidden">
+    <%= button_to({ action: 'show', id: model.id }, aria: { label: t('.show.title') }, class: 'button is-small is-borderless') do %>
+      <%= svg_tag 'eye', class: 'icon text-info' %>
+    <% end %>
+    <%= button_to({ action: 'edit', id: model.id }, aria: { label: t('.edit.title') }, class: 'button is-small is-borderless') do %>
+      <%= svg_tag 'pencil', class: 'icon text-link' %>
+    <% end %>
+    <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, form: { data: { turbo_confirm: t('.destroy.confirm') } }, class: 'button is-small is-borderless') do %>
+      <%= svg_tag 'trash', class: 'icon text-danger' %>
+    <% end %>
+  </div>
+  <div data-show-target="item" class="visibility-hidden">
+    <%= button_to({ action: 'edit_user_tags', id: model.id }, class: 'button is-small is-borderless') do %>
+      <%= svg_tag 'user-tag' %>
+      <span class="ml-1"><%= t('.edit_user_tags.title') %></span>
+    <% end %>
+    <%= button_to({ action: 'edit_role', id: model.id }, class: 'button is-small is-borderless') do %>
+      <%= svg_tag 'user-lock' %>
+      <span class="ml-1"><%= t('.edit_role.title') %></span>
+    <% end %>
+  </div>
+</td>

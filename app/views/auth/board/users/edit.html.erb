@@ -1,0 +1,22 @@
+<%= form_with url: { action: 'update' }, method: :patch, multipart: true, id: 'edit_user' do %>
+<% end %>
+<dl class="as-show as-boxed is-fullwidth">
+  <div>
+    <dt></dt>
+    <dd>
+      <%= file_field_tag 'user[avatar]', direct_upload: true, form: 'edit_user' %>
+    </dd>
+  </div>
+  <div>
+    <dt><%= Auth::User.human_attribute_name(:name) %></dt>
+    <dd>
+      <%= text_field_tag 'user[name]', current_user.name, form: 'edit_user', class: 'input' %>
+    </dd>
+  </div>
+  <div>
+    <dt></dt>
+    <dd>
+      <%= submit_tag t('.save'), form: 'edit_user', class: 'button is-primary' %>
+    </dd>
+  </div>
+</dl>

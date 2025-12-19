@@ -1,0 +1,12 @@
+<%= form_with model: @account, url: { action: 'create' }, class: 'modal-card' do |f| %>
+  <%= render 'modal_header' %>
+  <section class="modal-card-body">
+    <%= render 'error_messages', target: f.object %>
+    <%= f.hidden_field :user_id %>
+    <%= f.text_field :identity %>
+    <%= render partial: 'form', locals: { f: f } %>
+  </section>
+  <footer class="modal-card-foot">
+    <%= f.submit %>
+  </footer>
+<% end %>

@@ -1,0 +1,48 @@
+<%= link_to({ controller: 'board/accounts' }, class: 'media') do %>
+  <div class="media-content">
+    <%= svg_tag 'users' %>
+    <span class="ml-1"><%= t('auth.board.accounts.index.title') %></span>
+  </div>
+  <div class="media-right">
+    <%= svg_tag 'chevron-right' %>
+  </div>
+<% end %>
+<%= link_to({ controller: 'board/oauth_users' }, class: 'media') do %>
+  <div class="media-content">
+    <i class="fa-brands fa-fw fa-weixin text-primary"></i>
+    <span class="pl-1"><%= t('auth.board.oauth_users.index.title') %></span>
+  </div>
+  <div class="media-right">
+    <%= svg_tag 'chevron-right' %>
+  </div>
+<% end %>
+
+<%= link_to({ controller: 'profiled/my/profiles', action: 'qrcode' }, class: 'media') do %>
+  <div class="media-content">
+    <i class="fa-solid fa-fw fa-qrcode text-primary"></i>
+    <span class="pl-1"><%= t('profiled.my.profiles.qrcode.title') %></span>
+  </div>
+  <div class="media-right">
+    <%= svg_tag 'chevron-right' %>
+  </div>
+<% end %>
+
+<%= link_to({ controller: 'profiled/my/profiles', action: 'show' }, class: 'media') do %>
+  <div class="media-content">
+    <%= svg_tag 'user' %>
+    <span class="pl-1"><%= t('profiled.my.profiles.show.title') %></span>
+  </div>
+  <div class="media-right">
+    <%= svg_tag 'chevron-right' %>
+  </div>
+<% end %>
+
+<%= link_to({ controller: 'trade/my/wallet_templates' }, class: 'media') do %>
+  <div class="media-content">
+    <i class="fa-solid fa-fw fa-wallet text-primary"></i>
+    <span class="ml-1"><%= t('trade.my.wallet_templates.index.title') %></span>
+  </div>
+  <div class="media-right">
+    <%= svg_tag 'chevron-right' %>
+  </div>
+<% end %>

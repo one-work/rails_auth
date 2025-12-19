@@ -1,0 +1,20 @@
+<%= form_with theme: 'default_phone', scope: nil, url: { action: 'sign' }, id: 'auth_form' do |f| %>
+  <div class="form-fields">
+    <div class="weui-cells__group weui-cells__group_form">
+      <h4 class="weui-cells__title">
+        <span><%= t('.title') %></span>
+        <span class="is-several">
+          <%= image_tag @oauth_user.avatar_url, class: 'image is-16x16' if @oauth_user.avatar_url.present? %>
+          <span><%= @oauth_user.name %></span>
+        </span>
+      </h4>
+      <div class="weui-cells weui-cells_form">
+        <% params.permit(:uid, :request_id).each do |key, value| %>
+          <%= f.hidden_field key, value: value, autocomplete: 'off' %>
+        <% end %>
+        <%= f.text_field :identity, value: params[:identity], placeholder: '手机号或Email' %>
+      </div>
+    </div>
+  </div>
+  <%= f.submit t('.next'), wrap: { all: nil } %>
+<% end %>

@@ -1,0 +1,8 @@
+<div class="ui menu vertical fluid">
+  <div class="item">
+    <span class="header">用户</span>
+    <div class="menu">
+      <%= link_to '个人资料', panel_user_path(@user), class: active_helper(id: @user.id) %>
+    </div>
+  </div>
+</div>

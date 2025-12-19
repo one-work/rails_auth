@@ -1,0 +1,20 @@
+<div>
+  <dt><%= Auth::Session.human_attribute_name(:expire_at) %></dt>
+  <dd><time data-controller="time" data-format="human"><%= @session.expires_at.to_fs(:iso8601) %></time></dd>
+</div>
+<div>
+  <dt><%= Auth::Session.human_attribute_name(:uid) %></dt>
+  <dd><%= @session.uid %></dd>
+</div>
+<div>
+  <dt><%= Auth::Session.human_attribute_name(:appid) %></dt>
+  <dd><%= @session.appid %></dd>
+</div>
+<div>
+  <dt><%= Auth::Session.human_attribute_name(:identity) %></dt>
+  <dd><%= @session.identity %></dd>
+</div>
+<div>
+  <dt><%= Auth::Session.human_attribute_name(:auth_appid) %></dt>
+  <dd><%= @session.auth_appid %></dd>
+</div>

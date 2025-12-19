@@ -1,0 +1,22 @@
+<td>
+  <div class="is-several">
+    <%= image_tag model.avatar_url, class: 'image is-24x24' if model.avatar_url %>
+    <span><%= model.name %></span>
+  </div>
+  <p>
+    <span class="tag"><%= model.type_i18n %></span>
+    <% if model.respond_to?(:app) && model.app %>
+      <span><%= model.app.name %></span>
+    <% end %>
+  </p>
+</td>
+<td>
+  <p><%= model.identity %></p>
+  <p class="family-monospace text-grey"><%= model.uid %></p>
+</td>
+<td>
+  <%= button_to({ controller: 'auth/board/oauth_users', action: 'destroy', id: model.id }, method: :delete, data: { turbo_confirm: t('.destroy.confirm') }, class: 'button is-small is-warning') do %>
+    <span><%= t('.destroy.title') %></span>
+  <% end %>
+  <%= button_to t('.update_token'), "/auth/#{model.provider}", class: 'button is-small is-success', form: { data: { turbo: false } } %>
+</td>

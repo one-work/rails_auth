@@ -1,0 +1,12 @@
+one:
+  type:
+  token: MyString
+  expire_at: <%= 1.hour.since %>
+  identity: test@work.design
+  access_counter: 1
+two:
+  type:
+  token: MyString
+  expire_at: <%= 1.hour.since %>
+  identity: MyString
+  access_counter: 1

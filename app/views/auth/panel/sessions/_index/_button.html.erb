@@ -1,0 +1,3 @@
+<%= button_to({ action: 'create' }, params: { 'authorized_token[identity]': params[:identity] }, class: 'button is-info') do %>
+  <span>创建</span>
+<% end if params[:identity] %>

@@ -1,0 +1,22 @@
+<%= turbo_stream.replace 'verify_token' do %>
+  <%=
+    button_to(
+      { action: 'create' },
+      class: 'button is-medium',
+      params: { identity: nil },
+      form: {
+        data: {
+          controller: 'button-to count-down',
+          button_to_mappings_value: { identity: 'identity' }.to_json,
+          count_down_time_value: 11
+        },
+        id: 'verify_token'
+      },
+      data: { count_down_target: 'disabled' },
+      disabled: true
+    ) do %>
+    <span>重新发送（</span>
+    <span data-count-down-target="count" class="family-monospace"></span>
+    <span>）</span>
+  <% end %>
+<% end %>

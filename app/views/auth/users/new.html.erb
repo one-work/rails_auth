@@ -1,0 +1,31 @@
+<%= link_to({ controller: 'sessions', action: 'new' }) do %>
+  <%= svg_tag 'angle-left' %>
+  <span>返回登录</span>
+<% end %>
+<h2 class="title is-3 text-centered text-primary mb-4"><%= t('.title') %></h2>
+<%= form_with url: { action: 'create' }, id: 'join_form' do |f| %>
+  <%= f.hidden_field :state, value: params[:state] %>
+<% end %>
+<div data-controller="form">
+  <div class="field control">
+    <%= text_field_tag :identity, nil, form: 'join_form', placeholder: Auth::Account.human_attribute_name(:identity), autofocus: true, autocomplete: 'off', class: 'input is-medium' %>
+  </div>
+  <div class="field is-grouped">
+    <div class="control is-expanded">
+      <%= text_field_tag :token, nil, form: 'join_form', placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: 'off', class: 'input is-medium' %>
+    </div>
+    <div class="control">
+      <%= button_to({ controller: 'verify_tokens', action: 'create' }, params: { identity: nil }, class: 'button is-medium is-primary', form: { id: 'verify_token', data: { controller: 'button-to', button_to_mappings_value: { identity: 'identity' }.to_json } }) do %>
+        <span>获取验证码</span>
+      <% end %>
+    </div>
+  </div>
+  <div class="field control">
+    <%= password_field_tag :password, nil, form: 'join_form', placeholder: Auth::User.human_attribute_name(:password), autocomplete: 'off', class: 'input is-medium' %>
+  </div>
+  <div id="password_confirm" class="field control">
+    <%= password_field_tag :password_confirmation, nil, form: 'join_form', placeholder: Auth::User.human_attribute_name(:password_confirmation), autocomplete: 'off', class: 'input is-medium' %>
+  </div>
+  <div id="alert"></div>
+  <%= submit_tag t('auth.users.create.title'), form: 'join_form', class: 'button is-primary is-medium is-fullwidth mt-5' %>
+</div>

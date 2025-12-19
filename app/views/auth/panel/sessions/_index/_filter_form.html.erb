@@ -1,0 +1,12 @@
+<%= form_with theme: 'search', model: Auth::Session.new, data: { switch_target: 'src' }, class: 'field display-none' do |f| %>
+  <div class="field-body">
+    <%= f.text_field :identity %>
+    <%= f.text_field :uid, style: 'width: 28ch' %>
+    <%= f.text_field :appid %>
+    <%= f.text_field :id, style: 'width: 36ch' %>
+    <div class="field is-narrow">
+      <%= f.submit %>
+      <%= link_to t('.clear'), filter_params(except: [:identity, :uid, :id]), class: 'button is-light' %>
+    </div>
+  </div>
+<% end %>

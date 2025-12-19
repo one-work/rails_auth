@@ -1,0 +1,26 @@
+<td>
+  <p class="family-monospace text-info"><%= model.identity %></p>
+  <p class="family-monospace text-success"><%= model.uid %></p>
+  <p class="family-monospace text-danger"><%= model.id %></p>
+</td>
+<td>
+  <p class="family-monospace text-info"><%= model.user_id %></p>
+  <p class="family-monospace text-success"><%= model.member_id %></p>
+</td>
+<td>
+  <p><time data-controller="time" class="text-grey"><%= model.created_at.to_fs(:iso8601) %></time></p>
+  <p>
+    <time data-controller="time" class="<%= model.expired? ? 'text-danger' : 'text-success' %>"><%= model.expires_at.to_fs(:iso8601) %></time>
+  </p>
+</td>
+<td>
+<% if model.online? %>
+  <i class="fa-solid fa-circle text-success"></i>
+  <time data-controller="time" data-format="human"><%= model.online_at.to_fs(:iso8601) %></time>
+<% elsif model.offline_at.present? %>
+  <i class="fa-solid fa-circle text-grey"></i>
+  <time data-controller="time" data-format="human"><%= model.offline_at.to_fs(:iso8601) %></time>
+<% else %>
+  <i class="fa-solid fa-circle text-grey"></i>
+<% end %>
+</td>

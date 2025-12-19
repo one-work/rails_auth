@@ -1,0 +1,111 @@
+en:
+  auth:
+    sign:
+      sign:
+        title: Login or Register
+        next: Continue
+        token: Send token
+        login: Login
+      bind:
+        title: Bind To My Own Account
+        next: Continue
+      join:
+        title: Join Us Now
+        subtitle: Start by creating your account
+        register: Register
+      login:
+        title: Login
+        forget: Forgot password?
+        join: Register
+        token: Login with a token
+        success: Login successfully
+      logout:
+        title: Logout
+      token:
+        title: Login With A Token
+        forget: Forgot password?
+        sent: Auth token has been sent
+        login: Login
+    join:
+      join:
+        login: Login
+        join: Join
+        password: Password
+        mobile: Please enter mobile number
+        enter_password: Please enter password
+        repeat_password: Please repeat password
+        account: Account
+        token: Confirm token
+        get_token: Get Token
+        enter_token: Please enter token
+        reset: Reset Password
+      token:
+        sent: Validation code has been sent!
+      login_token:
+        sent: Validation code has been sent!
+    password:
+      new:
+        next: Next
+      edit:
+        title: Set New Password
+      create:
+        title: Reset Password
+        body: A link with reset token has been sent to
+        back: Back to home page
+    my:
+      title: Profile
+      users:
+        show:
+          title: User Info
+        update:
+          saved: Saved!
+    board:
+      title: User Setting
+      accounts:
+        index:
+          title: Accounts
+      oauth_users:
+        index:
+          title: Third Part login
+      users:
+        show:
+          title: User Info
+        edit:
+          save: Update Profile
+    admin:
+      title: Users
+      oauth_users:
+        index:
+          title: Oauth Users
+      user_tags:
+        index:
+          title: User Tags
+    panel:
+      title: Users
+      home:
+        index:
+          title: Users Summary
+      apps:
+        index:
+          title: Apps
+      users:
+        index:
+          title: Users
+        show:
+          title: User Info
+      accounts:
+        index:
+          title: Accounts
+      oauth_users:
+        index:
+          title: Oauth Users
+      authorized_tokens:
+        index:
+          title: Authorized Tokens
+  user_mailer:
+    email_token:
+      title: 'You email verify code is:'
+    password_reset:
+      link: Click this
+      body: Dear User, We have received a request to reset the password for your user account on. Please follow the link below to reset your password.
+      foot: If you did not make this request, you can safely ignore it.

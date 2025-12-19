@@ -1,0 +1,14 @@
+zh:
+  errors:
+    messages:
+      wrong_name_or_password: 账号或密码错误
+      wrong_token: 验证码不正确
+      token_password_blank: 必须提供密码或者验证码其中的一种
+      account_disable: 你的账号已被禁用!
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            base:
+              account_disable: 你的账号已被禁用!

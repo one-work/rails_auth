@@ -1,0 +1,7 @@
+<div class="menu-label">
+  <span><%= t('auth.my.title') %></span>
+</div>
+<div class="menu-list">
+  <%= link_to t('auth.my.users.show.title'), { controller: 'auth/my/users', action: 'show' }, class: active_helper(controllers: ['users'], active: 'is-active') %>
+  <%= link_to t('auth.my.oauth_users.index.title'), { controller: 'auth/my/oauth_users' }, class: active_helper(controllers: ['oauth_users'], active: 'is-active') %>
+</div>

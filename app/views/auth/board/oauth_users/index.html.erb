@@ -1,0 +1,6 @@
+<table class="table as-boxed is-striped is-fullwidth">
+  <tbody>
+    <%= render partial: 'index_tbody', layout: 'index_tr', collection: @oauth_users, as: :model %>
+    <%= render partial: 'provider_item', collection: @oauth_apps, as: :model %>
+  </tbody>
+</table>

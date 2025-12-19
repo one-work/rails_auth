@@ -1,0 +1,8 @@
+<tr data-controller="show">
+  <td colspan="2"><%= model[:name] %></td>
+  <td>
+    <%= link_to model[:app].oauth2_url, class: 'button is-small is-info' do %>
+      <span>绑定</span>
+    <% end %>
+  </td>
+</tr>

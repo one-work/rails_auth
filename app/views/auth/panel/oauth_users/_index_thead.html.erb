@@ -1,0 +1,14 @@
+<th>
+  <p><%= Auth::OauthUser.human_attribute_name(:type) %></p>
+  <p><%= Auth::OauthUser.human_attribute_name(:appid) %></p>
+</th>
+<th>
+  <p class="text-success"><%= Auth::OauthUser.human_attribute_name(:uid) %></p>
+  <p class="text-grey"><%= Auth::OauthUser.human_attribute_name(:unionid) %></p>
+</th>
+<th>
+  <p><%= Auth::OauthUser.human_attribute_name(:name) %></p>
+  <p class="text-grey"><%= Auth::OauthUser.human_attribute_name(:identity) %></p>
+</th>
+<th><%= Auth::OauthUser.human_attribute_name(:created_at) %></th>
+<th><%= Auth::OauthUser.human_attribute_name(:user) %></th>

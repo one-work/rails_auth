@@ -1,0 +1,10 @@
+<div class="tabs is-boxed">
+  <ul>
+    <li class="<%= active_helper(action: 'index', active: 'is-active', item: nil) %>">
+      <%= link_to t(''), { action: 'index' } %>
+    </li>
+    <li class="<%= active_helper(action: 'unverified', active: 'is-active', item: nil) %>">
+      <%= link_to t(''), { action: 'app' } %>
+    </li>
+  </ul>
+</div>

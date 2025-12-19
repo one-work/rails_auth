@@ -1,0 +1,15 @@
+<div data-controller="menu-popup" class="dropdown pop-right">
+  <div class="dropdown-trigger">
+    <%= svg_tag 'users' %>
+    <div><%= t('auth.panel.title') %></div>
+  </div>
+  <div data-menu-popup-target="aim" class="dropdown-menu">
+    <div class="dropdown-content">
+      <div class="section" style="width: 50vw">
+        <div class="fixed-grid has-6-cols">
+          <%= render 'auth/panel/home/index_column' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

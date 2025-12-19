@@ -1,0 +1,13 @@
+<div class="panel">
+  <div class="panel-heading">选择用户</div>
+  <div class="panel-block" id="search-content">
+    <%= form_with theme: nil, scope: nil, url: { action: 'search', user_tag_id: @user_tag.id }, method: :get, html: { style: 'width: 100%;' } do |f| %>
+      <div class="control has-icons-left">
+        <%= f.search_field :identity, class: 'input', placeholder: '搜索', data: { controller: 'typer' } %>
+        <span class="icon is-left"><i class="fa-regular fa-search"></i></span>
+      </div>
+    <% end %>
+  </div>
+  <div class="panel-block" id="user_content">
+  </div>
+</div>

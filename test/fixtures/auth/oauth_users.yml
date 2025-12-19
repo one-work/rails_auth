@@ -1,0 +1,13 @@
+one:
+  account: one
+  provider: wechat
+  uid: MyString
+  unionid: MyString
+  appid: MyString
+  name: MyString
+  avatar_url: MyString
+  state: MyString
+  access_token: MyString
+  expires_at: <%= 1.hour.since %>
+  refresh_token: MyString
+  extra:

@@ -1,0 +1,5 @@
+<h2 class="title is-2 text-primary mb-6"><%= t('.title') %></h2>
+
+<p class="mb-5">包含重置密码链接的信息已发往： <%= params[:identity] %>，请检查邮箱或短信；</p>
+
+<%= button_to t('.back'), root_url, class: 'button' %>

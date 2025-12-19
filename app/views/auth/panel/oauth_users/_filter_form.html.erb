@@ -1,0 +1,15 @@
+<%= form_with theme: 'search', model: Auth::OauthUser.new(params.permit(:name, :uid, :appid)) do |f| %>
+  <div class="field-body">
+    <%= f.text_field :name %>
+    <%= f.text_field :uid, style: 'width: 28ch' %>
+    <%= f.text_field :unionid, style: 'width: 28ch' %>
+    <%= f.text_field :appid %>
+    <%= f.text_field :identity %>
+    <div class="field is-narrow">
+      <%= f.submit %>
+      <%= link_to t('.clear'), filter_params(except: [:name, :uid, :unionid, :appid, :identity, :user_id]), class: 'button is-light' %>
+    </div>
+  </div>
+<% end %>
+
+

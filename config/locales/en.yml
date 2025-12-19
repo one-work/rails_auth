@@ -1,0 +1,9 @@
+en:
+  errors:
+    messages:
+      wrong_account: Incorrect account or password!
+      wrong_name_or_password: Wrong Name Or Password
+      wrong_token: Incorrect Token!
+      token_password_blank: Your must provide password or token!
+      acount_disable: Your account has been disabled!
+      account_existed: Your account already existed, Please login or Reset password!

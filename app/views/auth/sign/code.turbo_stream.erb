@@ -1,0 +1,17 @@
+<%= turbo_stream.update 'sign_token' do %>
+  <button
+    type="button"
+    data-controller="common count-down"
+    data-common-url-value="<%= url_for(action: 'code') %>"
+    data-common-body-value="<%= { identity: params[:identity] }.to_json %>"
+    data-count-down-time-value="60"
+    data-count-down-target="disabled"
+    data-action="common#streamPost"
+    disabled="disabled"
+    class="button is-light"
+  >
+    <span>重新发送（</span>
+    <span data-count-down-target="count" class="family-monospace"></span>
+    <span>）</span>
+  </button>
+<% end %>

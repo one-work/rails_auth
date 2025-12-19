@@ -1,0 +1,57 @@
+<%= render 'filter_form' %>
+
+<table class="table is-hoverable is-fullwidth">
+  <thead>
+    <tr>
+      <th><%= Auth::User.human_attribute_name(:name) %></th>
+      <th>
+        <p><%= Auth::User.human_attribute_name(:locale) %></p>
+        <p><%= Auth::User.human_attribute_name(:timezone) %></p>
+      </th>
+      <th><%= Auth::User.human_attribute_name(:created_at) %></th>
+      <th>
+        <p>
+          <%= link_to Auth::User.human_attribute_name(:last_login_at), filter_params('last_login_at-desc': 1, except: ['last_login_at-desc']) %>
+        </p>
+        <p><%= Auth::User.human_attribute_name(:last_login_ip) %></p>
+      </th>
+      <th><%= Auth::User.human_attribute_name(:oauth_users) %></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td>
+        <%= link_to admin_user_path(user.id) do %>
+          <%= image_tag user.avatar, class: 'image' if user.avatar.present? %>
+          <%= user.name %>
+        <% end %>
+      </td>
+      <td>
+        <p><%= user.locale %></p>
+        <p><%= user.timezone %></p>
+      </td>
+      <td><time data-controller="time"><%= user.created_at.to_fs(:iso8601) %></time></td>
+      <td>
+        <p><time data-controller="time"><%= user.last_login_at&.to_fs(:iso8601) %></time></p>
+        <p><%= user.last_login_ip %></p>
+      </td>
+      <td>
+        <% user.oauth_users.each do |oauth_user| %>
+          <%= link_to oauth_user.type_i18n, admin_oauth_users_path(user_id: user.id), class: 'ui blue label' %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to admin_user_path(user), aria: { label: t('.show.title') }, class: 'button is-small is-borderless' do %>
+          <%= svg_tag 'eye', class: 'icon text-info' %>
+        <% end %>
+        <%= link_to admin_accounts_path(user_id: user.id), aria: { label: t('auth.admin.accounts.index.title') }, class: 'button is-small is-borderless' do %>
+          <i class="fa-regular fa-portrait"></i>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

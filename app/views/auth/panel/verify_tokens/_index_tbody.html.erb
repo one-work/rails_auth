@@ -1,0 +1,11 @@
+<td><%= model.type_i18n %></td>
+<td><%= model.identity %></td>
+<td><%= model.token %></td>
+<td>
+  <span
+    data-controller="time-count"
+    data-time-count-time-value="<%= model.expire_at.to_fs(:iso8601) %>"
+    class="text-info"
+  ><%= exact_distance_time(model.expire_at, Time.current) %></span>
+</td>
+<td><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></td>

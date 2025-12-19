@@ -1,0 +1,32 @@
+<h2 class="title is-2 text-primary mb-6"><%= t('.title') %></h2>
+<%= form_with theme: nil, scope: nil, url: { action: 'token' } do |f| %>
+  <div class="is-wrapped">
+    <div class="field control">
+      <%= f.text_field :identity, value: params[:identity], disabled: true, class: 'input' %>
+      <%= f.hidden_field :identity, value: params[:identity], id: nil %>
+    </div>
+    <div class="field control has-addons">
+      <div class="control is-expanded">
+        <%= f.text_field :token, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: 'off', class: 'input' %>
+      </div>
+      <div class="control" id="sign_token">
+        <button
+          type="button"
+          data-common-url-value="<%= url_for(action: 'code') %>"
+          data-common-body-value="<%= { identity: params[:identity] }.to_json %>"
+          data-controller="common count-down"
+          data-count-down-time-value="60"
+          data-count-down-target="disabled"
+          data-action="common#streamPost"
+          disabled="disabled"
+          class="button is-info"
+        >
+          <span>重新发送（</span>
+          <span data-count-down-target="count"></span>
+          <span>）</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <%= f.submit t('.login'), class: 'button is-primary is-large mt-6' %>
+<% end %>

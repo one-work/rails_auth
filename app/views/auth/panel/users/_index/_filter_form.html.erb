@@ -1,0 +1,11 @@
+<%= form_with theme: 'search', model: Auth::User.new do |f| %>
+  <div class="field-body">
+    <%= f.text_field :id %>
+    <%= f.text_field 'name-like' %>
+    <%= f.text_field 'accounts.identity' %>
+    <div class="field is-narrow">
+      <%= f.submit %>
+      <%= link_to t('.clear'), filter_params(except: [:id, 'name-like', 'accounts.identity']), class: 'button is-light' %>
+    </div>
+  </div>
+<% end %>

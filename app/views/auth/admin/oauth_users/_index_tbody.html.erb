@@ -1,0 +1,24 @@
+<td>
+  <p class="family-monospace text-success"><%= model.uid %></p>
+  <p class="text-grey">
+    <span><%= model.app.name %></span>
+    <span class="tag"><%= model.app.type_i18n %></span>
+  </p>
+</td>
+<td>
+  <div class="is-several">
+    <%= image_tag model.avatar_url, class: 'image is-24x24' if model.avatar_url.present? %>
+    <span><%= model.name %></span>
+  </div>
+</td>
+<td>
+<% if model.user_id %>
+  <%= svg_tag 'check', class: 'icon is-small text-success' %>
+<% end %>
+</td>
+<td>
+<% model.authorized_tokens.each do |at| %>
+  <p class="family-monospace <%= at.online? ? 'text-success' : 'text-grey' %>"><%= at.id %></p>
+<% end %>
+</td>
+<td><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></td>

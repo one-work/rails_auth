@@ -1,0 +1,9 @@
+<%= button_to({ controller: '/auth/sessions', action: 'destroy' }, method: :delete, class: 'media is-fullwidth p-3 mb-0', form: { class: 'is-fullwidth' }) do %>
+  <div class="media-content">
+    <%= svg_tag 'right-from-bracket', class: 'icon text-danger' %>
+    <span class="ml-1 text-grey"><%= t('auth.sessions.destroy.title') %></span>
+  </div>
+  <div class="media-right">
+    <%= svg_tag 'chevron-right' %>
+  </div>
+<% end %>

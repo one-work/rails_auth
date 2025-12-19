@@ -1,0 +1,23 @@
+en:
+  activerecord:
+    enum:
+      auth/oauth_user:
+        type:
+          Wechat::WechatUser: 微信用户
+          Wechat::WechatProgramUser: 微信小程序用户
+          Auth::GithubUser: Github User
+          Auth::FacebookUser: Facebook User
+        provider:
+          github: Github
+          facebook: Factbook
+          developer: Developer
+          wechat: Wechat
+      auth/user:
+        locale:
+          zh: 中文
+          en: English
+      auth/account:
+        type:
+          Auth::EmailAccount: Email Account
+          Auth::MobileAccount: Mobile Account
+          Auth::DeviceAccount: Device

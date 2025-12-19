@@ -1,0 +1,20 @@
+<div>
+  <dt></dt>
+  <dd>
+    <div class="image is-64x64">
+      <%= image_tag current_user.avatar.variant(resize_to_limit: [200, 200]) if current_user.avatar.present? %>
+    </div>
+  </dd>
+</div>
+<div>
+  <dt><%= Auth::User.human_attribute_name(:name) %></dt>
+  <dd><%= current_user.name %></dd>
+</div>
+<div>
+  <dt><%= Auth::User.human_attribute_name(:accounts) %></dt>
+  <dd>
+    <% current_user.accounts.each do |account| %>
+      <p><%= account.identity %></p>
+    <% end %>
+  </dd>
+</div>

@@ -1,0 +1,30 @@
+en:
+  activerecord:
+    attributes:
+      auth/user:
+        name-like: Name
+        password: Password
+        password_confirmation: Password Confirmation
+        oauth_users: Oauth User
+        accounts: Accounts
+        name: Name
+        last_login_at: Last Login At
+        last_login_ip: Last Login IP
+        disabled: Disabled
+        timezone: Timezone
+        locale: Locale
+        source: Source
+      user/accounts:
+        identity: Mobile or Email
+      auth/account:
+        user_id: User
+        identity: Email or Mobile number
+        confirmed: Confirmed
+        primary: Primary
+      auth/verify_token:
+        identity: Mobile or Email
+        token: Token
+      auth/user_tag:
+        user_taggeds_count: User Count
+      auth/user_tagged:
+        tagged_type: 用户类型

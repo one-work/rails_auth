@@ -1,0 +1,19 @@
+<div class="column is-6"></div>
+<div class="column is-6">
+  <div class="panel" style="width: 300px" id="auth_form">
+    <h4 class="panel-heading text-centered"><%= t('.title') %></h4>
+    <div class="panel-block justify-content-center">
+      <span class="is-several">
+        <%= image_tag @oauth_user.avatar_url, class: 'image is-16x16' if @oauth_user.avatar_url %>
+        <span><%= @oauth_user.name %></span>
+      </span>
+    </div>
+    <%= form_with scope: nil, url: { action: 'sign' }, wrap: { input: 'control', submit: 'control' }, all: { normal: nil, required: nil, submit: nil }, before_wrap: { submit: nil }, class: 'panel-block background-white flex-direction-column' do |f| %>
+      <% params.permit(:uid, :request_id).each do |key, value| %>
+        <%= f.hidden_field key, value: value %>
+      <% end %>
+      <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity), required: true, class: 'input' %>
+      <%= f.submit t('.next'), class: 'button is-primary is-fullwidth' %>
+    <% end %>
+  </div>
+</div>

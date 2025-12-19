@@ -1,0 +1,4 @@
+<td><%= model.name %></td>
+<td>
+  <%= link_to model.user_taggeds_count, { controller: 'user_taggeds', action: 'index', user_tag_id: model.id } %>
+</td>

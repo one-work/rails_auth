@@ -1,0 +1,7 @@
+<%= turbo_stream.update 'sign_token' do %>
+  <button data-controller="common count-down" data-count-down-time-value="60" data-common-url-value="<%= url_for(action: 'code', identity: params[:identity]) %>" class="button">
+    <span>重新发送（</span>
+    <span data-count-down-target="count"></span>
+    <span>）</span>
+  </button>
+<% end %>

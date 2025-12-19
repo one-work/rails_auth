@@ -1,0 +1,22 @@
+<table class="table as-boxed is-striped is-fullwidth">
+  <tbody id="tbody">
+    <%= render partial: 'account', collection: @accounts, as: :model %>
+    <tr id="add_one">
+      <td>
+        <%= form_with url: { action: 'create' }, method: :post, id: 'add_account' %>
+      </td>
+      <td>
+        <div class="field has-addons">
+          <div class="control">
+            <%= text_field_tag 'account[identity]', nil, placeholder: Auth::Account.human_attribute_name(:identity), autocomplete: 'off', form: 'add_account', class: 'input' %>
+          </div>
+          <div class="control">
+            <%= submit_tag '添加', form: 'add_account', class: 'button is-primary' %>
+          </div>
+        </div>
+      </td><td>
+      </td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

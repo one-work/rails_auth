@@ -1,0 +1,36 @@
+zh:
+  activerecord:
+    attributes:
+      auth/user:
+        name: 姓名
+        name-like: 姓名
+        last_login_at: 上次登录时间
+        last_login_ip: 上次登录IP
+        disabled: 限制登录
+        timezone: 时区
+        locale: 语言
+        source: 来源
+        password: 密码
+        password_confirmation: 确认密码
+        oauth_users: Oauth 用户
+        accounts: 登录账号
+      auth/oauth_user:
+        online_at: 上线时间
+        offline_at: 离线时间
+      auth/session:
+        online_at: 上线时间
+        offline_at: 离线时间
+      user/accounts:
+        identity: 手机号或邮箱
+      auth/account:
+        user_id: 用户
+        identity: 账号
+        confirmed: 是否验证
+        primary: 是否主账号
+      auth/verify_token:
+        identity: 账号
+        token: 验证码
+      auth/user_tag:
+        user_taggeds_count: 用户数
+      auth/user_tagged:
+        tagged_type: 用户类型

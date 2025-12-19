@@ -1,0 +1,133 @@
+zh:
+  auth:
+    title: 用户/登录
+    sessions:
+      new:
+        title: 登录
+      create:
+        title: 登录
+      token_new:
+        title: 验证码登录
+      token_create:
+        title: 验证码登录
+      destroy:
+        title: 退出登录
+    sign:
+      sign:
+        title: 登录/注册
+        next: 下一步
+        token: 获取验证码
+        login: 登录
+      bind:
+        title: 绑定账号
+        next: 下一步
+      login:
+        title: 登录
+        forget: 忘记密码？
+        join: 注册
+        token: 验证码登录
+        success: 登录成功
+      token:
+        forget: 忘记密码？
+        login: 登录
+    passwords:
+      new:
+        title: 重置密码
+        next: 下一步
+      create:
+        title: 重置密码
+        back: 返回首页
+      edit:
+        title: 重置密码
+    users:
+      new:
+        title: 注册
+      create:
+        title: 注册
+    board:
+      title: 用户
+      home:
+        index:
+          title: 更多
+      users:
+        show:
+          title: 个人资料
+        edit:
+          title: 编辑个人资料
+        update:
+          saved: 资料已保存！
+      accounts:
+        index:
+          title: 账号
+          primary: 主账号
+          select: 切换
+        edit_confirm:
+          title: 验证
+        token_form:
+          title: 验证码
+      oauth_users:
+        index:
+          title: 第三方登录
+        bind:
+          title: 绑定
+        update_token:
+          title: 重新绑定
+        unbind:
+          title: 解绑
+    panel:
+      title: 用户管理
+      home:
+        index:
+          title: 用户数据
+        dashboard:
+          title: 用户数据
+      sessions:
+        index:
+          title: 登录密钥
+      users:
+        index:
+          title: 用户列表
+        edit_user_tags:
+          title: 用户标签
+        edit_role:
+          title: 权限管理
+      user_tags:
+        index:
+          title: 用户标签
+      accounts:
+        index:
+          title: 账号
+        prune:
+          title: 清理
+          confirm: 确认清理
+      oauth_users:
+        index:
+          title: 第三方登录
+      verify_tokens:
+        index:
+          title: 验证码
+      apps:
+        index:
+          title: 第三方应用
+    admin:
+      title: 用户管理
+      home:
+        index:
+          title: 用户管理
+      oauth_users:
+        index:
+          title: 第三方登录
+      user_tags:
+        index:
+          title: 用户标签
+      user_taggeds:
+        index:
+          title: 人员配置
+  user_mailer:
+    email_token:
+      title: '您的验证码是：'
+      subject: 验证码
+    password_reset:
+      link: 点击链接
+      body: 我们收到了您账号重置密码的请求，请点击下面的链接重置您的密码：
+      foot: 如果这个操作不是您亲自请求，请忽略这封邮件。

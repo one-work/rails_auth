@@ -1,0 +1,9 @@
+<% if defined?(current_organ_domain) && current_organ_domain %>
+  <div
+    data-controller="visit cable"
+    data-visit-url-value="<%= current_organ_domain.redirect_path %>"
+  >
+  </div>
+<% else %>
+  <div data-controller="visit cable" data-visit-url-value="<%= url_for(controller: '/home') %>"></div>
+<% end %>

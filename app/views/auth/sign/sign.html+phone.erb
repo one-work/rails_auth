@@ -1,0 +1,11 @@
+<div class="box m-3 flex-grow-1">
+  <%= form_with theme: 'default_phone', scope: nil, url: { action: 'sign' }, id: 'auth_form' do |f| %>
+    <% params.permit(:uid, :request_id, :state).each do |key, value| %>
+      <%= f.hidden_field key, value: value, autocomplete: 'off' %>
+    <% end %>
+    <div class="form-fields">
+      <%= f.text_field :identity, value: params[:identity], label: '注册或登录', placeholder: '手机号或Email', autofocus: true %>
+    </div>
+    <%= f.submit t('.next'), wrap: { all: nil } %>
+  <% end %>
+</div>

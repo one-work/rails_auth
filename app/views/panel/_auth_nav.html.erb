@@ -1,0 +1,11 @@
+<div class="menu-list">
+  <%= link_to({ controller: 'auth/panel/home' }, text: true, data: { turbo_frame: 'body', action: 'menu#enter' }, class: 'menu-item') do %>
+    <%= svg_tag 'users' %>
+    <div><%= t('auth.panel.title') %></div>
+  <% end %>
+  <div class="pl-4">
+    <%= link_to t('auth.panel.users.index.title'), { controller: 'auth/panel/users' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(users: ['index', 'show'], item: 'menu-item', active: 'menu-item is-active') %>
+    <%= link_to t('auth.panel.accounts.index.title'), { controller: 'auth/panel/accounts' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'accounts', item: 'menu-item', active: 'menu-item is-active') %>
+    <%= link_to t('auth.panel.oauth_users.index.title'), { controller: 'auth/panel/oauth_users' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: 'oauth_users', item: 'menu-item', active: 'menu-item is-active') %>
+  </div>
+</div>

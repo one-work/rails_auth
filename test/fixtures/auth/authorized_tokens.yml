@@ -1,0 +1,16 @@
+one:
+  token: MyString1
+  identity: test@work.design
+  expire_at: <%= 1.hour.since %>
+  session_key: MyString
+  access_counter: 1
+  mock_member: false
+  mock_user: false
+two:
+  token: MyString
+  identity: MyString
+  expire_at: <%= 1.hour.since %>
+  session_key: MyString
+  access_counter: 1
+  mock_member: false
+  mock_user: false

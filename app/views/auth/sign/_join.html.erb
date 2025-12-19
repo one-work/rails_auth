@@ -1,0 +1,33 @@
+<h2 class="title is-2 text-primary mb-6"><%= t('.title') %></h2>
+<h6 class="subtitle is-6 mb-6"><%= t('.subtitle') %></h6>
+<%= form_with theme: nil, scope: nil, url: { action: 'join' } do |f| %>
+  <%= f.hidden_field :state, value: params[:state] %>
+  <div class="field control">
+    <%= f.text_field :identity, value: params[:identity], disabled: true, class: 'input' %>
+    <%= f.hidden_field :identity, value: params[:identity], id: nil %>
+  </div>
+  <div class="field control has-addons">
+    <div class="control is-expanded">
+      <%= f.text_field :token, placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: 'off', class: 'input' %>
+    </div>
+    <div class="control" id="sign_token">
+      <button
+        type="button"
+        data-controller="common"
+        data-common-url-value="<%= url_for(action: 'code') %>"
+        data-common-body-value="<%= { identity: params[:identity] }.to_json %>"
+        data-action="common#streamPost"
+        class="button is-info"
+      >
+        <span><%= t('.token') %></span>
+      </button>
+    </div>
+  </div>
+  <div class="field control">
+    <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), autocomplete: 'off', class: 'input' %>
+  </div>
+  <div id="password_confirm" class="field control">
+    <%= f.password_field :password_confirmation, placeholder: Auth::User.human_attribute_name(:password_confirmation), autocomplete: 'off', class: 'input' %>
+  </div>
+  <%= f.submit t('.register'), class: 'button is-primary is-large mt-6' %>
+<% end %>

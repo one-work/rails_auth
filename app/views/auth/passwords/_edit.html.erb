@@ -1,0 +1,5 @@
+<%= form_with model: @user, scope: '', url: { action: 'update', token: @user.password_reset_token }, label: nil, placeholder: true, wrap: { input: nil }, all: { input: 'field' } do |f| %>
+  <%= f.password_field :password %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.submit class: 'button is-medium' %>
+<% end %>

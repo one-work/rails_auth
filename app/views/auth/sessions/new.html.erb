@@ -1,0 +1,18 @@
+<%= image_tag 'logo.png', class: 'image mx-auto' %>
+<%= form_with scope: nil, url: { action: 'create' }, wrap: { input: 'field control' }, all: { normal: nil }, id: 'login_form', class: 'block' do |f| %>
+  <%= f.hidden_field :state, value: params[:state] %>
+  <%= f.text_field :identity, placeholder: Auth::Account.human_attribute_name(:identity), id: nil, autofocus: true, class: 'input is-medium' %>
+  <%= f.password_field :password, placeholder: Auth::User.human_attribute_name(:password), class: 'input is-medium' %>
+<% end %>
+<div id="alert"></div>
+<div>
+  <%= link_to t('auth.sessions.token_new.title'), { action: 'token_new' }, class: 'text-grey' %>
+  <%= link_to t('auth.passwords.new.title'), { controller: 'auth/passwords', action: 'new' }, class: 'text-grey is-pulled-right' %>
+</div>
+<div>
+  <%= submit_tag t('auth.sign.login.title'), form: 'login_form', class: 'button is-primary is-medium is-fullwidth mt-4' %>
+</div>
+<p class="text-centered mt-4">
+  <span>还没有账号？</span>
+  <%= link_to t('auth.users.new.title'), { controller: 'users', action: 'new' } %>
+</p>

@@ -1,0 +1,30 @@
+<div>
+  <dt><%= Auth::User.human_attribute_name(:name) %></dt>
+  <dd><%= @user.name %></dd>
+</div>
+<div>
+  <dt><%= Auth::User.human_attribute_name(:avatar) %></dt>
+  <dd><%= image_tag @user.avatar.variant(resize_to_limit: [300, 300]), class: 'image is-300x300' if @user.avatar.present? %></dd>
+</div>
+<div>
+  <dt><%= Auth::User.human_attribute_name(:locale) %></dt>
+  <dd><%= @user.locale %></dd>
+</div>
+<div>
+  <dt><%= Auth::User.human_attribute_name(:timezone) %></dt>
+  <dd><%= @user.timezone %></dd>
+</div>
+<div>
+  <dt><%= Auth::User.human_attribute_name(:last_login_at) %></dt>
+  <dd><time data-controller="time"><%= @user.last_login_at&.to_fs(:iso8601) %></time></dd>
+</div>
+<div>
+  <dt><%= Auth::User.human_attribute_name(:created_at) %></dt>
+  <dd><time data-controller="time"><%= @user.created_at.to_fs(:iso8601) %></time></dd>
+</div>
+<div>
+  <dt><%= Auth::User.human_attribute_name(:verify_tokens) %></dt>
+  <dd>
+    <%= render 'verify_tokens', target: @user %>
+  </dd>
+</div>

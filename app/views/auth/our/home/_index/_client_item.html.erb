@@ -1,0 +1,10 @@
+<%= link_to({ controller: 'trade/my/carts', action: 'list' }, class: 'media') do %>
+  <div class="media-content">
+    <i class="fa-solid fa-fw fa-arrow-right-arrow-left text-link"></i>
+    <span class="ml-1"><%= current_user.name %></span>
+    <span class="weui-badge"><%= current_client.organ.name %></span>
+  </div>
+  <div class="media-right">
+    <span class="text-grey text-weight-normal">切换</span>
+  </div>
+<% end %>

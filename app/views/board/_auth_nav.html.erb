@@ -1,0 +1,10 @@
+<div class="menu-label">
+  <span><%= t('auth.board.title') %></span>
+</div>
+<div class="menu-list">
+  <%= link_to({ controller: 'auth/board/users', action: 'show' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: ['auth/board/users'], active: 'is-active')) do %>
+    <span><%= t('auth.board.users.show.title') %></span>
+  <% end %>
+  <%= link_to t('auth.board.accounts.index.title'), { controller: 'auth/board/accounts' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: ['accounts'], active: 'is-active') %>
+  <%= link_to t('auth.board.oauth_users.index.title'), { controller: 'auth/board/oauth_users' }, data: { turbo_frame: 'body', action: 'menu#enter' }, class: active_helper(controllers: ['oauth_users'], active: 'is-active') %>
+</div>

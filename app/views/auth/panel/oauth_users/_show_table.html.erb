@@ -1,0 +1,20 @@
+<div>
+  <dt><%= Auth::OauthUser.human_attribute_name(:type) %></dt>
+  <dd><%= @oauth_user.type_i18n %></dd>
+</div>
+<div>
+  <dt><%= Auth::OauthUser.human_attribute_name(:name) %></dt>
+  <dd><%= @oauth_user.name %></dd>
+</div>
+<div>
+  <dt><%= Auth::OauthUser.human_attribute_name(:avatar_url) %></dt>
+  <dd><%= image_tag @oauth_user.avatar_url if @oauth_user.avatar_url.present? %></dd>
+</div>
+<div>
+  <dt><%= Auth::OauthUser.human_attribute_name(:uid) %></dt>
+  <dd><%= @oauth_user.uid %></dd>
+</div>
+<div>
+  <dt><%= Auth::OauthUser.human_attribute_name(:unionid) %></dt>
+  <dd><%= @oauth_user.unionid %></dd>
+</div>

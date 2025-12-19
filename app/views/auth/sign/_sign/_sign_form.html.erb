@@ -1,0 +1,19 @@
+<div id="auth_form">
+  <h2 class="title is-2 text-primary mb-6"><%= t('.title') %></h2>
+  <h6 class="subtitle is-6 mb-6">Welcome to <%= t('site_name') %></h6>
+  <%= form_with scope: nil, url: { action: 'sign' }, wrap: { input: 'control', submit: 'control text-centered' }, all: { normal: nil, required: nil, submit: nil }, before_wrap: { submit: nil }, class: 'box' do |f| %>
+    <%= f.hidden_field :state, value: params[:state] %>
+    <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity), required: true, autofocus: true, class: 'input' %>
+    <%= f.submit t('.next'), class: 'button is-primary is-large mt-5' %>
+  <% end %>
+  <div class="panel-block background-white justify-content-space-around">
+    <%= link_to({ controller: 'wechat/wechat', action: 'user_login' }) do %>
+      <i class="fa-brands fa-weixin text-success"></i>
+      <span class="text-grey">微信扫码</span>
+    <% end if defined? RailsWechat %>
+    <%= link_to({ controller: 'wechat/qy_wechat', action: 'login' }) do %>
+      <i class="fa-brands fa-weixin text-primary"></i>
+      <span class="text-grey">企业微信</span>
+    <% end if defined? RailsWechat %>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+zh:
+  activerecord:
+    enum:
+      auth/oauth_user:
+        type:
+          Auth::GithubUser: Github用户
+          Auth::FacebookUser: Facebook用户
+        confirmed:
+          true: 已验证
+          false: 待验证
+        provider:
+          github: Github
+          facebook: Factbook
+          developer: Developer
+          wechat: 微信
+      auth/user:
+        locale:
+          zh: 中文
+          en: English

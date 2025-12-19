@@ -1,0 +1,27 @@
+<p class="size-7 text-grey mb-1">用户</p>
+<div class="grid">
+  <%= link_to({ controller: 'auth/panel/home', action: 'dashboard' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('auth.panel.home.dashboard.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'auth/panel/users' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('auth.panel.users.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'auth/panel/user_tags' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('auth.panel.user_tags.index.title') %></span>
+  <% end %>
+</div>
+<p class="size-7 text-grey mb-1">账号信息</p>
+<div class="grid">
+  <%= link_to({ controller: 'auth/panel/apps' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('auth.panel.apps.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'auth/panel/sessions' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('auth.panel.sessions.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'auth/panel/accounts' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('auth.panel.accounts.index.title') %></span>
+  <% end %>
+  <%= link_to({ controller: 'auth/panel/oauth_users' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
+    <span><%= t('auth.panel.oauth_users.index.title') %></span>
+  <% end %>
+</div>

@@ -1,0 +1,11 @@
+<div class="tags has-addons">
+  <div data-controller="input" class="tag">
+  <% if @select_ids.include?(user.id) %>
+    <%= check_box_tag :user_id, user.id, true, data: { method: :destroy, url: admin_user_tag_user_taggeds_path(@user_tag), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+    <label><%= user.name %><%=  %></label>
+  <% else %>
+    <%= check_box_tag :user_id, user.id, false, data: { method: :post, url: admin_user_tag_user_taggeds_path(@user_tag), action: 'input#submit' }, id: nil, class: 'switch is-rounded' %>
+    <label><%= user.name %><%=  %></label>
+  <% end %>
+  </div>
+</div>

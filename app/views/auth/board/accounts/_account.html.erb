@@ -1,0 +1,40 @@
+<tr id="tr_<%= model.id %>">
+  <td>
+    <span><%= model.identity %></span>
+    <% if model.confirmed %>
+      <i class="fa-regular fa-check-circle text-success"></i>
+    <% else %>
+      <i class="fa-regular fa-question-circle text-warning"></i>
+    <% end %>
+  </td>
+  <td>
+    <% unless model.confirmed %>
+      <%= form_with url: { action: 'confirm', id: model.id }, wrap: { input: 'field is-narrow', submit: nil }, all: { submit: nil }, before_wrap: { submit: nil }, class: 'field is-horizontal' do |f| %>
+        <div class="field-body">
+          <%= f.text_field :token, class: 'input', placeholder: '验证码' %>
+          <div class="field is-narrow">
+            <%= f.submit %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </td>
+  <td>
+    <% unless model.confirmed %>
+      <button
+        id="token_<%= model.id %>"
+        data-controller="common count-down"
+        data-common-url-value="<%= url_for(action: 'token', id: model.id) %>"
+        data-count-down-time-value="3"
+        data-action="common#streamPost"
+        class="button is-link"
+      >发送验证码</button>
+    <% end %>
+    <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title'), confirm: '删除后此账号无法用于登录' }, class: 'button') do %>
+      <%= svg_tag 'trash' %>
+    <% end unless model.last? %>
+    <%= button_to({ action: 'select', id: model.id }, method: :put, aria: { label: t('.select') }, class: 'button') do %>
+      <%= svg_tag 'chevron-right' %>
+    <% end unless model == current_account %>
+  </td>
+</tr>

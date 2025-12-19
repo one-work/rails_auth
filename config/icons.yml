@@ -1,0 +1,20 @@
+light:
+  - angle-left
+  - check
+  - chevron-right
+  - circle-check
+  - circle-question
+  - ellipsis-vertical
+  - eye
+  - key
+  - mobile
+  - pencil
+  - right-from-bracket
+  - trash
+  - trash-can
+  - user
+  - user-lock
+  - user-tag
+  - users
+brands:
+  - weixin

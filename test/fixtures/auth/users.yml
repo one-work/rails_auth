@@ -1,0 +1,24 @@
+
+one:
+  inviter_id: 1
+  name: MyString
+  password_digest: <%= BCrypt::Password.create('secret') %>
+  locale: MyString
+  timezone: MyString
+  last_login_at: 2021-07-15 23:02:40
+  last_login_ip: MyString
+  disabled: false
+  source: MyString
+  invited_code: MyString
+
+two:
+  inviter_id: 1
+  name: MyString
+  password_digest: <%= BCrypt::Password.create('secret') %>
+  locale: MyString
+  timezone: MyString
+  last_login_at: 2021-07-15 23:02:40
+  last_login_ip: MyString
+  disabled: false
+  source: MyString
+  invited_code: MyString
