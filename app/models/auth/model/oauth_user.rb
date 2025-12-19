@@ -18,14 +18,13 @@ module Auth
       attribute :expires_at, :datetime
       attribute :refresh_token, :string
       attribute :extra, :json, default: {}
-      attribute :identity, :string, default: '', index: true
+      attribute :identity, :string, default: ''
       attribute :online_at, :datetime
       attribute :offline_at, :datetime
       attribute :confirmed, :boolean
       attribute :source, :string
 
-      index [:uid, :type], unique: true
-      index [:identity, :confirmed]
+      index [:type, :uid, :identity], unique: true
 
       belongs_to :user, optional: true
       belongs_to :organ, class_name: 'Org::Organ', optional: true
