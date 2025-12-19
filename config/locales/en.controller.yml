@@ -26,10 +26,10 @@ en:
         forget: Forgot password?
         sent: Auth token has been sent
         login: Login
-    join:
+    users:
+      new:
+        title: Join
       join:
-        login: Login
-        join: Join
         password: Password
         mobile: Please enter mobile number
         enter_password: Please enter password
@@ -43,15 +43,20 @@ en:
         sent: Validation code has been sent!
       login_token:
         sent: Validation code has been sent!
-    password:
+    passwords:
       new:
-        next: Next
+        title: Forgot Password
       edit:
         title: Set New Password
       create:
         title: Reset Password
         body: A link with reset token has been sent to
         back: Back to home page
+    sessions:
+      new:
+        title: Login
+      token_new:
+        title: Login By Token
     my:
       title: Profile
       users:
