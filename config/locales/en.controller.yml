@@ -57,6 +57,8 @@ en:
         title: Login
       token_new:
         title: Login By Token
+      destroy:
+        title: Logout
     my:
       title: Profile
       users:
