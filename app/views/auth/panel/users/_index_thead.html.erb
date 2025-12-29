@@ -10,7 +10,10 @@
 <th>
   <p><%= Auth::User.human_attribute_name(:created_at) %></p>
   <p>
-    <%= link_to Auth::User.human_attribute_name(:last_login_at), filter_params('last_login_at-desc': 1) %>
+    <%= link_to filter_params('last_login_at-desc': 1) do %>
+      <span class="text-grey"><%= Auth::User.human_attribute_name(:last_login_at) %></span>
+      <%= svg_tag 'arrow-down', class: "icon is-small #{params['last_login_at-desc'] ? 'text-success' : 'text-grey'}" %>
+    <% end %>
   </p>
   <p><%= Auth::User.human_attribute_name(:last_login_ip) %></p>
 </th>
