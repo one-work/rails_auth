@@ -92,6 +92,8 @@ en:
       home:
         index:
           title: Users Summary
+        dashboard:
+          title: Dashboard
       apps:
         index:
           title: Apps
@@ -109,6 +111,12 @@ en:
       authorized_tokens:
         index:
           title: Authorized Tokens
+      sessions:
+        index:
+          title: Sessions
+      user_tags:
+        index:
+          title: User Tags
   user_mailer:
     email_token:
       title: 'You email verify code is:'

@@ -5,7 +5,9 @@
 </td>
 <td>
   <p class="family-monospace text-info"><%= model.user_id %></p>
-  <p class="family-monospace text-success"><%= model.member_id %></p>
+  <% if model.respond_to?(:member_id) %>
+    <p class="family-monospace text-success"><%= model.member_id %></p>
+  <% end %>
 </td>
 <td>
   <p><time data-controller="time" class="text-grey"><%= model.created_at.to_fs(:iso8601) %></time></p>
