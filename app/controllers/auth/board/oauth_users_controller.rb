@@ -12,7 +12,7 @@ module Auth
         @oauth_apps << { name: 'Github', app: github_app }
       end
 
-      wechat_app = Wechat::App.where(default_params).take
+      wechat_app = Wechat::App.where(default_params).where(type: ['Wechat::PublicApp', 'Wechat::PublicAgency']).take
       if wechat_app
         @oauth_apps << { name: '微信', app: wechat_app }
       end
