@@ -19,7 +19,7 @@ module Auth
 
       result = []
       r.each do |key, v|
-        result << { year: key.in_time_zone.to_fs(:date), value: v }
+        result << { title: key.in_time_zone.to_fs(:date), value: v }
       end
 
       render json: result
