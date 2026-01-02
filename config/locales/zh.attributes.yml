@@ -5,7 +5,7 @@ zh:
         name: 姓名
         name-like: 姓名
         last_login_at: 上次登录时间
-        last_login_ip: 上次登录IP
+        last_login_ip: 上次登录 IP
         disabled: 限制登录
         timezone: 时区
         locale: 语言
