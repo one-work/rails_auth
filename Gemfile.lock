@@ -1,6 +1,5 @@
-GIT
-  remote: https://github.com/one-work/rails_com.git
-  revision: d16731c2ff561cf034a5675741627be0c21b78f2
+PATH
+  remote: ../rails_com
   specs:
     rails_com (1.3.0)
       acme-client
@@ -17,6 +16,7 @@ GIT
       net-scp
       ostruct
       positioning
+      psych-pure
       rails
       reline
       solid_cache
@@ -235,6 +235,9 @@ GEM
     psych (5.3.1)
       date
       stringio
+    psych-pure (0.3.0)
+      psych
+      strscan
     puma (7.1.0)
       nio4r (~> 2.0)
     raabro (1.4.0)
@@ -301,6 +304,7 @@ GEM
       thor (>= 1.3.1)
     sshkey (3.0.0)
     stringio (3.2.0)
+    strscan (3.1.7)
     thor (1.4.0)
     timeout (0.6.0)
     tsort (0.2.0)
@@ -410,6 +414,7 @@ CHECKSUMS
   prism (1.7.0) sha256=10062f734bf7985c8424c44fac382ac04a58124ea3d220ec3ba9fe4f2da65103
   propshaft (1.3.1) sha256=9acc664ef67e819ffa3d95bd7ad4c3623ea799110c5f4dee67fa7e583e74c392
   psych (5.3.1) sha256=eb7a57cef10c9d70173ff74e739d843ac3b2c019a003de48447b2963d81b1974
+  psych-pure (0.3.0) sha256=5803cbdd03f3d213302a3523aa733a1e0c144056699948e71226ff6f74433911
   puma (7.1.0) sha256=e45c10cb124f224d448c98db653a75499794edbecadc440ad616cf50f2fd49dd
   raabro (1.4.0) sha256=d4fa9ff5172391edb92b242eed8be802d1934b1464061ae5e70d80962c5da882
   racc (1.8.1) sha256=4a7f6929691dbec8b5209a0b373bc2614882b55fc5d2e447a21aaa691303d62f
@@ -433,6 +438,7 @@ CHECKSUMS
   solid_queue (1.2.4) sha256=bb60f9552a969ac377d87601b0ff6a088f5e6f20b0cbbe3844a59d022cac0e4b
   sshkey (3.0.0) sha256=655ba351d6e01a48dfe59d65530af8975c777b8cc57a061770de3228ff2d11cd
   stringio (3.2.0) sha256=c37cb2e58b4ffbd33fe5cd948c05934af997b36e0b6ca6fdf43afa234cf222e1
+  strscan (3.1.7) sha256=5f76462b94a3ea50b44973225b7d75b2cb96d4e1bee9ef1319b99ca117b72c8c
   thor (1.4.0) sha256=8763e822ccb0f1d7bee88cde131b19a65606657b847cc7b7b4b82e772bcd8a3d
   timeout (0.6.0) sha256=6d722ad619f96ee383a0c557ec6eb8c4ecb08af3af62098a0be5057bf00de1af
   tsort (0.2.0) sha256=9650a793f6859a43b6641671278f79cfead60ac714148aabe4e3f0060480089f

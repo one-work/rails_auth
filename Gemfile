@@ -6,7 +6,7 @@ gem 'rails'
 gem 'puma'
 gem 'pg'
 gem 'propshaft'
-gem 'rails_com', github: 'one-work/rails_com'
+gem 'rails_com', path: '../rails_com'
 
 group :development do
   gem 'sdoc'
