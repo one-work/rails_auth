@@ -1,5 +1,4 @@
 one:
-  account: one
   provider: wechat
   uid: MyString
   unionid: MyString
@@ -10,4 +9,3 @@ one:
   access_token: MyString
   expires_at: <%= 1.hour.since %>
   refresh_token: MyString
-  extra:

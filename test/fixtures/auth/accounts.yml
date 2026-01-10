@@ -1,15 +1,5 @@
-one:
+default: &default
   user: one
-  inviter_id: 1
   identity: test@work.design
   confirmed: false
   source: MyString
-  type: Auth::EmailAccount
-
-two:
-  user: two
-  inviter_id: 1
-  identity: 18571856813
-  confirmed: false
-  source: MyString
-  type: Auth::MobileAccount
