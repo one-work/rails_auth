@@ -44,26 +44,3 @@
     <span class="tag"><%= role.name %></span>
   <% end %>
 </td>
-<td>
-  <div data-show-target="item" class="visibility-hidden">
-    <%= button_to({ action: 'show', id: model.id }, aria: { label: t('.show.title') }, class: 'button is-small is-borderless') do %>
-      <%= svg_tag 'eye', class: 'icon text-info' %>
-    <% end %>
-    <%= button_to({ action: 'edit', id: model.id }, aria: { label: t('.edit.title') }, class: 'button is-small is-borderless') do %>
-      <%= svg_tag 'pencil', class: 'icon text-link' %>
-    <% end %>
-    <%= button_to({ action: 'destroy', id: model.id }, method: :delete, aria: { label: t('.destroy.title') }, form: { data: { turbo_confirm: t('.destroy.confirm') } }, class: 'button is-small is-borderless') do %>
-      <%= svg_tag 'trash', class: 'icon text-danger' %>
-    <% end %>
-  </div>
-  <div data-show-target="item" class="visibility-hidden">
-    <%= button_to({ action: 'edit_user_tags', id: model.id }, class: 'button is-small is-borderless') do %>
-      <%= svg_tag 'user-tag' %>
-      <span class="ml-1"><%= t('.edit_user_tags.title') %></span>
-    <% end %>
-    <%= button_to({ action: 'edit_role', id: model.id }, class: 'button is-small is-borderless') do %>
-      <%= svg_tag 'user-lock' %>
-      <span class="ml-1"><%= t('.edit_role.title') %></span>
-    <% end %>
-  </div>
-</td>

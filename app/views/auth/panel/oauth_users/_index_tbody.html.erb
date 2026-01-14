@@ -33,12 +33,3 @@
   <% end %>
 <% end %>
 </td>
-<td>
-  <%= render partial: 'index_tr_actions', locals: { model: model } %>
-  <div data-show-target="item" class="visibility-hidden">
-    <%= link_to({ controller: 'sessions', uid: model.uid }, class: 'button is-small is-borderless') do %>
-      <%= svg_tag 'eye' %>
-      <span class="ml-1"><%= t('.sessions.index.title') %></span>
-    <% end %>
-  </div>
-</td>

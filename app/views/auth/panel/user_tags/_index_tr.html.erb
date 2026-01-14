@@ -1,0 +1,7 @@
+<%=
+  tr_tag(
+    model,
+    { href: url_for(controller: 'user_taggeds', user_tag_id: model.id), icon: 'eye', title: t('.user_taggeds.index.title') },
+    icons: ['edit', 'destroy']
+  ) { yield }
+%>
