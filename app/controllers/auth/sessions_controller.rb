@@ -12,7 +12,7 @@ module Auth
           render 'token_new'
         end
       else
-
+        render 'token_new'
       end
     end
 
