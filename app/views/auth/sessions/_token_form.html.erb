@@ -1,10 +1,9 @@
+<h2 class="title is-3 text-centered text-primary mb-6"><%= t('.title') %></h2>
 
-<%= form_with url: { action: 'token_create' }, id: 'token_form' do %>
+<%= form_with url: { action: 'token_create' }, id: 'token_form' do |f| %>
+  <%= f.hidden_field :identity, value: params[:identity] %>
 <% end %>
 <div data-controller="form">
-  <div class="field control">
-    <%= text_field_tag :identity, nil, form: 'token_form', placeholder: Auth::Account.human_attribute_name(:identity), autofocus: true, class: 'input is-medium' %>
-  </div>
   <div class="field is-grouped">
     <div class="control is-expanded">
       <%= text_field_tag :token, nil, form: 'token_form', placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: 'off', class: 'input is-medium' %>
