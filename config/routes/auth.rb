@@ -11,6 +11,7 @@ namespace 'auth', defaults: { business: 'auth' } do
   resources :verify_tokens
 
   controller :sign do
+    get :sign
     post :code
     get :bind
     post :direct
