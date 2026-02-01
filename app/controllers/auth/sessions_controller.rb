@@ -1,10 +1,22 @@
 module Auth
   class SessionsController < BaseController
-    before_action :set_account, only: [:create, :token_create]
+    before_action :set_account, only: [:create, :password_create, :token_create]
     before_action :require_user, only: [:destroy]
     rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to '/login', alert: "Try again later." }
 
     def create
+      if @account
+        if @account.user&.support_password_login?
+          render 'password_new'
+        else
+          render 'token_new'
+        end
+      else
+
+      end
+    end
+
+    def password_create
       if @account&.can_login_by_password?(params[:password])
         start_new_session_for @account
         render_login

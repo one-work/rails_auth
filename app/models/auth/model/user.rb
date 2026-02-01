@@ -50,6 +50,10 @@ module Auth
       end
     end
 
+    def support_password_login?
+      password_digest.present?
+    end
+
     def info_blank?
       oauth_users.map(&:info_blank?).all? true
     end

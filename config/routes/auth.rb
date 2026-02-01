@@ -3,6 +3,8 @@ get 'join' => 'auth/users#new'
 
 namespace 'auth', defaults: { business: 'auth' } do
   resource :sessions do
+    get :password_new
+    post :password_create
     get :token_new
     post :token_create
   end
