@@ -1,5 +1,8 @@
-<h2 class="title is-3 text-centered text-primary mb-6"><%= t('.title') %></h2>
-
+<h2 class="title is-3 text-centered text-primary mb-6"><%= t('.token_new.title') %></h2>
+<p class="mb-3">
+  <span>您的手机号为：</span>
+  <span><%= params[:identity] %></span>
+</p>
 <%= form_with url: { action: 'token_create' }, id: 'token_form' do |f| %>
   <%= f.hidden_field :identity, value: params[:identity] %>
 <% end %>
