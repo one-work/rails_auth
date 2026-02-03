@@ -50,7 +50,7 @@ module Auth
 
     private
     def set_account
-      @account = OauthUser.confirmed.find_by identity: params[:identity]
+      @account = OauthUser.find_by identity: params[:identity]
     end
 
     def render_login
