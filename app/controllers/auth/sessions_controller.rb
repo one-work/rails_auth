@@ -38,7 +38,7 @@ module Auth
         message = '验证码错误'
       end
 
-      if @account.can_login_by_token?(params)
+      if @account&.can_login_by_token?(params)
         start_new_session_for @account
         render_login
       else
