@@ -49,7 +49,7 @@
     <%= svg_tag 'chevron-right' %>
   </div>
 <% end %>
-<% if request.variant.include?(:wechat) %>
+<% if request.variant.include?(:wechat) && defined? RailsWechat %>
   <%= link_to({ controller: 'wechat/board/wechat_users' }, class: 'media as-link') do %>
     <div class="media-content">
       <%= svg_tag 'weixin', kind: 'brands' %>
