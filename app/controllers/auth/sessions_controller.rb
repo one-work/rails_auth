@@ -31,7 +31,12 @@ module Auth
     end
 
     def token_create
-      if @account.can_login_by_token?(params[:password])
+      @verify_token = VerifyToken.valid.find_by(identity: params[:identity], token: params[:token])
+      if @verify_token
+        @account = @verify_token.account || @verify_token.create_account(confirmed: true)
+      end
+
+      if @account.can_login_by_token?(params)
         start_new_session_for @account
         render_login
       else
