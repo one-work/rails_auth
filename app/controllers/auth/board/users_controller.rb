@@ -16,10 +16,8 @@ module Auth
     def user_params
       params.fetch(:user, {}).permit(
         :name,
-        :bio,
         :avatar,
         :locale,
-        :plate_number,
         :timezone
       )
     end
