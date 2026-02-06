@@ -1,5 +1,6 @@
 module Auth
   class Board::UsersController < Board::BaseController
+    prepend UsersPrepend
     before_action :set_user
 
     def create
@@ -13,7 +14,7 @@ module Auth
     end
 
     def user_params
-      p = params.fetch(:user, {}).permit(
+      params.fetch(:user, {}).permit(
         :name,
         :bio,
         :avatar,
@@ -21,11 +22,6 @@ module Auth
         :plate_number,
         :timezone
       )
-      p.merge! user_extra_params
-    end
-
-    def user_extra_params
-      defined?(super) ? super : {}
     end
 
   end
