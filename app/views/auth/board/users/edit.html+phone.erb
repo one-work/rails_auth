@@ -1,8 +1,6 @@
-<div class="box flex-grow-1 mx-3">
-  <%= form_with theme: 'default_phone', model: @user, url: { action: 'update' } do |f| %>
-    <div class="form-fields">
-      <%= render partial: 'form', locals: { f: f } %>
-    </div>
-    <%= f.submit nil, wrap: { all: nil } %>
-  <% end %>
-</div>
+<%= form_with theme: 'default_phone', model: @user, url: { action: 'update' } do |f| %>
+  <div class="form-fields">
+    <%= render partial: 'form', locals: { f: f } %>
+  </div>
+  <%= f.submit nil, wrap: { all: nil } %>
+<% end %>
