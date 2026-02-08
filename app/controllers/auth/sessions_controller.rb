@@ -34,19 +34,10 @@ module Auth
       @verify_token = VerifyToken.valid.find_by(identity: params[:identity], token: params[:token])
       if @verify_token
         @account = @verify_token.account || @verify_token.create_account(confirmed: true)
-      else
-        message = '验证码错误'
-      end
-
-      if @account&.can_login_by_token?(params)
         start_new_session_for @account
         render_login
       else
-        if @account
-          message = @account.error_text.presence || @account.user.error_text
-        else
-          message = '验证码错误'
-        end
+        message = '验证码错误'
         render 'alert_message', status: :unauthorized, locals: { message: message }
       end
     end

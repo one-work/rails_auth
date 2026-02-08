@@ -2,6 +2,6 @@
   <% params.permit(:uid, :request_id, :state).each do |key, value| %>
     <%= f.hidden_field key, value: value, autocomplete: 'off' %>
   <% end %>
-  <%= f.text_field :identity, value: params[:identity], label: '注册或登录', placeholder: '手机号或Email', autofocus: true %>
+  <%= f.text_field :identity, value: params[:identity], label: '注册或登录', placeholder: '手机号或Email', autofocus: true, class: 'input is-medium' %>
   <%= f.submit t('.next'), wrap: { all: nil } %>
 <% end %>
