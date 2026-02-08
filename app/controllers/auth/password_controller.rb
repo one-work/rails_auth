@@ -1,8 +1,6 @@
 module Auth
   class PasswordController < BaseController
 
-
-
     def edit
       reset_token = AuthorizedToken.find(params[:token])
 

@@ -4,10 +4,15 @@ module Auth
 
     def create
       @verify_token = VerifyToken.valid.find_by(identity: params[:identity], token: params[:token])
-      @user = @verify_token&.user
-      if @user
+
+      if @verify_token
+        @user = @verify_token.user
+        if @user
+        else
+          render 'alert_message', status: :unauthorized, locals: { message: '请确认账号是否正确或是否注册!' }
+        end
       else
-        redirect_to({ action: 'new' }, alert: '请确认账号是否正确或是否注册!')
+        render 'alert_message', status: :unauthorized, locals: { message: '验证码错误!' }
       end
     end
 
