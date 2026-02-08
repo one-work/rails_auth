@@ -33,9 +33,13 @@ module Auth
     def token_create
       @verify_token = VerifyToken.valid.find_by(identity: params[:identity], token: params[:token])
       if @verify_token
-        @account = @verify_token.account || @verify_token.create_account(confirmed: true)
-        start_new_session_for @account
-        render_login
+        if @verify_token.account
+          start_new_session_for @account
+          render_login
+        else
+          @verify_token.create_account(confirmed: true)
+          redirect_to controller: 'passwords', action: 'edit', token: @verify_token.user.password_reset_token
+        end
       else
         message = '验证码错误'
         render 'alert_message', status: :unauthorized, locals: { message: message }
