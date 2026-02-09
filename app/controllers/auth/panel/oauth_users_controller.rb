@@ -22,6 +22,14 @@ module Auth
     end
 
     private
+    def set_filter_columns
+      @filter_columns = set_filter_i18n(
+        'name-like' => { type: 'search', default: true },
+        'identity' => { type: 'search', default: true }
+      )
+    end
+
+
     def oauth_user_permit_params
       [
         :name,
