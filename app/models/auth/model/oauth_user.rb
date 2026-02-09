@@ -118,7 +118,7 @@ module Auth
     end
 
     def auth_token
-      session.id
+      session.once_token
     end
 
     def auth_jwt_token
