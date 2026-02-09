@@ -19,6 +19,7 @@
     data-controller="mini-program"
     data-mini-program-nav-value="true"
     data-mini-program-url-value="/pages/mobile/index"
+    data-mini-program-data-value="<%= { url: url_for(controller: 'wechat/program_users', action: 'mobile', auth_token: Current.session.id, only_path: false) }.to_json %>"
     data-action="click->mini-program#navTo"
     class="media as-link"
   >
