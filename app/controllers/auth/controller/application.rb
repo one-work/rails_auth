@@ -88,7 +88,7 @@ module Auth
 
     def resume_session
       if params[:auth_token].present?
-        token = params[:auth_token]
+        session = Session.find_by_token_for(:once, params[:auth_token])
       elsif cookies[:session_id]
         token = cookies.signed[:session_id]
         logger.debug "\e[35m  Session ID: #{token}  \e[0m"

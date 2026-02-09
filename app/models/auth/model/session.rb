@@ -33,12 +33,18 @@ module Auth
       scope :effective, -> { where('expires_at >= ?', Time.current).order(expires_at: :desc) }
       scope :expired, -> { where('expires_at < ?', Time.current) }
 
+      generates_token_for :once, expires_in: 2.minutes
+
       before_validation :sync_identity, if: -> { uid.present? && uid_changed? }
       before_validation :sync_user_id, if: -> { identity.present? && identity_changed? }
       before_create :decode_from_jwt, if: -> { identity.blank? && uid.blank? }
       after_save :sync_online_or_offline, if: -> { uid.present? && (saved_changes.keys & ['online_at', 'offline_at']).present? }
       after_save_commit :online_job, if: -> { saved_change_to_online_at? }
       after_create_commit :clean_when_expired
+    end
+
+    def once_token
+      generate_token_for :once
     end
 
     def clean_when_expired
