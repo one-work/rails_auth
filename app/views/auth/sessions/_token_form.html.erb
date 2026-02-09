@@ -1,22 +1,24 @@
-<h2 class="title is-3 text-centered text-primary mb-6"><%= t('.token_new.title') %></h2>
-<p class="mb-3">
-  <span>您的手机号为：</span>
-  <span><%= params[:identity] %></span>
-</p>
-<%= form_with url: { action: 'token_create' }, id: 'token_form' do |f| %>
-  <%= f.hidden_field :identity, value: params[:identity] %>
-<% end %>
-<div data-controller="form">
-  <div class="field is-grouped">
-    <div class="control is-expanded">
-      <%= text_field_tag :token, nil, form: 'token_form', placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: 'off', class: 'input is-medium' %>
+<div id="token_form_wrapper">
+  <h2 class="title is-3 text-centered text-primary mb-6"><%= t('.token_new.title') %></h2>
+  <p class="mb-3">
+    <span>您的手机号为：</span>
+    <span><%= params[:identity] %></span>
+  </p>
+  <%= form_with url: { action: 'token_create' }, id: 'token_form' do |f| %>
+    <%= f.hidden_field :identity, value: params[:identity] %>
+  <% end %>
+  <div data-controller="form">
+    <div class="field is-grouped">
+      <div class="control is-expanded">
+        <%= text_field_tag :token, nil, form: 'token_form', placeholder: Auth::VerifyToken.human_attribute_name(:token), autocomplete: 'off', class: 'input is-medium' %>
+      </div>
+      <div class="control">
+        <%= button_to({ controller: 'verify_tokens', action: 'create' }, params: { identity: nil }, class: 'button is-medium is-primary', form: { id: 'verify_token', data: { controller: 'button-to', button_to_mappings_value: { identity: 'identity' }.to_json } }) do %>
+          <span>获取验证码</span>
+        <% end %>
+      </div>
     </div>
-    <div class="control">
-      <%= button_to({ controller: 'verify_tokens', action: 'create' }, params: { identity: nil }, class: 'button is-medium is-primary', form: { id: 'verify_token', data: { controller: 'button-to', button_to_mappings_value: { identity: 'identity' }.to_json } }) do %>
-        <span>获取验证码</span>
-      <% end %>
-    </div>
+    <div id="alert"></div>
+    <%= submit_tag t('auth.sessions.token_create.title'), form: 'token_form', class: 'button is-primary is-medium is-fullwidth mt-4' %>
   </div>
-  <div id="alert"></div>
-  <%= submit_tag t('auth.sessions.token_create.title'), form: 'token_form', class: 'button is-primary is-medium is-fullwidth mt-4' %>
 </div>
