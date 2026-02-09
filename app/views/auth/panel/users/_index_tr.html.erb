@@ -1,8 +1,15 @@
 <%=
   tr_tag(
     model,
-    { action: url_for(action: 'edit_user_tags', id: model.id), icon: 'user-tag', title: t('.edit_user_tags.title') },
-    { action: url_for(action: 'edit_role', id: model.id), icon: 'user-lock', title: t('.edit_role.title') },
-    icons: []
+    {
+      action: url_for(action: 'edit_user_tags', id: model.id),
+      icon: 'user-tag',
+      title: t('.edit_user_tags.title')
+    },
+    {
+      action: url_for(action: 'edit_role', id: model.id),
+      icon: 'user-lock',
+      title: t('.edit_role.title')
+    }
   ) { yield }
 %>

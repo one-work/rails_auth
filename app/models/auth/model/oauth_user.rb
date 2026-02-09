@@ -47,6 +47,7 @@ module Auth
       before_save :auto_link, if: -> { unionid.present? && unionid_changed? }
       after_update :sync_to_authorized_tokens, if: -> { saved_change_to_identity? }
       after_save :sync_name_to_user, if: -> { name.present? && saved_change_to_name? }
+      after_destroy :clean_single_user!
       after_save_commit :sync_avatar_to_user_later, if: -> { avatar_url.present? && saved_change_to_avatar_url? }
     end
 
@@ -161,6 +162,10 @@ module Auth
       client = strategy
       token = OAuth2::AccessToken.new client, self.access_token, { expires_at: self.expires_at.to_i, refresh_token: self.refresh_token }
       token.refresh!
+    end
+
+    def clean_single_user!
+      user.destroy if user.oauth_users.blank?
     end
 
   end
