@@ -29,7 +29,6 @@ module Auth
       )
     end
 
-
     def oauth_user_permit_params
       [
         :name,

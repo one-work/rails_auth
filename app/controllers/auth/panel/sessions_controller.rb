@@ -13,6 +13,13 @@ module Auth
     end
 
     private
+    def set_filter_columns
+      @filter_columns = set_filter_i18n(
+        'id' => { type: 'search', default: true },
+        'identity' => { type: 'search', default: true }
+      )
+    end
+
     def session_params
       params.fetch(:session, {}).permit(
         :identity,
