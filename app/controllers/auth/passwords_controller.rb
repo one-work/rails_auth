@@ -17,10 +17,12 @@ module Auth
     end
 
     def update
-      if @user.update(params.permit(:password, :password_confirmation))
-        render notice: "新密码已成功设置"
+      @user.assign_attributes password_params
+
+      if @user.save!
+        render 'alert_message', status: :unauthorized, locals: { message: '新密码已成功设置!' }
       else
-        redirect_to({ action: 'edit', token: params[:token] }, alert: '请确认密码是否一致')
+        render 'alert_message', status: :unauthorized, locals: { message: '请确认密码是否一致!' }
       end
     end
 
@@ -29,6 +31,13 @@ module Auth
       @user = User.find_by_password_reset_token!(params[:token])
     rescue ActiveSupport::MessageVerifier::InvalidSignature
       redirect_to action: 'new', alert: 'Password reset link is invalid or has expired.'
+    end
+
+    def password_params
+      params.permit(
+        :password,
+        :password_confirmation
+      )
     end
 
   end
