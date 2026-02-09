@@ -33,7 +33,7 @@ module Auth
     def token_create
       @verify_token = VerifyToken.valid.find_by(identity: params[:identity], token: params[:token])
       if @verify_token
-        @account = @verify_token.account
+        @account = @verify_token.oauth_user
         if @account
           if @account.user.password_digest.present?
             start_new_session_for @account
@@ -42,7 +42,7 @@ module Auth
             redirect_to controller: 'passwords', action: 'edit', token: @account.user.password_reset_token
           end
         else
-          @account = @verify_token.create_account(confirmed: true)
+          @account = @verify_token.create_oauth_user(confirmed: true)
           redirect_to controller: 'passwords', action: 'edit', token: @account.user.password_reset_token
         end
       else

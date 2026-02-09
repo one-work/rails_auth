@@ -13,7 +13,7 @@ module Auth
       attribute :access_counter, :integer, default: 0
       attribute :uuid, :string, default: SecureRandom.uuid
 
-      belongs_to :account, foreign_key: :identity, primary_key: :identity, optional: true
+      belongs_to :oauth_user, foreign_key: :identity, primary_key: :identity, optional: true
       has_one :user, through: :account
 
       scope :valid, -> { where('expires_at >= ?', 1.minutes.since).order(expires_at: :desc) }
