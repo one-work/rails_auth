@@ -90,15 +90,15 @@ module Auth
       if params[:auth_token].present?
         session = Session.find_by_token_for(:once, params[:auth_token])
       elsif cookies[:session_id]
-        token = cookies.signed[:session_id]
-        logger.debug "\e[35m  Session ID: #{token}  \e[0m"
+        session = Session.find_by(id: cookies.signed[:session_id])
       elsif request.format.json?
         token = request.headers['Authorization'].to_s.split(' ').last.presence
+        session = Session.find_by(id: token)
       else
         return
       end
 
-      Current.session ||= Session.find_by(id: token)
+      Current.session ||= session
     end
 
     def request_authentication
