@@ -128,6 +128,7 @@ module Auth
     end
 
     def set_auth_token
+      resume_session
       return unless Current.session
 
       if Current.session.expired?
