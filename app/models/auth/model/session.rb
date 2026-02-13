@@ -41,7 +41,7 @@ module Auth
       before_create :decode_from_jwt, if: -> { identity.blank? && uid.blank? }
       after_save :sync_online_or_offline, if: -> { uid.present? && (saved_changes.keys & ['online_at', 'offline_at']).present? }
       after_save_commit :online_job, if: -> { saved_change_to_online_at? }
-      after_save_commit :set_ip_city, if: -> { saved_change_to_ip_address? }
+      after_save_commit :set_ip_info!, if: -> { saved_change_to_ip_address? }
       after_create_commit :clean_when_expired
     end
 
@@ -49,11 +49,15 @@ module Auth
       generate_token_for :once
     end
 
-    def set_ip_city
+    def set_ip_info!
+      if user
+        user.update last_login_ip: ip_address
+      end
       return if Rails.env.local?
 
       area = QqMapHelper.ip ip_address
       self.ip_city = area.dig('ad_info', 'city')
+      self.save
     end
 
     def clean_when_expired

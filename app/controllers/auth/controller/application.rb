@@ -113,7 +113,7 @@ module Auth
     def start_new_session_for(account)
       account.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip).tap do |session|
         Current.session = session
-        xx(session)
+        set_session_to_cookie(session)
       end
     end
 
@@ -123,7 +123,7 @@ module Auth
       cookies.delete(:session_id)
     end
 
-    def xx(session)
+    def set_session_to_cookie(session)
       cookies.signed.permanent[:session_id] = { value: session.id, httponly: true, same_site: :lax }
     end
 
@@ -133,11 +133,11 @@ module Auth
 
       if Current.session.expired?
         Current.session.refresh!
-        xx(Current.session)
+        set_session_to_cookie(Current.session)
       elsif cookies[:session_id].blank?
-        xx(Current.session)
+        set_session_to_cookie(Current.session)
       else
-        xx(Current.session)
+        set_session_to_cookie(Current.session)
       end
       logger.debug "\e[35m  Set session Auth token: #{cookies[:session_id]}  \e[0m"
     end
