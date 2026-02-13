@@ -17,12 +17,14 @@
 </td>
 <td>
 <% if model.online? %>
-  <i class="fa-solid fa-circle text-success"></i>
+  <%= svg_tag 'wifi', icon: 'text is-small text-success' %>
   <time data-controller="time" data-format="human"><%= model.online_at.to_fs(:iso8601) %></time>
 <% elsif model.offline_at.present? %>
-  <i class="fa-solid fa-circle text-grey"></i>
+  <%= svg_tag 'wifi-exclamation', icon: 'text is-small text-grey' %>
   <time data-controller="time" data-format="human"><%= model.offline_at.to_fs(:iso8601) %></time>
-<% else %>
-  <i class="fa-solid fa-circle text-grey"></i>
 <% end %>
+</td>
+<td>
+  <p><%= model.ip_address %></p>
+  <p><%= model.ip_city %></p>
 </td>

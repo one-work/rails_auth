@@ -16,5 +16,7 @@ light:
   - user-lock
   - user-tag
   - users
+  - wifi
+  - wifi-exclamation
 brands:
   - weixin
