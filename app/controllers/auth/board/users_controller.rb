@@ -1,6 +1,5 @@
 module Auth
   class Board::UsersController < Board::BaseController
-    prepend UsersPrepend
     before_action :set_user
 
     def create
