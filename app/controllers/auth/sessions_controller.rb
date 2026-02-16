@@ -46,8 +46,7 @@ module Auth
           redirect_to controller: 'passwords', action: 'edit', token: @account.user.password_reset_token
         end
       else
-        message = '验证码错误'
-        render 'alert_message', status: :unauthorized, locals: { message: message }
+        render 'alert_message', status: :unauthorized, locals: { message: '验证码错误！' }
       end
     end
 
