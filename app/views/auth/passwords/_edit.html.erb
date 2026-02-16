@@ -5,8 +5,9 @@
     url: { action: 'update', token: @user.password_reset_token },
     label: nil,
     placeholder: true,
-    wrap: { input: nil },
-    all: { input: 'field' }
+    before_wrap: { submit: nil },
+    wrap: { input: nil, submit: nil },
+    all: { normal: 'field', submit: nil }
   ) do |f|
 %>
   <%= f.password_field :password, class: 'input is-medium' %>

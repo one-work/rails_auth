@@ -1,6 +1,6 @@
 <div class="is-fullwidth">
   <div id="alert"></div>
-  <div id="auth_form">
+  <div id="auth_form_wrapper">
     <h2 class="title is-2 text-centered text-primary"><%= t('.title') %></h2>
     <h6 class="subtitle is-6 text-centered mt-2"><%= t('site_name') %></h6>
     <%=
@@ -16,7 +16,7 @@
       <%= f.text_field :identity, value: params[:identity], placeholder: Auth::Account.human_attribute_name(:identity), required: true, autofocus: true, class: 'input is-medium' %>
       <%= f.submit t('.next'), class: 'button is-fullwidth is-medium is-primary mt-3' %>
     <% end %>
-    <div class="panel-block background-white justify-content-space-around">
+    <div class="display-flex justify-content-space-around mt-3">
       <%= link_to({ controller: 'wechat/wechat', action: 'user_login' }) do %>
         <%= svg_tag 'weixin', kind: 'brands' %>
         <span class="text-grey">微信扫码</span>
