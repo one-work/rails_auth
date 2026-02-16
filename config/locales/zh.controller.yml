@@ -7,6 +7,8 @@ zh:
         next: 下一步
       password_new:
         title: 登录
+      password_create:
+        title: 登录
       create:
         title: 登录
       token_new:
