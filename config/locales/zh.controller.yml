@@ -12,7 +12,7 @@ zh:
       create:
         title: 登录
       token_new:
-        title: 登录
+        title: 验证码登录
       token_create:
         title: 登录
       destroy:
