@@ -6,9 +6,6 @@ module Auth
     before_action :set_confirmed_account, only: [:login], if: -> { params[:identity].present? }
     before_action :set_verify_token, only: [:password, :token]
 
-    def bind
-    end
-
     def bind_create
       @oauth_user.can_login?(login_params)
     end
@@ -19,7 +16,6 @@ module Auth
         login_by_account @account
         render_login
       else
-        flash.now[:error] = '你的账号还未注册'
         render 'alert', status: :unauthorized
       end
     end
