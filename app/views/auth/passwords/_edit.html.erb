@@ -9,7 +9,7 @@
     all: { input: 'field' }
   ) do |f|
 %>
-  <%= f.password_field :password %>
-  <%= f.password_field :password_confirmation %>
+  <%= f.password_field :password, class: 'input is-medium' %>
+  <%= f.password_field :password_confirmation, class: 'input is-medium' %>
   <%= f.submit '确认', class: 'button is-fullwidth is-medium' %>
 <% end %>
