@@ -30,7 +30,7 @@ module Auth
     def set_user_by_token
       @user = User.find_by_password_reset_token!(params[:token])
     rescue ActiveSupport::MessageVerifier::InvalidSignature
-      redirect_to action: 'new', alert: 'Password reset link is invalid or has expired.'
+      render 'alert_message', locals: { message: 'Password reset link is invalid or has expired' }
     end
 
     def password_params
