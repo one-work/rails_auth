@@ -12,22 +12,6 @@ namespace 'auth', defaults: { business: 'auth' } do
   resources :users, only: [:new, :create]
   resources :verify_tokens
 
-  controller :sign do
-    get :sign
-    post :code
-    get :bind
-    post :direct
-    get 'join' => :join_new
-    post :password
-    post :join
-    get 'login' => :login_new
-    post :login
-    get 'token' => :token_login_new
-    post :token_login
-    post :token
-    match :logout, via: [:get, :post]
-  end
-
   namespace :admin, defaults: { namespace: 'admin' } do
     root 'home#index'
     resources :oauth_users

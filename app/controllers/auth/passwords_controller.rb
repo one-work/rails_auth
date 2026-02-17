@@ -20,7 +20,7 @@ module Auth
       @user.assign_attributes password_params
 
       if @user.save!
-        render 'alert_message', status: :unauthorized, locals: { message: '新密码已成功设置!' }
+        flash[:notice] = '新密码已成功设置!'
       else
         render 'alert_message', status: :unauthorized, locals: { message: '请确认密码是否一致!' }
       end
