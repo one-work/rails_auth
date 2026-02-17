@@ -39,11 +39,11 @@ module Auth
             start_new_session_for @account
             render_login
           else
-            redirect_to controller: 'passwords', action: 'edit', token: @account.user.password_reset_token
+            render locals: { user: @account.user }
           end
         else
           @account = @verify_token.create_oauth_user(confirmed: true)
-          redirect_to controller: 'passwords', action: 'edit', token: @account.user.password_reset_token
+          render locals: { user: @account.user }
         end
       else
         render 'alert_message', status: :unauthorized, locals: { message: '验证码错误！' }

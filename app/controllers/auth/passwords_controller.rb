@@ -20,7 +20,7 @@ module Auth
       @user.assign_attributes password_params
 
       if @user.save!
-        redirect_to({ controller: 'sessions', action: 'password_new' }, alert: '新密码已成功设置!')
+        { alert: '新密码已成功设置!' }
       else
         render 'alert_message', status: :unauthorized, locals: { message: '请确认密码是否一致!' }
       end

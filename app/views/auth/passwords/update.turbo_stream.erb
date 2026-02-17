@@ -1,1 +1,1 @@
-<%= turbo_stream.update 'auth_form_wrapper', partial: 'success' %>
+<%= turbo_stream.update 'auth_form_wrapper', partial: 'password_form', locals: { identity: params[:identity] } %>
