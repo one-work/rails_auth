@@ -63,7 +63,7 @@ module Auth
       state = Com::State.find_by(id: params[:state])
       if state&.get?
         state.update user_id: current_user.id, destroyable: true
-        render 'state_visit_get', layout: 'raw', locals: { state: state }, message: t('.success')
+        render 'state_visit_get', layout: 'raw', locals: { url: state.url(scheme: request.scheme, port: request.port) }, message: t('.success')
       elsif state
         render 'state_visit', layout: 'raw', locals: { state: state }, message: t('.success')
       else
