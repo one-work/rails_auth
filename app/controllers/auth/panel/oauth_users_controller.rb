@@ -25,7 +25,8 @@ module Auth
     def set_filter_columns
       @filter_columns = set_filter_i18n(
         'name-like' => { type: 'search', default: true },
-        'identity' => { type: 'search', default: true }
+        'identity' => { type: 'search', default: true },
+        'uid' => { type: 'search', default: true }
       )
     end
 
