@@ -4,7 +4,7 @@ module Auth
     before_action :set_oauth_user, only: [:show, :edit, :update, :destroy, :actions]
 
     def index
-      @oauth_users = current_user.oauth_users.where.not(type: 'Auth::Account').order(appid: :asc)
+      @oauth_users = current_user.oauth_users.order(appid: :asc)
       @oauth_apps = []
 
       github_app = GithubApp.where(default_params).take
