@@ -6,6 +6,6 @@
     data-controller="time-count"
     data-time-count-time-value="<%= model.expires_at.to_fs(:iso8601) %>"
     class="text-info"
-  ><%= exact_distance_time(model.expires_at, Time.current) %></span>
+  ><%= distance_time(model.expires_at, Time.current) %></span>
 </td>
 <td><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></td>
