@@ -34,7 +34,7 @@ module Auth
       @oauth_user.account = current_account
       @oauth_user.save
 
-      redirect_to board_root_url
+      redirect_to '/auth/board'
     end
 
     private
