@@ -61,22 +61,16 @@ module Auth
     end
 
     def user_filter_params
-      q = params.permit(
+      params.permit(
         :id,
         'name-like',
         'accounts.identity',
         'last_login_at-desc'
       )
-      q.merge! super if defined? super
-      q
     end
 
     def user_params
-      params.fetch(:user, {}).permit(*user_permit_params)
-    end
-
-    def user_permit_params
-      [
+      params.fetch(:user, {}).permit(
         :name,
         :avatar,
         :password,
@@ -84,7 +78,7 @@ module Auth
         user_tag_ids: [],
         role_whos_attributes: [:id, :role_id, :_destroy],
         accounts_attributes: {}
-      ]
+      )
     end
 
   end

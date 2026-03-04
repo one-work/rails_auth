@@ -29,11 +29,11 @@ module Auth
       )
     end
 
-    def oauth_user_permit_params
-      [
+    def oauth_user_params
+      params.fetch(:oauth_user, {}).permit(
         :name,
         :remark
-      ]
+      )
     end
 
   end

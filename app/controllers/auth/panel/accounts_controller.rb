@@ -21,14 +21,14 @@ module Auth
       @account = Account.find params[:id]
     end
 
-    def account_permit_params
-      [
+    def account_params
+      params.fetch(:account, {}).permit(
         :user_id,
         :identity,
         :type,
         :confirmed,
         :primary
-      ]
+      )
     end
 
   end
