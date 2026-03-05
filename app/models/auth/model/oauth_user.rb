@@ -7,7 +7,7 @@ module Auth
 
       attribute :type, :string
       attribute :provider, :string
-      attribute :uid, :string, default: ''  # 防止 inner join 的时候出现空字符串
+      attribute :uid, :string, default: '', index: true  # 防止 inner join 的时候出现空字符串
       attribute :unionid, :string, index: true
       attribute :appid, :string
       attribute :app_name, :string
