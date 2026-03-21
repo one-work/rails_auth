@@ -155,7 +155,15 @@ module Auth
     end
 
     def verify_token
-      verify_tokens.find(&:effective?) || verify_tokens.create
+      verify_tokens.find(&:effective?) || create_verify_token
+    end
+
+    def create_verify_token
+      if identity.to_s.include?('@')
+        verify_tokens.create(type: EmailToken)
+      else
+        verify_tokens.create(type: MobileToken)
+      end
     end
 
     def refresh_token!

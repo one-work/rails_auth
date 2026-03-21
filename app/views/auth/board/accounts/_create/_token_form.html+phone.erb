@@ -1,11 +1,7 @@
-<%= form_with theme: 'default_phone', model: @account, scope: '', url: { action: 'confirm', id: @account.id }, method: :post do |f| %>
-  <div class="form-fields">
-    <div class="weui-cells__group weui-cells__group_form">
-      <div class="weui-cells__title"><%= t('.title') %></div>
-      <div class="weui-cells">
-        <%= f.text_field :token %>
-      </div>
-    </div>
-  </div>
+<%= form_with theme: 'phone_modal', model: @account, scope: '', url: { action: 'confirm', id: @account.id }, method: :post do |f| %>
+  <%= render 'modal_header' %>
+  <section id="modal_card_body" class="modal-card-body">
+    <%= f.text_field :token %>
+  </section>
   <%= f.submit %>
 <% end %>
