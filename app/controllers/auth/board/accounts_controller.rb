@@ -1,6 +1,7 @@
 module Auth
   class Board::AccountsController < Board::BaseController
     before_action :set_account, only: [:edit, :update, :token, :confirm, :select, :destroy]
+    before_action :set_new_account, only: [:create]
 
     def index
       @accounts = current_user.accounts.order(id: :asc)
@@ -11,7 +12,6 @@ module Auth
     end
 
     def create
-      set_new_account
       @account.assign_attributes account_params
 
       if @account.save
@@ -52,11 +52,7 @@ module Auth
     end
 
     def set_new_account
-      if params[:identity].to_s.include?('@')
-        @account = current_user.accounts.find_or_create_by(identity: account_params[:identity], type: 'Auth::EmailAccount')
-      else
-        @account = current_user.accounts.find_or_create_by(identity: account_params[:identity], type: 'Auth::MobileAccount')
-      end
+      @account = current_user.accounts.find_or_create_by(identity: account_params[:identity])
     end
 
     def account_params
