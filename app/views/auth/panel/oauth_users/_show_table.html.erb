@@ -3,6 +3,10 @@
   <dd><%= @oauth_user.type_i18n %></dd>
 </div>
 <div>
+  <dt><%= Auth::OauthUser.human_attribute_name(:user_id) %></dt>
+  <dd><%= @oauth_user.user_id %></dd>
+</div>
+<div>
   <dt><%= Auth::OauthUser.human_attribute_name(:name) %></dt>
   <dd><%= @oauth_user.name %></dd>
 </div>
