@@ -67,11 +67,9 @@ namespace 'auth', defaults: { business: 'auth' } do
     resource :user do
       get :avatar
     end
-    resources :accounts do
-      member do
-        post :token
+    resources :accounts, except: [:edit, :update] do
+      collection do
         post :confirm
-        put :select
       end
     end
     resources :oauth_users do

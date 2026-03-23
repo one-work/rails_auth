@@ -1,0 +1,7 @@
+<%= form_with theme: 'phone_modal', url: { action: 'create' }, id: 'form_wrapper' do |f| %>
+  <%= render 'modal_header' %>
+  <section id="modal_card_body" class="modal-card-body">
+    <%= f.text_field :identity, placeholder: '请输入手机号', required: true %>
+  </section>
+  <%= f.submit %>
+<% end %>
