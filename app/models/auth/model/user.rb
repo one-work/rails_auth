@@ -14,9 +14,9 @@ module Auth
       attribute :invited_code, :string
 
       has_many :oauth_users
-      has_many :accounts, inverse_of: :user, dependent: :nullify
-      has_many :verify_tokens, through: :accounts
       has_many :sessions
+      has_many :verify_tokens, through: :accounts
+      has_many :accounts
       has_many :confirmed_accounts, -> { where(confirmed: true) }, class_name: 'Account'
       accepts_nested_attributes_for :accounts
 

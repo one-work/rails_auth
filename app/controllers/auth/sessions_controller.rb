@@ -33,18 +33,8 @@ module Auth
     def token_create
       @verify_token = VerifyToken.valid.find_by(identity: params[:identity], token: params[:token])
       if @verify_token
-        @account = @verify_token.oauth_user
-        if @account
-          if @account.user.password_digest.present?
-            start_new_session_for @account
-            render_login
-          else
-            render locals: { user: @account.user }
-          end
-        else
-          @account = @verify_token.create_oauth_user(confirmed: true)
-          render locals: { user: @account.user }
-        end
+        @account = @verify_token.oauth_user || @verify_token.create_oauth_user(confirmed: true)
+        render locals: { user: @account.user }
       else
         render 'alert_message', status: :unauthorized, locals: { message: '验证码错误！' }
       end

@@ -4,7 +4,7 @@ module Auth
     before_action :set_oauth_user, only: [:show, :edit, :update, :destroy, :actions]
 
     def index
-      @oauth_users = current_user.oauth_users.where.not(type: 'Auth::Account').order(appid: :asc)
+      @oauth_users = current_user.oauth_users.order(appid: :asc)
       @oauth_apps = []
 
       github_app = GithubApp.where(default_params).take
@@ -34,7 +34,7 @@ module Auth
       @oauth_user.account = current_account
       @oauth_user.save
 
-      redirect_to board_root_url
+      redirect_to '/auth/board'
     end
 
     private

@@ -5,7 +5,7 @@ module Auth
       q_params = {}
       q_params.merge! params.permit(:identity, :uid, :unionid, :appid, :name, :user_id)
 
-      @oauth_users = OauthUser.where.not(type: 'Auth::Account').includes(:user).default_where(q_params).order(id: :desc).page(params[:page])
+      @oauth_users = OauthUser.includes(:user).default_where(q_params).order(id: :desc).page(params[:page])
     end
 
     def month
@@ -30,11 +30,11 @@ module Auth
       )
     end
 
-    def oauth_user_permit_params
-      [
+    def oauth_user_params
+      params.fetch(:oauth_user, {}).permit(
         :name,
         :remark
-      ]
+      )
     end
 
   end

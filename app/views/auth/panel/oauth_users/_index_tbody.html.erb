@@ -6,7 +6,7 @@
   <p class="family-monospace"><%= model.appid %></p>
 </td>
 <td>
-  <p class="family-monospace"><%= link_to model.uid, { uid: model.uid }, class: 'text-success' %></p>
+  <p class="family-monospace"><%= model.uid %></p>
   <p class="family-monospace">
   <% if model.unionid %>
     <%= link_to model.unionid, { unionid: model.unionid }, class: 'text-grey' %>

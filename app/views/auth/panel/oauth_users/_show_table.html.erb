@@ -3,6 +3,10 @@
   <dd><%= @oauth_user.type_i18n %></dd>
 </div>
 <div>
+  <dt><%= Auth::OauthUser.human_attribute_name(:user_id) %></dt>
+  <dd><%= @oauth_user.user_id %></dd>
+</div>
+<div>
   <dt><%= Auth::OauthUser.human_attribute_name(:name) %></dt>
   <dd><%= @oauth_user.name %></dd>
 </div>
@@ -17,4 +21,16 @@
 <div>
   <dt><%= Auth::OauthUser.human_attribute_name(:unionid) %></dt>
   <dd><%= @oauth_user.unionid %></dd>
+</div>
+<div>
+  <dt><%= Auth::OauthUser.human_attribute_name(:auth_token) %></dt>
+  <dd data-controller="clipboard">
+    <div class="text-left">
+      <span data-clipboard-target="source" class="is-wrap"><%= @oauth_user.auth_token %></span>
+    </div>
+    <div class="tag is-danger" data-action="click->clipboard#copy">复制</div>
+    <div data-clipboard-target="toast" class="tag display-none">
+      <%= svg_tag 'check', class: 'icon text-success' %>
+    </div>
+  </dd>
 </div>

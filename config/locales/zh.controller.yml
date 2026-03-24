@@ -14,7 +14,7 @@ zh:
       token_new:
         title: 验证码登录
       token_create:
-        title: 登录
+        title: 设置密码
       destroy:
         title: 退出登录
     sign:
@@ -42,6 +42,8 @@ zh:
         back: 返回首页
       edit:
         title: 重置密码
+      update:
+        title: 密码登录
     users:
       new:
         title: 注册

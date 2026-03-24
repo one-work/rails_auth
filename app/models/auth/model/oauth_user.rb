@@ -7,7 +7,7 @@ module Auth
 
       attribute :type, :string
       attribute :provider, :string
-      attribute :uid, :string, default: ''  # 防止 inner join 的时候出现空字符串
+      attribute :uid, :string, default: '', index: true  # 防止 inner join 的时候出现空字符串
       attribute :unionid, :string, index: true
       attribute :appid, :string
       attribute :app_name, :string
@@ -155,7 +155,15 @@ module Auth
     end
 
     def verify_token
-      verify_tokens.find(&:effective?) || verify_tokens.create
+      verify_tokens.find(&:effective?) || create_verify_token
+    end
+
+    def create_verify_token
+      if identity.to_s.include?('@')
+        verify_tokens.create(type: EmailToken)
+      else
+        verify_tokens.create(type: MobileToken)
+      end
     end
 
     def refresh_token!
