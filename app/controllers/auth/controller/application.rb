@@ -89,7 +89,7 @@ module Auth
     def resume_session
       if params[:auth_token].present?
         session = Session.find_by_token_for(:once, params[:auth_token])
-      elsif cookies[:session_id]
+      elsif defined?(cookies) && cookies[:session_id]  # API 模式下没有 cookies
         session = Session.find_by(id: cookies.signed[:session_id])
       elsif request.format.json?
         token = request.headers['Authorization'].to_s.split(' ').last.presence
