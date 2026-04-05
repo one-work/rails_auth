@@ -28,9 +28,9 @@
     <div class="text-left">
       <span data-clipboard-target="source" class="is-wrap"><%= @oauth_user.auth_token %></span>
     </div>
-    <div class="tag is-danger" data-action="click->clipboard#copy">复制</div>
-    <div data-clipboard-target="toast" class="tag display-none">
-      <%= svg_tag 'check', class: 'icon text-success' %>
+    <div data-action="click->clipboard#copy" class="tag is-badge is-danger">复制</div>
+    <div data-clipboard-target="toast" class="tag is-badge is-success display-none">
+      <%= svg_tag 'check' %>
     </div>
   </dd>
 </div>
