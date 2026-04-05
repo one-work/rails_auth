@@ -27,10 +27,10 @@
   <dd data-controller="clipboard">
     <div class="text-left">
       <span data-clipboard-target="source" class="is-wrap"><%= @oauth_user.auth_token %></span>
-    </div>
-    <div data-action="click->clipboard#copy" class="tag is-badge is-danger">复制</div>
-    <div data-clipboard-target="toast" class="tag is-badge is-success display-none">
-      <%= svg_tag 'check' %>
+      <span data-action="click->clipboard#copy" class="tag is-badge is-danger">复制</span>
+      <span data-clipboard-target="toast" class="tag is-badge is-success display-none">
+        <%= svg_tag 'check' %>
+      </span>
     </div>
   </dd>
 </div>
