@@ -17,6 +17,7 @@ zh:
       auth/oauth_user:
         online_at: 上线时间
         offline_at: 离线时间
+        user: 用户
       auth/session:
         online_at: 上线时间
         offline_at: 离线时间
