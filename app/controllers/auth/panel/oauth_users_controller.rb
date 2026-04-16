@@ -3,7 +3,7 @@ module Auth
 
     def index
       q_params = {}
-      q_params.merge! params.permit(:identity, :uid, :unionid, :appid, :name, :user_id)
+      q_params.merge! params.permit(:id, :identity, :uid, :unionid, :appid, :name, :user_id)
 
       @oauth_users = OauthUser.includes(:user).default_where(q_params).order(id: :desc).page(params[:page])
     end
@@ -26,7 +26,8 @@ module Auth
       @filter_columns = set_filter_i18n(
         'name-like' => { type: 'search', default: true },
         'identity' => { type: 'search', default: true },
-        'uid' => { type: 'search', default: true }
+        'uid' => { type: 'search', default: true },
+        'id' => { type: 'search', default: true }
       )
     end
 
