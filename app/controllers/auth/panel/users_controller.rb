@@ -60,6 +60,13 @@ module Auth
       @user = User.new(user_params)
     end
 
+    def set_filter_columns
+      @filter_columns = set_filter_i18n(
+        'name-like' => { type: 'search', default: true },
+        'id' => { type: 'search', default: true }
+      )
+    end
+
     def user_filter_params
       params.permit(
         :id,
