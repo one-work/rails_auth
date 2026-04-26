@@ -30,6 +30,7 @@ module Auth
       has_secure_password validations: false
 
       before_save :terminate_session, if: -> { password_digest_changed? }
+      before_create :first_as_admin
     end
 
     ##
@@ -56,6 +57,10 @@ module Auth
 
     def info_blank?
       oauth_users.map(&:info_blank?).all? true
+    end
+
+    def first_as_admin
+      self.admin = true if self.class.none?
     end
 
     def terminate_session
