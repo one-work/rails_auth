@@ -25,6 +25,13 @@
 <div>
   <dt><%= Auth::User.human_attribute_name(:verify_tokens) %></dt>
   <dd>
-    <%= render 'verify_tokens', target: @user %>
+    <table class="table is-fullwidth">
+    <% @user.oauth_users.each do |vt| %>
+      <tr>
+        <td><%= vt.type_i18n %></td>
+        <td><%= vt.identity %></td>
+      </tr>
+    <% end %>
+    </table>
   </dd>
 </div>
