@@ -6,7 +6,7 @@
     <% end %>
   </p>
   <% model.oauth_users.each do |oauth_user| %>
-    <% if oauth_user.is_a? Auth::WechatUser %>
+    <% if oauth_user.uid.present? %>
     <p>
       <%= link_to({ controller: 'oauth_users', user_id: model.id }, class: 'is-several') do %>
         <span class="family-monospace text-grey"><%= oauth_user.uid %></span>
