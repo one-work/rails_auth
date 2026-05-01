@@ -5,15 +5,8 @@
       <span class="is-text"><%= model.name %></span>
     <% end %>
   </p>
-  <% model.accounts.each do |account| %>
-    <p>
-      <%= link_to({ controller: 'accounts', user_id: model.id }, class: 'is-several') do %>
-        <i class="fa-solid fa-portrait"></i>
-        <span title="<%= account.identity %>" class="is-text"><%= account.identity %></span>
-      <% end %>
-    </p>
-  <% end %>
   <% model.oauth_users.each do |oauth_user| %>
+    <% if oauth_user.is_a? Auth::WechatUser %>
     <p>
       <%= link_to({ controller: 'oauth_users', user_id: model.id }, class: 'is-several') do %>
         <span class="family-monospace text-grey"><%= oauth_user.uid %></span>
@@ -23,6 +16,14 @@
         </span>
       <% end %>
     </p>
+    <% else %>
+    <p>
+      <%= link_to({ controller: 'accounts', user_id: model.id }, class: 'is-several') do %>
+        <%= svg_tag 'image-portrait' %>
+        <span class="is-text"><%= account.identity %></span>
+      <% end %>
+    </p>
+    <% end %>
   <% end %>
 </td>
 <td>
