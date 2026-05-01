@@ -20,7 +20,7 @@
     <p>
       <%= link_to({ controller: 'accounts', user_id: model.id }, class: 'is-several') do %>
         <%= svg_tag 'image-portrait' %>
-        <span class="is-text"><%= account.identity %></span>
+        <span class="is-text"><%= oauth_user.identity %></span>
       <% end %>
     </p>
     <% end %>
