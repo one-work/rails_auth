@@ -114,7 +114,7 @@ module Auth
     end
 
     def session
-      sessions.effective.take || sessions.create
+      sessions.effective.where(member_id: nil).take || sessions.create
     end
 
     def auth_token
