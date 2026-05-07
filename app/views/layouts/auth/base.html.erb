@@ -1,11 +1,9 @@
 <%= render layout: 'layouts/application_head' do %>
   <%= render 'nav_bar' %>
-  <turbo-frame id="main" refresh="morph" data-turbo-action="advance" class="has-animate-background">
-    <div class="has-column-centered is-fullheight py-6">
-      <turbo-frame id="box" refresh="morph" data-turbo-action="advance" class="box" style="width: 400px">
-        <%= yield %>
-      </turbo-frame>
-    </div>
+  <turbo-frame id="main" refresh="morph" data-turbo-action="advance" class="has-column-centered py-6 has-animate-background">
+    <turbo-frame id="box" refresh="morph" data-turbo-action="advance" class="box" style="width: 400px">
+      <%= yield %>
+    </turbo-frame>
   </turbo-frame>
   <%= render 'footer' %>
 <% end %>
