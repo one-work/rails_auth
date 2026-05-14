@@ -82,6 +82,7 @@ module Auth
         :avatar,
         :password,
         :disabled,
+        :admin,
         user_tag_ids: [],
         role_whos_attributes: [:id, :role_id, :_destroy],
         accounts_attributes: {}
