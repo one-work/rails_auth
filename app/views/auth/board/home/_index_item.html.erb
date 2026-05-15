@@ -5,7 +5,7 @@
     data-mini-program-url-value="/pages/profile/index"
     data-mini-program-data-value="<%= { url: url_for(controller: 'auth/board/users', action: 'update', auth_token: Current.session.once_token, only_path: false) }.to_json %>"
     data-action="click->mini-program#navTo"
-    class="media as-link"
+    class="media"
   >
     <div class="media-content">
       <%= svg_tag 'user' %>
@@ -21,7 +21,7 @@
     data-mini-program-url-value="/pages/mobile/index"
     data-mini-program-data-value="<%= { url: url_for(controller: 'wechat/program_users', action: 'mobile', auth_token: Current.session.once_token, only_path: false) }.to_json %>"
     data-action="click->mini-program#navTo"
-    class="media as-link"
+    class="media"
   >
     <div class="media-content">
       <%= svg_tag 'mobile' %>
@@ -32,7 +32,7 @@
     </div>
   </div>
 <% else %>
-  <%= link_to({ controller: 'users', action: 'show' }, class: 'media as-link') do %>
+  <%= link_to({ controller: 'users', action: 'show' }, class: 'media') do %>
     <div class="media-content">
       <%= svg_tag 'user' %>
       <span class="ml-1"><%= t('auth.board.users.show.title') %></span>
@@ -42,7 +42,7 @@
     </div>
   <% end %>
 <% end %>
-<%= link_to({ controller: 'accounts' }, class: 'media as-link') do %>
+<%= link_to({ controller: 'accounts' }, class: 'media') do %>
   <div class="media-content">
     <%= svg_tag 'users' %>
     <span class="ml-1"><%= t('auth.board.accounts.index.title') %></span>
@@ -52,7 +52,7 @@
   </div>
 <% end %>
 <% if request.variant.include?(:wechat) && defined? RailsWechat %>
-  <%= link_to({ controller: 'wechat/board/wechat_users' }, class: 'media as-link') do %>
+  <%= link_to({ controller: 'wechat/board/wechat_users' }, class: 'media') do %>
     <div class="media-content">
       <%= svg_tag 'weixin', kind: 'brands' %>
       <span class="ml-1"><%= t('wechat.board.wechat_users.index.title') %></span>
@@ -62,7 +62,7 @@
     </div>
   <% end %>
 <% else %>
-  <%= link_to({ controller: 'oauth_users' }, class: 'media as-link') do %>
+  <%= link_to({ controller: 'oauth_users' }, class: 'media') do %>
     <div class="media-content">
       <%= svg_tag 'weixin', kind: 'brands' %>
       <span class="ml-1"><%= t('auth.board.oauth_users.index.title') %></span>
