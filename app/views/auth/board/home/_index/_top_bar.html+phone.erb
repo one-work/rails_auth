@@ -3,6 +3,10 @@
     <%= link_to('/board', class: 'px-4') do %>
       <%= svg_tag 'angle-left', kind: 'regular' %>
     <% end %>
+  <% elsif request.subdomain == 'panel' %>
+    <%= link_to('/', class: 'px-4') do %>
+      <%= svg_tag 'angle-left', kind: 'regular' %>
+    <% end %>
   <% else %>
     <%= link_to({ controller: '/my/home' }, class: 'px-4') do %>
       <%= svg_tag 'angle-left', kind: 'regular' %>
