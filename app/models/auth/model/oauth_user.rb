@@ -173,7 +173,7 @@ module Auth
     end
 
     def clean_single_user!
-      user.destroy if user.oauth_users.blank?
+      user.destroy if user && user.oauth_users.blank?
     end
 
   end
