@@ -25,11 +25,11 @@
 <% if model.user %>
   <%= button_to({ controller: 'users', action: 'show', id: model.user.id }, text: true) do %>
     <%= svg_tag 'user' %>
-    <span class="ml-1"><%= model.user.name %></span>
+    <span><%= model.user.name %></span>
   <% end %>
   <%= link_to({ user_id: model.user_id }) do %>
     <%= svg_tag 'users' %>
-    <span class="ml-1">同账号</span>
+    <span>同账号</span>
   <% end %>
 <% end %>
 </td>
