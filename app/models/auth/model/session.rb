@@ -3,7 +3,7 @@ module Auth
     extend ActiveSupport::Concern
 
     included do
-      if connection.adapter_name == 'PostgreSQL'
+      if ['PostgreSQL', 'PostGIS'].include?(connection.adapter_name)
         attribute :id, :uuid
       else
         attribute :id, :string, default: -> { SecureRandom.uuid_v7 }
