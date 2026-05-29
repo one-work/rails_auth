@@ -31,6 +31,7 @@ module Auth
 
       before_save :terminate_session, if: -> { password_digest_changed? }
       before_create :first_as_admin
+      after_save_commit :sync_geo_by_ip, if: -> { saved_change_to_last_login_ip? && last_login_ip.present? }
     end
 
     ##
@@ -73,6 +74,10 @@ module Auth
 
     def avatar_url
       avatar.url
+    end
+
+    def sync_geo_by_ip
+      IpGeoJob.perform_later(self, last_login_ip)
     end
 
   end
