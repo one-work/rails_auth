@@ -45,7 +45,6 @@ module Auth
 
       after_validation :init_user, if: -> { confirmed? && confirmed_changed? }
       before_save :auto_link, if: -> { unionid.present? && unionid_changed? }
-      after_update :sync_to_authorized_tokens, if: -> { saved_change_to_identity? }
       after_save :sync_name_to_user, if: -> { name.present? && saved_change_to_name? }
       after_destroy :clean_single_user!
       after_save_commit :sync_avatar_to_user_later, if: -> { avatar_url.present? && saved_change_to_avatar_url? }
@@ -101,10 +100,6 @@ module Auth
 
     def info_blank?
       attributes['name'].blank? && attributes['avatar_url'].blank?
-    end
-
-    def sync_to_authorized_tokens
-      sessions.update_all(identity: identity)
     end
 
     def save_info(info_params)
