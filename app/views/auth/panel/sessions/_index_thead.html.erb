@@ -1,13 +1,12 @@
 <th>
   <p><%= Auth::Session.human_attribute_name(:id) %></p>
+  <p><%= Auth::Session.human_attribute_name(:host) %></p>
   <p><%= Auth::Session.human_attribute_name(:ip_address) %></p>
   <p><%= Auth::Session.human_attribute_name(:user_agent) %></p>
 </th>
 <th>
-  <p class="text-info"><%= Auth::Session.human_attribute_name(:identity) %></p>
+
   <p class="text-success"><%= Auth::Session.human_attribute_name(:uid) %></p>
-</th>
-<th>
   <p class="text-info"><%= Auth::Session.human_attribute_name(:user_id) %></p>
   <p class="text-success"><%= Auth::Session.human_attribute_name(:member_id) %></p>
 </th>
