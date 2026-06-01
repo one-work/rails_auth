@@ -98,7 +98,7 @@ module Auth
         return
       end
       if session && (session.ip_address.blank? || session.ip_address != request.remote_ip)
-        session.update ip_address: request.remote_ip
+        session.update ip_address: request.remote_ip, user_agent: request.user_agent
       end
 
       Current.session ||= session
