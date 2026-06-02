@@ -58,10 +58,6 @@ namespace 'auth', defaults: { business: 'auth' } do
     end
   end
 
-  namespace :our, defaults: { namespace: 'our' } do
-    root 'home#index'
-  end
-
   namespace :board, defaults: { namespace: 'board' } do
     root 'home#index'
     resource :user do
