@@ -1,0 +1,9 @@
+module Auth
+  class SessionCleanJob < ApplicationJob
+
+    def perform
+      Session.expired.delete_all
+    end
+
+  end
+end

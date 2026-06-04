@@ -42,7 +42,6 @@ module Auth
       after_save :sync_online_or_offline, if: -> { uid.present? && (saved_changes.keys & ['online_at', 'offline_at']).present? }
       after_save :sync_ip_to_user, if: -> { saved_change_to_ip_address? && user }
       after_save_commit :online_job, if: -> { saved_change_to_online_at? }
-      after_create_commit :clean_when_expired
     end
 
     def once_token
@@ -51,10 +50,6 @@ module Auth
 
     def sync_ip_to_user
       user.update last_login_ip: ip_address
-    end
-
-    def clean_when_expired
-      AuthorizedTokenCleanJob.set(wait_until: expires_at).perform_later(self)
     end
 
     def online?
