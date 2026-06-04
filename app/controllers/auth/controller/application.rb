@@ -4,6 +4,7 @@ module Auth
 
     included do
       helper_method :current_user, :current_client, :current_account, :current_session
+      before_action :require_user, if: -> { params[:invite_code].present? }
       after_action :set_auth_token
     end
 
