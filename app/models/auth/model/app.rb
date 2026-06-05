@@ -4,16 +4,10 @@ module Auth
 
     included do
       attribute :appid, :string, index: true
-      attribute :key, :string
+      attribute :key, :string, default: -> { SecureRandom.alphanumeric(32) }
       attribute :host, :string
 
       validates :host, presence: true
-
-      after_initialize :init_key, if: :new_record?
-    end
-
-    def init_key
-      self.key = SecureRandom.alphanumeric(32)
     end
 
   end
