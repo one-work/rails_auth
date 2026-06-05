@@ -11,7 +11,7 @@ module Auth
       attribute :last_login_ip, :string
       attribute :disabled, :boolean, default: false
       attribute :source, :string
-      attribute :invite_code, :string
+      attribute :invite_code, :string, default: -> { SecureRandom.alphanumeric(32) }
 
       has_many :oauth_users
       has_many :sessions
