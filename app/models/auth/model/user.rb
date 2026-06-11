@@ -35,11 +35,11 @@ module Auth
       after_save_commit :sync_geo_by_ip, if: -> { saved_change_to_last_login_ip? && last_login_ip.present? }
     end
 
-    def combine_user(new_user)
+    def migrate_to(main_user)
       self.class.const_get('MAP').each do |key, arr|
         arr.each do |model_klass|
           model_klass.where(key => id).find_each do |old|
-            old.user = new_user
+            old.user = main_user
             old.save
           end
         end
