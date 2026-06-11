@@ -40,6 +40,7 @@ module Auth
         arr.each do |model_klass|
           model_klass.where(key => id).find_each do |old|
             old.user = new_user
+            old.save
           end
         end
       end
