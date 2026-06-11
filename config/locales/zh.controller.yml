@@ -99,15 +99,12 @@ zh:
       user_tags:
         index:
           title: 用户标签
-      accounts:
+      oauth_users:
         index:
           title: 账号
         prune:
           title: 清理
           confirm: 确认清理
-      oauth_users:
-        index:
-          title: 第三方登录
       verify_tokens:
         index:
           title: 验证码
