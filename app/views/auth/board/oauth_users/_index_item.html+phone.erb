@@ -7,4 +7,7 @@
 <% end %>
 <div class="tags has-addons">
   <span class="tag"><%= model.type_i18n %></span>
+  <% if model.app_name.present? %>
+    <span class="tag is-light is-info"><%= model.app_name %></span>
+  <% end %>
 </div>
