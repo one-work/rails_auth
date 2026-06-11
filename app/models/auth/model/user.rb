@@ -36,6 +36,7 @@ module Auth
     end
 
     def migrate_to(main_user)
+      main_user = self.class.find(main_user) unless main_user.is_a? self.class
       self.class.const_get('MAP').each do |key, arr|
         arr.each do |model_klass|
           model_klass.where(key => id).find_each do |old|
@@ -47,6 +48,7 @@ module Auth
     end
 
     def migrate_from(temp_user)
+      temp_user = self.class.find(temp_user) unless temp_user.is_a? self.class
       self.class.const_get('MAP').each do |key, arr|
         arr.each do |model_klass|
           model_klass.where(key => temp_user.id).find_each do |old|
