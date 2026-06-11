@@ -46,6 +46,17 @@ module Auth
       end
     end
 
+    def migrate_from(temp_user)
+      self.class.const_get('MAP').each do |key, arr|
+        arr.each do |model_klass|
+          model_klass.where(key => temp_user.id).find_each do |old|
+            old.user = self
+            old.save
+          end
+        end
+      end
+    end
+
     ##
     # pass login params to this method;
     def can_login?(password)
