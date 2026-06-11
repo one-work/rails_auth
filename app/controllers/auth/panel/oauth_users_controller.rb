@@ -34,6 +34,7 @@ module Auth
         'name-like' => { type: 'search', default: true },
         'identity' => { type: 'search', default: true },
         'uid' => { type: 'search', default: true },
+        'appid' => { type: 'search', default: true },
         'id' => { type: 'search', default: true }
       )
     end
