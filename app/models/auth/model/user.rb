@@ -1,5 +1,6 @@
 module Auth
   module Model::User
+    MAP = {}.freeze
     extend ActiveSupport::Concern
 
     included do
@@ -33,6 +34,16 @@ module Auth
       before_save :terminate_session, if: -> { password_digest_changed? }
       before_create :first_as_admin
       after_save_commit :sync_geo_by_ip, if: -> { saved_change_to_last_login_ip? && last_login_ip.present? }
+    end
+
+    def combine_user(new_user)
+      MAP.each do |key, arr|
+        arr.each do |model_klass|
+          model_klass.where(key => id).find_each do |old|
+            old.user = new_user
+          end
+        end
+      end
     end
 
     ##
