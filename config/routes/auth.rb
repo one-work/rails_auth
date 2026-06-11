@@ -43,6 +43,7 @@ namespace 'auth', defaults: { business: 'auth' } do
     resources :verify_tokens
     resources :oauth_users do
       collection do
+        get :unverified
         get :month
       end
     end
