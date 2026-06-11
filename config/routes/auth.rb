@@ -46,6 +46,9 @@ namespace 'auth', defaults: { business: 'auth' } do
         get :unverified
         get :month
       end
+      member do
+        delete :prune
+      end
     end
     resources :sessions
     resources :apps
