@@ -6,10 +6,11 @@
   <%= svg_tag 'pencil' %>
   <span><%= t('.edit.title') %></span>
 <% end %>
-<%= link_to({ action: 'show' }, class: 'cell has-column-centered') do %>
+<%= button_to({ action: 'show' }, class: 'cell has-column-centered') do %>
   <%= svg_tag 'eye' %>
   <span><%= t('.show.title') %></span>
 <% end %>
 <%= button_to "/auth/#{@oauth_user.provider}", class: 'cell has-column-centered' do %>
+  <%= svg_tag 'arrows-rotate' %>
   <span><%= t('.update_token') %></span>
 <% end %>
