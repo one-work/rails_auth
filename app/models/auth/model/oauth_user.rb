@@ -41,8 +41,9 @@ module Auth
 
       normalizes :identity, with: -> (email) { email.strip.downcase }
 
-      validates :identity, uniqueness: { scope: [:confirmed, :source, :id] }
+      validates :identity, uniqueness: { scope: [:confirmed, :source, :uid] }
 
+      before_validation :init_identity
       after_validation :init_user, if: -> { confirmed? && confirmed_changed? }
       before_save :auto_link, if: -> { unionid.present? && unionid_changed? }
       after_save :sync_name_to_user, if: -> { name.present? && saved_change_to_name? }
@@ -65,6 +66,10 @@ module Auth
 
     def can_login?(params)
       self.identity = params[:identity]
+    end
+
+    def init_identity
+      self.identity ||= uid
     end
 
     def init_user
