@@ -4,7 +4,13 @@
 </div>
 <div>
   <dt><%= Auth::OauthUser.human_attribute_name(:user_id) %></dt>
-  <dd><%= @oauth_user.user_id %></dd>
+  <dd data-controller="clipboard">
+    <span data-clipboard-target="source" class="is-wrap"><%= @oauth_user.user_id %></span>
+    <span data-action="click->clipboard#copy" class="tag is-badge is-danger">复制</span>
+    <span data-clipboard-target="toast" class="tag is-badge is-success display-none">
+      <%= svg_tag 'check' %>
+    </span>
+  </dd>
 </div>
 <div>
   <dt><%= Auth::OauthUser.human_attribute_name(:name) %></dt>
