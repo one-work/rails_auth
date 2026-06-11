@@ -1,6 +1,5 @@
 module Auth
   module Model::User
-    MAP = {}.freeze
     extend ActiveSupport::Concern
 
     included do
@@ -37,7 +36,7 @@ module Auth
     end
 
     def combine_user(new_user)
-      MAP.each do |key, arr|
+      self.class.const_get('MAP').each do |key, arr|
         arr.each do |model_klass|
           model_klass.where(key => id).find_each do |old|
             old.user = new_user
