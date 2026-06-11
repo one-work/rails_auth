@@ -43,7 +43,7 @@ module Auth
 
       validates :identity, uniqueness: { scope: [:confirmed, :source, :uid] }
 
-      before_validation :init_identity
+      before_validation :init_identity, if: -> { identity.blank? }
       after_validation :init_user, if: -> { confirmed? && confirmed_changed? }
       before_save :auto_link, if: -> { unionid.present? && unionid_changed? }
       after_save :sync_name_to_user, if: -> { name.present? && saved_change_to_name? }
@@ -69,7 +69,7 @@ module Auth
     end
 
     def init_identity
-      self.identity ||= uid
+      self.identity = uid
     end
 
     def init_user
