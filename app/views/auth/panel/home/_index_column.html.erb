@@ -18,9 +18,6 @@
   <%= link_to({ controller: 'auth/panel/sessions' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
     <span><%= t('auth.panel.sessions.index.title') %></span>
   <% end %>
-  <%= link_to({ controller: 'auth/panel/accounts' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
-    <span><%= t('auth.panel.accounts.index.title') %></span>
-  <% end %>
   <%= link_to({ controller: 'auth/panel/oauth_users' }, data: { turbo_frame: 'panel', action: 'menu-popup#enter' }, class: 'cell button is-fullwidth') do %>
     <span><%= t('auth.panel.oauth_users.index.title') %></span>
   <% end %>
