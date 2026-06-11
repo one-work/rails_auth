@@ -48,10 +48,14 @@ module Auth
     end
 
     def migrate_from(temp_user)
-      temp_user = self.class.find(temp_user) unless temp_user.is_a? self.class
+      if temp_user.is_a? self.class
+        user = temp_user
+      else
+        user = self.class.find(temp_user)
+      end
       self.class.const_get('MAP').each do |key, arr|
         arr.each do |model_klass|
-          model_klass.where(key => temp_user.id).find_each do |old|
+          model_klass.where(key => user.id).find_each do |old|
             old.user = self
             old.save
           end
