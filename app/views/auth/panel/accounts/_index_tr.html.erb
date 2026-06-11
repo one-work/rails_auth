@@ -1,7 +1,0 @@
-<%=
-  tr_tag(
-    model,
-    { href: url_for(controller: 'sessions', identity: model.identity), icon: 'key', title: t('.sessions.index.title') },
-    { action: url_for(action: 'prune', id: model.id), method: 'delete', confirm: t('.prune.confirm'), icon: 'trash-can', class: 'text-danger-dark', title: t('.prune.title') }
-  ) { yield }
-%>

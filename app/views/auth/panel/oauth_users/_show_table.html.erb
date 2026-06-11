@@ -23,6 +23,10 @@
   <dd><%= @oauth_user.unionid %></dd>
 </div>
 <div>
+  <dt><%= Auth::Account.human_attribute_name(:confirmed) %></dt>
+  <dd><%= @account.confirmed %></dd>
+</div>
+<div>
   <dt><%= Auth::OauthUser.human_attribute_name(:auth_token) %></dt>
   <dd data-controller="clipboard">
     <div class="text-left">

@@ -3,8 +3,16 @@
     model,
     {
       href: url_for(controller: 'sessions', uid: model.uid),
-      icon: 'eye',
+      icon: 'key',
       title: t('.sessions.index.title')
+    },
+    {
+      action: url_for(action: 'prune', id: model.id),
+      method: 'delete',
+      confirm: t('.prune.confirm'),
+      icon: 'trash-can',
+      class: 'text-danger-dark',
+      title: t('.prune.title')
     }
   ) { yield }
 %>

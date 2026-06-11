@@ -20,14 +20,21 @@
   </div>
   <p class="family-monospace text-grey"><%= model.identity %></p>
 </td>
-<td><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></td>
+<td>
+  <% if model.confirmed %>
+    <p>
+      <%= svg_tag 'check', class: 'icon is-small text-success' %>
+    </p>
+  <% end %>
+  <p><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></p>
+</td>
 <td>
 <% if model.user %>
   <%= button_to({ controller: 'users', action: 'show', id: model.user.id }, text: true) do %>
     <%= svg_tag 'user' %>
     <span><%= model.user.name %></span>
   <% end %>
-  <%= link_to({ user_id: model.user_id }) do %>
+  <%= link_to({ user_id: model.user_id }, class: 'display-block') do %>
     <%= svg_tag 'users' %>
     <span>同账号</span>
   <% end %>
