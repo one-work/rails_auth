@@ -35,6 +35,34 @@ module Auth
       after_save_commit :sync_geo_by_ip, if: -> { saved_change_to_last_login_ip? && last_login_ip.present? }
     end
 
+    def migrate_to(main_user)
+      main_user = self.class.find(main_user) unless main_user.is_a? self.class
+      self.class.const_get('MAP').each do |key, arr|
+        arr.each do |model_klass|
+          model_klass.where(key => id).find_each do |old|
+            old.user = main_user
+            old.save
+          end
+        end
+      end
+    end
+
+    def migrate_from(temp_user)
+      if temp_user.is_a? self.class
+        user = temp_user
+      else
+        user = self.class.find(temp_user)
+      end
+      self.class.const_get('MAP').each do |key, arr|
+        arr.each do |model_klass|
+          model_klass.where(key => user.id).find_each do |old|
+            old.user = self
+            old.save
+          end
+        end
+      end
+    end
+
     ##
     # pass login params to this method;
     def can_login?(password)

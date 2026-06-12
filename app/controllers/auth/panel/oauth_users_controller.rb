@@ -21,12 +21,20 @@ module Auth
       render json: result
     end
 
+    def prune
+      @account.class.transaction do
+        @account.destroy!
+        @account.oauth_users.map(&:destroy!)
+      end
+    end
+
     private
     def set_filter_columns
       @filter_columns = set_filter_i18n(
         'name-like' => { type: 'search', default: true },
         'identity' => { type: 'search', default: true },
         'uid' => { type: 'search', default: true },
+        'appid' => { type: 'search', default: true },
         'id' => { type: 'search', default: true }
       )
     end

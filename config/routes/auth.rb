@@ -40,15 +40,14 @@ namespace 'auth', defaults: { business: 'auth' } do
         match :edit_role, via: [:get, :post]
       end
     end
-    resources :accounts do
-      member do
-        delete :prune
-      end
-    end
     resources :verify_tokens
     resources :oauth_users do
       collection do
+        get :unverified
         get :month
+      end
+      member do
+        delete :prune
       end
     end
     resources :sessions
