@@ -72,7 +72,7 @@ zh:
           title: 验证码
       oauth_users:
         index:
-          title: 第三方登录
+          title: 账号
         bind:
           title: 绑定
         update_token:
