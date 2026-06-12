@@ -6,7 +6,6 @@
     <% end %>
   </p>
   <% model.oauth_users.each do |oauth_user| %>
-    <% if oauth_user.uid.present? %>
     <p>
       <%= link_to({ controller: 'oauth_users', user_id: model.id }, class: 'is-several') do %>
         <span class="family-monospace text-grey"><%= oauth_user.uid %></span>
@@ -16,14 +15,6 @@
         </span>
       <% end %>
     </p>
-    <% else %>
-    <p>
-      <%= link_to({ controller: 'accounts', user_id: model.id }, class: 'is-several') do %>
-        <%= svg_tag 'image-portrait' %>
-        <span class="is-text"><%= oauth_user.identity %></span>
-      <% end %>
-    </p>
-    <% end %>
   <% end %>
 </td>
 <td>
