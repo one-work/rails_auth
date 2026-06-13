@@ -33,12 +33,14 @@ namespace 'auth', defaults: { business: 'auth' } do
     resources :users do
       collection do
         get :month
+        get :invite
       end
       member do
         post :mock
         match :edit_user_tags, via: [:get, :post]
         match :edit_role, via: [:get, :post]
       end
+      resources :user_invites
     end
     resources :verify_tokens
     resources :oauth_users do

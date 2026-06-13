@@ -12,6 +12,14 @@ module Auth
       @users = User.with_attached_avatar.includes(:accounts, :roles, :oauth_users).default_where(q_params).page(params[:page])
     end
 
+    def invite
+      q_params = {
+        'created_at-desc': 2
+      }
+      q_params.merge! user_filter_params
+      @users = User.with_attached_avatar.includes(:user_invites, :oauth_users).default_where(q_params).page(params[:page])
+    end
+
     def month
       q_params = {}
       x = Arel.sql("date_trunc('day', created_at, '#{Time.zone.tzinfo.identifier}')")

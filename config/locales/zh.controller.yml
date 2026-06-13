@@ -99,6 +99,9 @@ zh:
       user_tags:
         index:
           title: 用户标签
+      user_taggeds:
+        index:
+          title: 用户
       oauth_users:
         index:
           title: 账号

@@ -1,0 +1,17 @@
+<td>
+  <%= link_to({ action: 'show', id: model.id }, class: 'is-several') do %>
+    <%= image_tag model.avatar, class: 'image is-24x24' if model.avatar.attached? %>
+    <span class="is-text"><%= model.name %></span>
+  <% end %>
+</td>
+<td><%= model.invite_code %></td>
+<td><%= model.locale %></td>
+<td><%= model.timezone %></td>
+<td><%= model.last_login_ip %></td>
+<td><time data-controller="time"><%= model.last_login_at&.to_fs(:iso8601) %></time></td>
+<td>
+  <%= form_with theme: 'switch', model: model, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
+    <%= f.check_box :disabled, data: { action: 'input#submit' }, id: nil %>
+  <% end %>
+</td>
+<td><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></td>
