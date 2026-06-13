@@ -11,7 +11,7 @@ module Auth
       attribute :last_login_ip, :string
       attribute :disabled, :boolean, default: false
       attribute :source, :string
-      attribute :invite_code, :string, default: -> { UidUtil.nsec_uuid('USER') }
+      attribute :invite_code, :string, index: true, default: -> { UidUtil.nsec_uuid('USER') }
 
       has_many :oauth_users
       has_many :sessions
