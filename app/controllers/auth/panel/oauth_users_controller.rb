@@ -35,7 +35,8 @@ module Auth
         'identity' => { type: 'search', default: true },
         'uid' => { type: 'search', default: true },
         'appid' => { type: 'search', default: true },
-        'id' => { type: 'search', default: true }
+        'id' => { type: 'search', default: true },
+        'user_id' => { type: 'search', default: true }
       )
     end
 
