@@ -9,10 +9,12 @@
     <p>
       <%= link_to({ controller: 'oauth_users', user_id: model.id }, class: 'is-several') do %>
         <span class="family-monospace text-grey"><%= oauth_user.identity %></span>
-        <span class="tags has-addons display-inline-flex">
-          <span class="tag is-light"><%= oauth_user.type_i18n %></span>
-          <span class="tag is-info"><%= oauth_user.app_name %></span>
-        </span>
+        <% if model.appid %>
+          <span class="tags has-addons display-inline-flex">
+            <span class="tag is-light"><%= oauth_user.type_i18n %></span>
+            <span class="tag is-info"><%= oauth_user.app_name %></span>
+          </span>
+        <% end %>
       <% end %>
     </p>
   <% end %>
