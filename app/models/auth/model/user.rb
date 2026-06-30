@@ -81,14 +81,6 @@ module Auth
       end
     end
 
-    def session(host: nil)
-      sessions.effective.where(member_id: nil, host: host).take || sessions.create(host: host)
-    end
-
-    def auth_token(host: nil)
-      session(host: host).once_token
-    end
-
     def support_password_login?
       password_digest.present?
     end
