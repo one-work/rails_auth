@@ -14,7 +14,7 @@ module Auth
       attribute :identity, :string, index: true
       attribute :expires_at, :datetime, default: -> { Time.current + 1.weeks }
       attribute :access_counter, :integer, default: 0
-      attribute :mock_user, :boolean, default: false
+      attribute :mock_user, :boolean
       attribute :business, :string
       attribute :appid, :string
       attribute :uid, :string
