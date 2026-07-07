@@ -13,11 +13,11 @@ module Auth
     end
 
     private
-    def set_filter_columns
-      @filter_columns = set_filter_i18n(
+    def filter_columns
+      {
         'id' => { type: 'search', default: true },
         'identity' => { type: 'search', default: true }
-      )
+      }
     end
 
     def session_params
