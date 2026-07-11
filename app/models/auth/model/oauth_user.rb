@@ -80,7 +80,9 @@ module Auth
 
     def auto_link
       return unless same_oauth_user
-      self.identity = identity.presence || same_oauth_user.identity
+      if identity == uid
+        self.identity = same_oauth_user.identity
+      end
       self.user_id ||= same_oauth_user.user_id
       self.name ||= same_oauth_user.name
       self.avatar_url ||= same_oauth_user.avatar_url
