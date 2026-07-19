@@ -31,8 +31,6 @@ module Auth
 
       has_many :sessions, primary_key: [:uid, :appid, :identity, :user_id], foreign_key: [:uid, :appid, :identity, :user_id], dependent: :delete_all
       has_many :verify_tokens, primary_key: :identity, foreign_key: :identity, dependent: :delete_all
-
-      belongs_to :same_oauth_user, ->(o) { where.not(id: o.id) }, class_name: self.name, foreign_key: :unionid, primary_key: :unionid, optional: true
       has_many :same_oauth_users, class_name: self.name, primary_key: :unionid, foreign_key: :unionid
 
       scope :without_user, -> { where(user_id: nil) }
@@ -42,7 +40,7 @@ module Auth
       validates :identity, uniqueness: { scope: [:confirmed, :source, :uid] }
 
       before_validation :init_identity, if: -> { identity.blank? }
-      after_validation :init_user, if: -> { confirmed? && confirmed_changed? }
+      before_save :init_user, if: -> { confirmed? && confirmed_changed? }
       before_save :auto_link, if: -> { unionid.present? && unionid_changed? }
       after_save :sync_name_to_user, if: -> { name.present? && saved_change_to_name? }
       after_destroy :clean_single_user!
@@ -71,7 +69,7 @@ module Auth
     end
 
     def init_user
-      if same_oauth_user&.user
+      if same_oauth_users.load.pluck(:user_id).compact.present?
         auto_link
       else
         user || build_user
@@ -79,7 +77,9 @@ module Auth
     end
 
     def auto_link
-      return unless same_oauth_user
+      return if same_oauth_users.blank?
+      same_oauth_user = same_oauth_users[0]
+
       if identity == uid
         self.identity = same_oauth_user.identity
       end
