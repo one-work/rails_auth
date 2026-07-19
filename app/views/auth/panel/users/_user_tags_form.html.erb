@@ -1,6 +1,6 @@
 <%= form_with theme: 'modal', model: @user, url: { action: 'update' } do |f| %>
   <%= render 'modal_header' %>
-  <section class="modal-card-body">
+  <section id="modal-card-body" class="modal-card-body">
     <%= render 'error_messages', target: f.object %>
     <%= f.collection_check_boxes :user_tag_ids, @user_tags, :id, :name %>
   </section>

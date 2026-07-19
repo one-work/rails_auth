@@ -1,6 +1,6 @@
 <%= form_with theme: 'phone_modal', scope: nil, url: { action: 'confirm' } do |f| %>
   <%= render 'modal_header' %>
-  <section id="modal_card_body" class="modal-card-body">
+  <section id="modal-card-body" class="modal-card-body">
     <%= f.text_field :token, placeholder: '请输入验证码', required: true %>
     <%= f.hidden_field :identity, value: params[:identity] %>
   </section>

@@ -2,7 +2,7 @@
   <% params.permit(:uid, :request_id, :state).each do |key, value| %>
     <%= f.hidden_field key, value: value, autocomplete: 'off' %>
   <% end %>
-  <div class="modal-card-body">
+  <div id="modal-card-body" class="modal-card-body">
     <%= f.text_field :identity, value: params[:identity], label: '注册或登录', placeholder: '手机号或Email', autofocus: true %>
   </div>
   <%= f.submit t('.next'), wrap: { all: nil } %>
