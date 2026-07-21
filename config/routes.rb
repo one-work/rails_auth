@@ -1,3 +1,3 @@
-Rails.application.routes.draw do
+Rails.app.routes.draw do
   draw :auth
 end
