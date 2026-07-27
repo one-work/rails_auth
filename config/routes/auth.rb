@@ -64,6 +64,7 @@ namespace 'auth', defaults: { business: 'auth' } do
     resource :user do
       get :avatar
     end
+    resources :apps
     resources :accounts, except: [:edit, :update] do
       collection do
         post :confirm
