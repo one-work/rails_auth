@@ -6,7 +6,7 @@ module Auth
     end
 
     private
-    def user_params
+    def app_params
       _p = params.fetch(:app, {}).permit(
         :name,
         :host
