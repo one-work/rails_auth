@@ -8,6 +8,8 @@ module Auth
       attribute :key, :string, default: -> { SecureRandom.alphanumeric(32) }
       attribute :host, :string
 
+      belongs_to :creator, class_name: 'User', optional: true
+
       validates :host, presence: true
     end
 
