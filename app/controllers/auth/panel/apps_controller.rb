@@ -4,6 +4,7 @@ module Auth
     private
     def app_params
       params.fetch(:app, {}).permit(
+        :name,
         :appid,
         :key,
         :host
