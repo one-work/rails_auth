@@ -11,6 +11,7 @@ namespace 'auth', defaults: { business: 'auth' } do
   resources :passwords, param: :token
   resources :users, only: [:new, :create]
   resources :verify_tokens
+  resources :apps
 
   namespace :admin, defaults: { namespace: 'admin' } do
     root 'home#index'

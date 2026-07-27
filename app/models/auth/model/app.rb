@@ -13,5 +13,9 @@ module Auth
       validates :host, presence: true
     end
 
+    def url
+      URI::HTTPS.build(host: host).to_s
+    end
+
   end
 end
