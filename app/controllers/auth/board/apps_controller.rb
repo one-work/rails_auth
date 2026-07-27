@@ -7,10 +7,11 @@ module Auth
 
     private
     def user_params
-      params.fetch(:app, {}).permit(
+      _p = params.fetch(:app, {}).permit(
         :name,
         :host
       )
+      _p.merge! creator_id: current_user.id
     end
 
   end
