@@ -1,6 +1,5 @@
 module Auth
   class OauthsController < BaseController
-    skip_before_action :verify_authenticity_token, only: :create
 
     def create
       type = 'Auth::' + (oauth_params[:provider].to_s + '_user').classify
