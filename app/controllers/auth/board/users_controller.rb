@@ -1,11 +1,6 @@
 module Auth
   class Board::UsersController < Board::BaseController
-    before_action :set_user
-
-    def create
-      @user.assign_attributes user_params
-      @user.save
-    end
+    before_action :set_user, only: [:show, :update]
 
     private
     def set_user

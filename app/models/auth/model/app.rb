@@ -3,6 +3,7 @@ module Auth
     extend ActiveSupport::Concern
 
     included do
+      attribute :name, :string
       attribute :appid, :string, index: true
       attribute :key, :string, default: -> { SecureRandom.alphanumeric(32) }
       attribute :host, :string
