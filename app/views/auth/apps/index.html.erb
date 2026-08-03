@@ -1,3 +1,23 @@
-<div class="box">
-  <%= render partial: 'app', collection: @apps, as: :model %>
+<%= render 'filter_bar' %>
+
+<div class="card as-transparent">
+  <div class="card-header">
+    <span class="size-7 text-grey has-border-left-primary">最近使用</span>
+  </div>
+  <div class="card-content fixed-grid has-4-cols">
+    <div class="grid">
+      <%= render partial: 'app', collection: @apps, as: :model %>
+    </div>
+  </div>
+</div>
+
+<div class="card as-transparent">
+  <div class="card-header">
+    <span class="size-7 text-grey has-border-left-primary">我的收藏</span>
+  </div>
+  <div class="card-content fixed-grid has-4-cols">
+    <div class="grid">
+      <%= render partial: 'app', collection: @apps, as: :model %>
+    </div>
+  </div>
 </div>

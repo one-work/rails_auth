@@ -1,3 +1,8 @@
-<%= link_to model.url, data: { turbo: false }, class: 'media' do %>
+<%= link_to model.url, data: { turbo: false }, class: 'cell has-column-centered' do %>
+  <% if model.logo.attached? %>
+    <%= image_tag model.logo.variant(resize_to_limit: [64, 64]), class: 'image is-64x64' %>
+  <% else %>
+    <%= image_tag 'logo_organ.png', class: 'image is-64x64' %>
+  <% end %>
   <span><%= model.name %></span>
 <% end %>

@@ -7,7 +7,8 @@ module Auth
         :name,
         :appid,
         :key,
-        :host
+        :host,
+        :logo
       )
     end
 
