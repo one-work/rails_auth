@@ -3,6 +3,7 @@
     <%= image_tag model.logo, class: 'image is-32x32' if model.logo.attached? %>
     <span><%= model.name %></span>
   </div>
+  <p class="text-grey"><%= model.note %></p>
 </td>
 <td><%= model.appid %></td>
 <td><%= model.key %></td>

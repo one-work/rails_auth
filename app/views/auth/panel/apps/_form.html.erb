@@ -2,3 +2,4 @@
 <%= f.text_field :appid %>
 <%= f.text_field :host %>
 <%= render partial: 'com/attachments/list_field', locals: { target: f.object.logo, f: f } %>
+<%= f.text_area :note %>
