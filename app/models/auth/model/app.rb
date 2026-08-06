@@ -17,7 +17,12 @@ module Auth
     end
 
     def url
-      URI::HTTPS.build(host: host).to_s
+      if host.start_with? 'http'
+        _host = host
+      else
+        _host = "https://#{host}"
+      end
+      URI(_host).to_s
     end
 
   end
