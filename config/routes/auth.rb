@@ -12,6 +12,9 @@ namespace 'auth', defaults: { business: 'auth' } do
   resources :users, only: [:new, :create]
   resources :verify_tokens
   resources :apps
+  controller :oauth do
+    post :apple
+  end
 
   namespace :admin, defaults: { namespace: 'admin' } do
     root 'home#index'
