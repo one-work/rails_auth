@@ -19,7 +19,7 @@ module Auth
     def password_create
       if @account&.can_login_by_password?(params[:password])
         start_new_session_for @account
-        render_login
+        render_login(@account)
       else
         if @account
           message = @account.error_text.presence || @account.user.error_text
