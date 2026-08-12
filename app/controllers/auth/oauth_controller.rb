@@ -27,15 +27,13 @@ module Auth
 
     def apple
       payload = AppleUser.verify!(params[:identityToken], audience: 'com.xcprinter.xcprinter')
-      logger.debug "----------#{payload}"
+      logger.debug "\e[35m  Decode Payload: #{payload}  \e[0m"
 
-      user = AppleUser.find_or_initialize_by(uid: payload['sub'])
-      if user.new_record?
-        user.identity = params[:email].presence || payload['email']
-        user.confirmed = payload['email_verified']
-        user.name = [params[:givenName], params[:familyName]].compact.join(" ")
-      end
-      user.save!
+      au = AppleUser.find_or_initialize_by(uid: payload['sub'])
+      au.identity = payload['email']
+      au.confirmed = payload['email_verified']
+      au.name ||= [params[:givenName], params[:familyName]].compact.join(' ')
+      au.save!
     end
 
   end
