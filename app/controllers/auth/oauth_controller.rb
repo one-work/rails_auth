@@ -29,9 +29,10 @@ module Auth
       payload = AppleUser.verify!(params[:identityToken], audience: 'com.xcprinter.xcprinter')
       logger.debug "----------#{payload}"
 
-      user = AppleUser.find_or_initialize_by(identity: payload['sub'])
+      user = AppleUser.find_or_initialize_by(uid: payload['sub'])
       if user.new_record?
-        user.email = params[:email].presence || payload['email']
+        user.identity = params[:email].presence || payload['email']
+        user.confirmed = payload['email_verified']
         user.name = [params[:givenName], params[:familyName]].compact.join(" ")
       end
       user.save!
