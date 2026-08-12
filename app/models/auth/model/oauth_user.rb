@@ -69,7 +69,7 @@ module Auth
     end
 
     def init_user
-      if same_oauth_users.load.pluck(:user_id).compact.present?
+      if unionid.present? && same_oauth_users.load.pluck(:user_id).compact.present?
         auto_link
       else
         user || build_user
