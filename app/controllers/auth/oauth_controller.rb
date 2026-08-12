@@ -35,7 +35,7 @@ module Auth
       au.name ||= [params[:givenName], params[:familyName]].compact.join(' ')
       au.save!
       start_new_session_for(au)
-      render_login
+      render_login(au)
     end
 
   end
