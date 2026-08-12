@@ -1,5 +1,5 @@
 module Auth
-  class OauthController < ApplicationController
+  class OauthController < BaseController
     skip_forgery_protection
 
     def alipay
@@ -34,6 +34,8 @@ module Auth
       au.confirmed = payload['email_verified']
       au.name ||= [params[:givenName], params[:familyName]].compact.join(' ')
       au.save!
+      start_new_session_for(au)
+      render_login
     end
 
   end
