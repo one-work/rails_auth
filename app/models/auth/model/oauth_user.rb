@@ -72,7 +72,7 @@ module Auth
       if unionid.present? && same_oauth_users.load.pluck(:user_id).compact.present?
         auto_link
       else
-        user || build_user
+        user || create_user
       end
     end
 
