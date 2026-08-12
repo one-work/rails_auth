@@ -26,13 +26,13 @@ module Auth
     end
 
     def apple
-      payload = AppleUser.verify!(params[:identity_token], audience: 'com.xcprinter.xcprinter')
+      payload = AppleUser.verify!(params[:identityToken], audience: 'com.xcprinter.xcprinter')
       logger.debug "----------#{payload}"
 
       user = AppleUser.find_or_initialize_by(identity: payload['sub'])
       if user.new_record?
         user.email = params[:email].presence || payload['email']
-        user.name = [params[:given_name], params[:family_name]].compact.join(" ")
+        user.name = [params[:givenName], params[:familyName]].compact.join(" ")
       end
       user.save!
     end
