@@ -8,7 +8,7 @@ module Auth
     end
 
     def log
-      @app_view = @app.app_views.find_or_create_by(session_id: session.id) do |app_view|
+      @app_view = @app.app_views.find_or_create_by(session_id: session.id.to_s) do |app_view|
         app_view.view_at = Time.current
       end
     end
