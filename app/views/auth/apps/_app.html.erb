@@ -4,7 +4,7 @@
     data: {
       turbo: false,
       controller: 'report',
-      report_url_value: 'xxxx',
+      report_url_value: url_for(action: 'log', id: model.id),
       action: 'report#report'
     },
     class: 'cell has-column-centered'

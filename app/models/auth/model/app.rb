@@ -11,6 +11,8 @@ module Auth
 
       belongs_to :creator, class_name: 'User', optional: true
 
+      has_many :app_views
+
       has_one_attached :logo
 
       validates :host, presence: true

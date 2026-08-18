@@ -2,6 +2,9 @@ get 'login' => 'auth/sessions#new'
 get 'join' => 'auth/users#new'
 
 namespace 'auth', defaults: { business: 'auth' } do
+  controller :oauth do
+    post :apple
+  end
   resource :sessions do
     get :password_new
     post :password_create
@@ -11,9 +14,10 @@ namespace 'auth', defaults: { business: 'auth' } do
   resources :passwords, param: :token
   resources :users, only: [:new, :create]
   resources :verify_tokens
-  resources :apps
-  controller :oauth do
-    post :apple
+  resources :apps do
+    member do
+      post :log
+    end
   end
 
   namespace :admin, defaults: { namespace: 'admin' } do
