@@ -1,0 +1,19 @@
+<%=
+  link_to(
+    model.app.url,
+    data: {
+      turbo: false,
+      controller: 'report',
+      report_url_value: url_for(action: 'log', id: model.app_id),
+      action: 'report#report'
+    },
+    class: 'cell has-column-centered'
+  ) do
+%>
+  <% if model.app.logo.attached? %>
+    <%= image_tag model.app.logo.variant(resize_to_limit: [64, 64]), class: 'image is-64x64' %>
+  <% else %>
+    <%= image_tag 'logo_organ.png', class: 'image is-64x64' %>
+  <% end %>
+  <span class="size-7 text-grey"><%= model.app.name %></span>
+<% end %>
