@@ -3,7 +3,7 @@ module Auth
     before_action :set_app, only: [:log]
 
     def index
-      @app_views = AppView.includes(app: { logo_attachment: :blob }).order(view_at: :desc).page(params[:page])
+      @app_views = AppView.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s).order(view_at: :desc).page(params[:page])
       @all_apps = App.with_attached_logo.page(params[:page]).limit(4)
       @apps = App.with_attached_logo.page(params[:page])
     end
