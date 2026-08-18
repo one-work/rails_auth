@@ -115,7 +115,7 @@ module Auth
     end
 
     def start_new_session_for(account)
-      account.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip).tap do |session|
+      account.session(host: request.host, user_agent: request.user_agent, ip_address: request.remote_ip).tap do |session|
         Current.session = session
         @current_user = account.user
         set_session_to_cookie(session)

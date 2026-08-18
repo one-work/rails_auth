@@ -113,8 +113,8 @@ module Auth
     def strategy
     end
 
-    def session(host: nil)
-      sessions.effective.where(member_id: nil, host: host).take || sessions.create(host: host)
+    def session(host: nil, **options)
+      sessions.effective.where(member_id: nil, host: host).take || sessions.create(host: host, **options)
     end
 
     def auth_token(host: nil)
