@@ -13,7 +13,7 @@
   <% end %>
   <div class="media-right">
     <%= button_to({ action: 'star', id: model.id }, class: 'button is-rounded is-small is-light') do %>
-      <% if model.star %>
+      <% if model.starred %>
         <%= svg_tag 'star', class: 'text-warning' %>
         <span>取消收藏</span>
       <% else %>
