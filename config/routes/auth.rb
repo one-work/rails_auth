@@ -17,6 +17,7 @@ namespace 'auth', defaults: { business: 'auth' } do
   resources :apps do
     member do
       post :log
+      post :star
     end
   end
 

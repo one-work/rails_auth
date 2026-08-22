@@ -5,6 +5,7 @@ module Auth
     included do
       attribute :session_id, :string, index: true
       attribute :view_at, :datetime, index: true
+      attribute :starred, :boolean
 
       belongs_to :app
     end

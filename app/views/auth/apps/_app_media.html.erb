@@ -1,4 +1,4 @@
-<div class="media">
+<div id="app_<%= model.id %>" class="media">
   <div class="media-left">
   <% if model.logo.attached? %>
     <%= image_tag model.logo.variant(resize_to_limit: [64, 64]), class: 'image is-64x64' %>
@@ -6,13 +6,20 @@
     <%= image_tag 'logo_organ.png', class: 'image is-64x64' %>
   <% end %>
   </div>
-  <div class="media-content">
+  <%= link_to model.url, data: { turbo: false }, class: 'media-content' do %>
     <h2 class="title is-6"><%= model.name %></h2>
     <p class="size-7 text-grey"><%= model.note %></p>
   </div>
+  <% end %>
   <div class="media-right">
-    <%= link_to model.url, data: { turbo: false }, class: 'button is-rounded is-small is-light' do %>
-      <span>打开</span>
+    <%= button_to({ action: 'star', id: model.id }, class: 'button is-rounded is-small is-light') do %>
+      <% if model.star %>
+        <%= svg_tag 'star', class: 'text-warning' %>
+        <span>取消收藏</span>
+      <% else %>
+        <%= svg_tag 'star' %>
+        <span>收藏</span>
+      <% end %>
     <% end %>
   </div>
 </div>
