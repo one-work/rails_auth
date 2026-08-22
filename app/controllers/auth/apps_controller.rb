@@ -6,7 +6,7 @@ module Auth
       @app_views = AppView.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s).order(view_at: :desc).limit(4)
       @all_apps = AppView.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s).page(params[:page]).limit(4)
       @star_ids = AppView.where(session_id: session.id.to_s, starred: true).pluck(:id)
-      @apps = App.includes(:starred_app).with_attached_logo.page(params[:page])
+      @apps = App.with_attached_logo.page(params[:page])
     end
 
     def star
