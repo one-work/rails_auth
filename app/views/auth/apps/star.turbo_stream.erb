@@ -1,2 +1,2 @@
 <%= turbo_stream.replace "app_#{@app.id}", partial: 'app_media', locals: { model: @app } %>
-<%= turbo_stream.append 'star_container', partial: 'app_view', locals: { model: @app } %>
+<%= turbo_stream.append 'star_container', partial: 'app_view', locals: { model: @app_view } %>
