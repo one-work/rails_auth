@@ -1,6 +1,7 @@
 <%=
   link_to(
     model.app.url,
+    id: "view_#{model.app_id}",
     data: {
       turbo: false,
       controller: 'report',

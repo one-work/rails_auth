@@ -6,7 +6,17 @@
     <%= image_tag 'logo_organ.png', class: 'image is-64x64' %>
   <% end %>
   </div>
-  <%= link_to model.url, data: { turbo: false }, class: 'media-content' do %>
+  <%=
+    link_to(
+      model.url,
+      data: {
+        turbo: false,
+        controller: 'report',
+        report_url_value: url_for(action: 'log', id: model.app_id),
+        action: 'report#report'
+      },
+      class: 'media-content'
+    ) do %>
     <h2 class="title is-6"><%= model.name %></h2>
     <p class="size-7 text-grey"><%= model.note %></p>
   <% end %>

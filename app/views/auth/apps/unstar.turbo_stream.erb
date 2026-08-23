@@ -1,1 +1,2 @@
 <%= turbo_stream.replace "app_#{@app.id}", partial: 'app_media', locals: { model: @app } %>
+<%= turbo_stream.remove "view_#{@app.id}" %>

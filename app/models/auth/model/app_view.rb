@@ -8,6 +8,8 @@ module Auth
       attribute :starred, :boolean
 
       belongs_to :app
+
+      scope :viewed, -> { where.not(view_at: nil) }
     end
 
   end
