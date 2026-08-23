@@ -18,6 +18,7 @@ namespace 'auth', defaults: { business: 'auth' } do
     member do
       post :log
       post :star
+      post :unstar
     end
   end
 

@@ -9,14 +9,15 @@
   <%= link_to model.url, data: { turbo: false }, class: 'media-content' do %>
     <h2 class="title is-6"><%= model.name %></h2>
     <p class="size-7 text-grey"><%= model.note %></p>
-  </div>
   <% end %>
   <div class="media-right">
-    <%= button_to({ action: 'star', id: model.id }, class: 'button is-rounded is-small is-light') do %>
-      <% if @star_ids.include?(model.id) %>
-        <%= svg_tag 'star', class: 'text-warning' %>
+    <% if @star_ids.include?(model.id) %>
+      <%= button_to({ action: 'unstar', id: model.id }, class: 'button is-rounded is-small is-light') do %>
+        <%= svg_tag 'star', class: 'icon is-small text-warning' %>
         <span>取消收藏</span>
-      <% else %>
+      <% end %>
+    <% else %>
+      <%= button_to({ action: 'star', id: model.id }, class: 'button is-rounded is-small is-light') do %>
         <%= svg_tag 'star' %>
         <span>收藏</span>
       <% end %>
