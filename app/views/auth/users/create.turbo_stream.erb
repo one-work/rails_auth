@@ -1,1 +1,1 @@
-<%= render partial: 'visit', locals: { url: url_for(controller: 'sessions', action: 'new') } %>
+<%= turbo_stream.visit url: url_for(controller: 'sessions', action: 'new') %>
