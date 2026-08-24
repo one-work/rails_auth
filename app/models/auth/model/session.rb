@@ -24,6 +24,8 @@ module Auth
       attribute :encrypted_token, :string
       attribute :auth_appid, :string
 
+      belongs_to :from_organ, class_name: 'Org::Organ', optional: true
+
       belongs_to :user, optional: true
       belongs_to :auth_app, class_name: 'App', foreign_key: :auth_appid, primary_key: :appid, optional: true
       belongs_to :oauth_user, foreign_key: [:uid, :identity], primary_key: [:uid, :identity], optional: true
