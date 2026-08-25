@@ -1,11 +1,22 @@
 <div id="app_<%= model.id %>" class="media">
-  <div class="media-left">
+  <%=
+    link_to(
+      model.url,
+      data: {
+        turbo: false,
+        controller: 'report',
+        report_url_value: url_for(action: 'log', id: model.id),
+        action: 'report#report'
+      },
+      class: 'media-left'
+    ) do
+  %>
   <% if model.logo.attached? %>
     <%= image_tag model.logo.variant(resize_to_limit: [64, 64]), class: 'image is-64x64' %>
   <% else %>
     <%= image_tag 'logo_organ.png', class: 'image is-64x64' %>
   <% end %>
-  </div>
+  <% end %>
   <%=
     link_to(
       model.url,
