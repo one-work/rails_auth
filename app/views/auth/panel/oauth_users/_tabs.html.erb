@@ -1,10 +1,10 @@
 <div class="tabs is-boxed">
   <ul>
     <li class="<%= active_helper(action: 'index', active: 'is-active', item: nil) %>">
-      <%= link_to t('.index.title'), { action: 'index' } %>
+      <%= link_to t('.index.title'), { action: 'index' }, data: { turbo_action: 'replace' } %>
     </li>
     <li class="<%= active_helper(action: 'unverified', active: 'is-active', item: nil) %>">
-      <%= link_to t('.unverified.title'), { action: 'unverified' } %>
+      <%= link_to t('.unverified.title'), { action: 'unverified' }, data: { turbo_action: 'replace' } %>
     </li>
   </ul>
 </div>
