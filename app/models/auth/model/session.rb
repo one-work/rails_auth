@@ -47,7 +47,8 @@ module Auth
     end
 
     def once_token
-      generate_token_for :once
+      return @once_token if defined? @once_token
+      @once_token = generate_token_for :once
     end
 
     def sync_ip_to_user
