@@ -102,7 +102,7 @@ module Auth
       if session && (session.ip_address.blank? || session.ip_address != request.remote_ip)
         session.update ip_address: request.remote_ip, user_agent: request.user_agent
       end
-      if params[:from_provider].present?
+      if session && params[:from_provider].present?
         session.update from_organ_id: params[:from_provider]
       end
 
