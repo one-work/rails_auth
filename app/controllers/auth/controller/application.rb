@@ -89,24 +89,28 @@ module Auth
 
     def resume_session
       if params[:auth_token].present?
-        session = Session.find_by_token_for(:once, params[:auth_token])
-        logger.debug "\e[35m  Once Session: #{session}  \e[0m"
+        auth_session = Session.find_by_token_for(:once, params[:auth_token])
+        logger.debug "\e[35m  Once Session: #{auth_session}  \e[0m"
+      elsif session[:auth_token].present?
+        auth_session = Session.find_by_token_for(:once, session[:auth_token])
+        session.delete(:auth_otken)
+        logger.debug "\e[35m  Once Session: #{auth_session}  \e[0m"
       elsif defined?(cookies) && cookies[:session_id]  # API 模式下没有 cookies
-        session = Session.find_by(id: cookies.signed[:session_id])
+        auth_session = Session.find_by(id: cookies.signed[:session_id])
       elsif request.format.json?
         token = request.headers['Authorization'].to_s.split(' ').last.presence
-        session = Session.find_by(id: token)
+        auth_session = Session.find_by(id: token)
       else
         return
       end
-      if session && (session.ip_address.blank? || session.ip_address != request.remote_ip)
-        session.update ip_address: request.remote_ip, user_agent: request.user_agent
+      if auth_session && (auth_session.ip_address.blank? || auth_session.ip_address != request.remote_ip)
+        auth_session.update ip_address: request.remote_ip, user_agent: request.user_agent
       end
-      if session && params[:from_provider].present?
-        session.update from_organ_id: params[:from_provider]
+      if auth_session && params[:from_provider].present?
+        auth_session.update from_organ_id: params[:from_provider]
       end
 
-      Current.session ||= session
+      Current.session ||= auth_session
     end
 
     def request_authentication
