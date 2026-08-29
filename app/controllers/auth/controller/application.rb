@@ -90,11 +90,11 @@ module Auth
     def resume_session
       if params[:auth_token].present?
         auth_session = Session.find_by_token_for(:once, params[:auth_token])
-        logger.debug "\e[35m  Once Session: #{auth_session}  \e[0m"
+        logger.debug "\e[35m  Once Session: #{auth_session.id}  \e[0m"
       elsif session[:auth_token].present?
         auth_session = Session.find_by_token_for(:once, session[:auth_token])
         session.delete(:auth_token)
-        logger.debug "\e[35m  Once Session: #{auth_session}  \e[0m"
+        logger.debug "\e[35m  Once Session: #{auth_session.id}  \e[0m"
       elsif defined?(cookies) && cookies[:session_id]  # API 模式下没有 cookies
         auth_session = Session.find_by(id: cookies.signed[:session_id])
       elsif request.format.json?
