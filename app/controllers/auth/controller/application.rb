@@ -110,7 +110,7 @@ module Auth
       if auth_session && params[:from_provider].present?
         auth_session.from_organ_id = params[:from_provider]
       end
-      auth_session.save
+      auth_session&.save
 
       Current.session ||= auth_session
     end
