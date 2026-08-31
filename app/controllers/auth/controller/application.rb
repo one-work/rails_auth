@@ -90,11 +90,11 @@ module Auth
     def resume_session
       if params[:auth_token].present?
         auth_session = Session.find_by_token_for(:once, params[:auth_token])
-        logger.debug "\e[35m  Once Session: #{auth_session&.id}  \e[0m"
+        logger.debug "\e[35m  Session(params): #{auth_session&.id}  \e[0m"
       elsif session[:auth_token].present?
         auth_session = Session.find_by_token_for(:once, session[:auth_token])
         session.delete(:auth_token)
-        logger.debug "\e[35m  Once Session: #{auth_session&.id}  \e[0m"
+        logger.debug "\e[35m  Session(session): #{auth_session&.id}  \e[0m"
       elsif defined?(cookies) && cookies[:session_id]  # API 模式下没有 cookies
         auth_session = Session.find_by(id: cookies.signed[:session_id])
       elsif request.format.json?
@@ -104,11 +104,13 @@ module Auth
         return
       end
       if auth_session && (auth_session.ip_address.blank? || auth_session.ip_address != request.remote_ip)
-        auth_session.update ip_address: request.remote_ip, user_agent: request.user_agent
+        auth_session.ip_address = request.remote_ip
+        auth_session.user_agent = request.user_agent
       end
       if auth_session && params[:from_provider].present?
-        auth_session.update from_organ_id: params[:from_provider]
+        auth_session.from_organ_id = params[:from_provider]
       end
+      auth_session.save
 
       Current.session ||= auth_session
     end
