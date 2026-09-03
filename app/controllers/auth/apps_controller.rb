@@ -4,7 +4,7 @@ module Auth
 
     def index
       @app_views = AppView.viewed.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s).order(view_at: :desc).limit(4)
-      @all_apps = AppView.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s).page(params[:page]).limit(4)
+      @all_apps = AppView.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s, starred: true).page(params[:page]).limit(4)
       @star_ids = AppView.where(session_id: session.id.to_s, starred: true).pluck(:app_id)
       @apps = App.with_attached_logo.page(params[:page])
     end
