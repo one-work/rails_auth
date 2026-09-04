@@ -24,8 +24,8 @@
   <p><%= model.timezone %></p>
 </td>
 <td>
-  <p><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></p>
-  <p><time data-controller="time"><%= model.last_login_at&.to_fs(:iso8601) %></time></p>
+  <p><time data-controller="time" class="text-grey"><%= model.created_at.to_fs(:iso8601) %></time></p>
+  <p><time data-controller="time" class="text-primary"><%= model.last_login_at&.to_fs(:iso8601) %></time></p>
   <p><%= model.last_login_ip %></p>
 </td>
 <td>
