@@ -9,7 +9,9 @@ module Auth
     end
 
     def month
-      q_params = {}
+      q_params = {
+        created_at: Time.current.last_month.beginning_of_day..
+      }
       x = Arel.sql("date_trunc('day', created_at, '#{Time.zone.tzinfo.identifier}')")
       r = OauthUser.where(q_params).group(x).order(x).count
 
