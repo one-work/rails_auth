@@ -11,7 +11,7 @@
 <td><time data-controller="time"><%= model.last_login_at&.to_fs(:iso8601) %></time></td>
 <td>
   <%= form_with theme: 'switch', model: model, url: { action: 'update', id: model.id }, data: { controller: 'input' } do |f| %>
-    <%= f.check_box :disabled, data: { action: 'input#submit' }, id: nil %>
+    <%= f.checkbox :disabled, data: { action: 'input#submit' }, id: nil %>
   <% end %>
 </td>
 <td><time data-controller="time"><%= model.created_at.to_fs(:iso8601) %></time></td>
