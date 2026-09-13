@@ -20,7 +20,10 @@
     data-controller="mini-program"
     data-mini-program-url-value="/pages/mobile/index"
     data-mini-program-data-value="<%=
-      { url: url_for(controller: 'wechat/program_users', action: 'mobile', auth_token: Current.session.once_token, host: ENV['HOST']) }.to_json
+      {
+        url: url_for(controller: 'wechat/program_users', action: 'mobile', auth_token: @once_token, host: ENV['HOST']),
+        login: url_for(controller: 'wechat/program_users', action: 'create', auth_token: @once_token, host: ENV['HOST'])
+      }.to_json
     %>"
     data-action="click->mini-program#navTo"
     class="media"
