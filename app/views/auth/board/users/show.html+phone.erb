@@ -3,7 +3,7 @@
     <dt><%= Auth::User.human_attribute_name(:avatar) %></dt>
     <dd>
       <%= link_to({ action: 'edit', item: 'image' }) do %>
-        <%= image_tag @user.avatar, class: 'image is-64x64' if @user.avatar.attached? %>
+        <%= image_tag @user.avatar, class: 'image is-radius is-64x64' if @user.avatar.attached? %>
       <% end %>
     </dd>
   </div>

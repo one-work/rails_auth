@@ -12,9 +12,9 @@
   ) do
 %>
   <% if model.app.logo.attached? %>
-    <%= image_tag model.app.logo.variant(resize_to_limit: [64, 64]), class: 'image is-64x64' %>
+    <%= image_tag model.app.logo.variant(resize_to_limit: [64, 64]), class: 'image is-radius is-64x64' %>
   <% else %>
-    <%= image_tag 'logo_organ.png', class: 'image is-64x64' %>
+    <%= image_tag 'logo_organ.png', class: 'image is-radius is-64x64' %>
   <% end %>
   <span class="size-7 text-grey"><%= model.app.name %></span>
 <% end %>
