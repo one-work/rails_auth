@@ -8,7 +8,7 @@
     <span data-clipboard-target="source" class="is-wrap"><%= @oauth_user.user_id %></span>
     <span data-action="click->clipboard#copy" class="tag is-badge is-danger">复制</span>
     <span data-clipboard-target="toast" class="tag is-badge is-success display-none">
-      <%= svg_tag 'check' %>
+      <%= svg_tag 'check', class: 'icon is-small' %>
     </span>
   </dd>
 </div>
@@ -39,7 +39,7 @@
       <span data-clipboard-target="source" class="is-wrap"><%= @oauth_user.auth_token %></span>
       <span data-action="click->clipboard#copy" class="tag is-badge is-danger">复制</span>
       <span data-clipboard-target="toast" class="tag is-badge is-success display-none">
-        <%= svg_tag 'check' %>
+        <%= svg_tag 'check', class: 'icon is-small' %>
       </span>
     </div>
   </dd>
