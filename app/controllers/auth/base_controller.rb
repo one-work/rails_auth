@@ -12,7 +12,7 @@ module Auth
         render 'state_visit', layout: 'raw', locals: { state: state }, message: t('.success')
       else
         url = RailsAuth.config.default_return.call(account.user)
-        render 'visit', layout: 'raw', locals: { url:  url }, message: t('.success')
+        render 'visit', layout: 'raw', locals: { url:  url, action: 'replace' }, message: t('.success')
       end
     end
   end
