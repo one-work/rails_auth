@@ -45,6 +45,7 @@ module Auth
 
     def current_client
       return @current_client if defined?(@current_client)
+      resume_session
       @current_client = Current.session.member
       logger.debug "\e[35m  Current Client: #{@current_client&.id}  \e[0m"
       @current_client
