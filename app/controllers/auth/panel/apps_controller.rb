@@ -9,6 +9,7 @@ module Auth
         :key,
         :host,
         :note,
+        :enabled,
         :logo
       )
     end

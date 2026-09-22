@@ -8,12 +8,15 @@ module Auth
       attribute :key, :string, default: -> { SecureRandom.alphanumeric(32) }
       attribute :host, :string
       attribute :note, :string
+      attribute :enabled, :boolean
 
       belongs_to :creator, class_name: 'User', optional: true
 
       has_many :app_views, dependent: :delete_all
 
       has_one_attached :logo
+
+      scope :enabled, -> { where(enabled: true) }
 
       validates :host, presence: true
     end
