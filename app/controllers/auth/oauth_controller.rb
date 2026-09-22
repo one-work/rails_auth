@@ -31,7 +31,7 @@ module Auth
 
       au = AppleUser.find_or_initialize_by(uid: payload['sub'])
       au.identity = payload['email']
-      au.confirmed = payload['email_verified']
+      au.confirmed = true
       au.name ||= [params[:givenName], params[:familyName]].compact.join(' ')
       au.save!
       start_new_session_for(au)
