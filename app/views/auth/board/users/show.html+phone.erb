@@ -7,10 +7,10 @@
       <% end %>
     </dd>
   </div>
-  <%= link_to({ action: 'edit', item: 'name' }) do %>
+  <div>
     <dt><%= Auth::User.human_attribute_name(:name) %></dt>
     <dd><%= @user.name %></dd>
-  <% end %>
+  </div>
   <div>
     <dt><%= Auth::User.human_attribute_name(:accounts) %></dt>
     <dd>
