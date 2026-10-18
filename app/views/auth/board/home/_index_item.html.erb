@@ -31,6 +31,9 @@
     <div class="media-content">
       <%= svg_tag 'mobile' %>
       <span>绑定手机号</span>
+      <% if Current.session.identity %>
+        <span class="text-grey">（<%= Current.session.identity %>）</span>
+      <% end %>
     </div>
     <div class="media-right">
       <%= svg_tag 'chevron-right' %>
