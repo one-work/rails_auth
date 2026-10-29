@@ -4,10 +4,9 @@
     <h2 class="title is-3 text-centered text-primary mb-6"><%= t('.title') %></h2>
     <%=
       form_with(
+        theme: 'line',
         scope: nil,
         url: { action: 'create' },
-        wrap: { input: 'control', submit: 'control text-centered' },
-        all: { normal: nil, required: nil, submit: nil },
         before_wrap: { submit: nil }
       ) do |f|
     %>
