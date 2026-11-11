@@ -45,7 +45,8 @@ module Auth
     def oauth_user_params
       params.fetch(:oauth_user, {}).permit(
         :name,
-        :remark
+        :remark,
+        :confirmed
       )
     end
 
