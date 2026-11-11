@@ -10,5 +10,8 @@
   <p><%= Auth::OauthUser.human_attribute_name(:name) %></p>
   <p class="text-grey"><%= Auth::OauthUser.human_attribute_name(:identity) %></p>
 </th>
-<th><%= Auth::OauthUser.human_attribute_name(:created_at) %></th>
+<th>
+  <p><%= Auth::OauthUser.human_attribute_name(:confirmed) %></p>
+  <p><%= Auth::OauthUser.human_attribute_name(:created_at) %></p>
+</th>
 <th><%= Auth::OauthUser.human_attribute_name(:user) %></th>
