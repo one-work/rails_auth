@@ -6,7 +6,7 @@ module Auth
       @app_views = AppView.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s, starred: true).page(params[:page]).limit(4).to_a
       count = @app_views.count
       if count < 4
-        @app_views << AppView.viewed.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s).order(view_at: :desc).limit(4 - count)
+        @app_views += AppView.viewed.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s).order(view_at: :desc).limit(4 - count).to_a
       end
 
       @star_ids = AppView.where(session_id: session.id.to_s, starred: true).pluck(:app_id)
