@@ -98,7 +98,7 @@ module Auth
         logger.debug "\e[35m  Session(session): #{auth_session&.id}  \e[0m"
       elsif defined?(cookies) && cookies[:session_id]  # API 模式下没有 cookies
         auth_session = Session.find_by(id: cookies.signed[:session_id])
-      elsif request.format.json?
+      elsif request.format.json? && request.headers['Authorization'].present?
         token = request.headers['Authorization'].to_s.split(' ').last.presence
         auth_session = Session.find_by(id: token)
       else
