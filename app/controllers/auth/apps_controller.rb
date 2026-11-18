@@ -3,7 +3,7 @@ module Auth
     before_action :set_app, only: [:log, :star, :unstar]
 
     def index
-      @app_views = AppView.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s, starred: true).page(params[:page]).limit(4)
+      @app_views = AppView.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s, starred: true).page(params[:page]).limit(4).to_a
       count = @app_views.count
       if count < 4
         @app_views << AppView.viewed.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s).order(view_at: :desc).limit(4 - count)
