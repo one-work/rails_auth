@@ -100,7 +100,7 @@ module Auth
         auth_session = Session.find_by(id: cookies.signed[:session_id])
       elsif request.format.json? && request.headers['Authorization'].present?
         token = request.headers['Authorization'].to_s.split(' ').last.presence
-        auth_session = Session.find_by(id: token)
+        auth_session = Session.find_by_token_for(:once, token)
       else
         return
       end
