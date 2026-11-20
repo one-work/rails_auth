@@ -3,10 +3,9 @@ module Auth
     before_action :set_app, only: [:log, :star, :unstar]
 
     def index
-      @app_views = AppView.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s, starred: true).page(params[:page]).limit(4).to_a
-      count = @app_views.count
-      if count < 4
-        @app_views += AppView.viewed.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s).order(view_at: :desc).limit(4 - count).to_a
+      @app_views = AppView.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s, starred: true).order(view_at: :desc).limit(4).to_a
+      AppView.viewed.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s).order(view_at: :desc).limit(4).each do |app_view|
+        @app_views << app unless @app_views.include?(app_view)
       end
 
       @star_ids = AppView.where(session_id: session.id.to_s, starred: true).pluck(:app_id)
@@ -16,6 +15,7 @@ module Auth
     def star
       @app_view = @app.app_views.find_or_initialize_by(session_id: session.id.to_s)
       @app_view.starred = true
+      @app_view.view_at = Time.current
       @app_view.save
 
       @star_ids = [@app.id]
