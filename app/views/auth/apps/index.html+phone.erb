@@ -1,13 +1,8 @@
 <%= render 'filter_bar' %>
 
-<div class="card as-transparent">
-  <div class="card-header">
-    <span class="size-7 text-grey has-border-left-primary">常用</span>
-  </div>
-  <div class="card-content fixed-grid has-4-cols">
-    <div id="star_container" class="grid">
-      <%= render partial: 'app_view', collection: @app_views, as: :model %>
-    </div>
+<div class="fixed-grid has-4-cols">
+  <div id="star_container" class="grid">
+    <%= render partial: 'app_view', collection: @app_views, as: :model %>
   </div>
 </div>
 
