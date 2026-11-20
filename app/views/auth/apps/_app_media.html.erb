@@ -34,7 +34,7 @@
   <div class="media-right">
     <% if @star_ids.include?(model.id) %>
       <%= button_to({ action: 'unstar', id: model.id }, class: 'button is-rounded is-small is-light') do %>
-        <%= svg_tag 'star', class: 'icon is-small text-warning' %>
+        <%= svg_tag 'star', kind: 'solid', class: 'icon is-small text-warning' %>
         <span>取消收藏</span>
       <% end %>
     <% else %>
