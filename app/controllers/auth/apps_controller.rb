@@ -5,7 +5,7 @@ module Auth
     def index
       @app_views = AppView.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s, starred: true).order(view_at: :desc).limit(4).to_a
       AppView.viewed.includes(app: { logo_attachment: :blob }).where(session_id: session.id.to_s).order(view_at: :desc).limit(4).each do |app_view|
-        @app_views << app unless @app_views.include?(app_view)
+        @app_views << app_view unless @app_views.include?(app_view)
       end
 
       @star_ids = AppView.where(session_id: session.id.to_s, starred: true).pluck(:app_id)
