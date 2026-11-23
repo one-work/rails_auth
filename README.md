@@ -1,5 +1,6 @@
 # RailsAuth
 
+[![所有组件](https://github.com/one-work/rails_auth/actions/workflows/engine.yml/badge.svg)](https://github.com/one-work/engine)
 [![测试](https://github.com/work-design/rails_auth/actions/workflows/test.yml/badge.svg)](https://github.com/work-design/rails_auth/actions/workflows/test.yml)
 [![Docker构建](https://github.com/work-design/rails_auth/actions/workflows/cd.yml/badge.svg)](https://github.com/work-design/rails_auth/actions/workflows/cd.yml)
 [![Gem](https://github.com/work-design/rails_auth/actions/workflows/gempush.yml/badge.svg)](https://github.com/work-design/rails_auth/actions/workflows/gempush.yml)
