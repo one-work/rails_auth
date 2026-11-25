@@ -86,6 +86,11 @@ namespace 'auth', defaults: { business: 'auth' } do
       end
     end
   end
+
+  namespace :my, defaults: { namespace: 'my' } do
+    resources :apps
+  end
+
 end
 
 scope :auth, module: 'auth', controller: :oauths, as: 'oauths' do
