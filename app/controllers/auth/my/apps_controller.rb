@@ -1,5 +1,6 @@
 module Auth
   class My::AppsController < My::BaseController
+    before_action :set_new_app, only: [:new, :create]
 
     def index
       @apps = current_user.created_apps.page(params[:page])
