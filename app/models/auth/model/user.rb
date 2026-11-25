@@ -23,7 +23,7 @@ module Auth
       has_many :user_taggeds, dependent: :destroy_async
       has_many :user_tags, through: :user_taggeds
       has_many :user_invites
-      has_many :created_apps, foreign_key: :creator_id
+      has_many :created_apps, class_name: 'App', foreign_key: :creator_id
 
       has_one_attached :avatar
 
