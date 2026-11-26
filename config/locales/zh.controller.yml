@@ -49,6 +49,9 @@ zh:
         title: 注册
       create:
         title: 注册
+    my:
+      apps:
+        index: 我的应用
     board:
       title: 用户
       home:

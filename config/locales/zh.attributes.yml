@@ -1,6 +1,8 @@
 zh:
   activerecord:
     attributes:
+      auth/app:
+        host: 链接
       auth/user:
         name: 姓名
         name-like: 姓名
