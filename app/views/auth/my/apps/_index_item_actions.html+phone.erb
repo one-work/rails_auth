@@ -1,5 +1,5 @@
 <div id="tr_<%= model.id %>" class="media">
-  <%= link_to(model.url, class: 'media-content') do %>
+  <%= link_to(model.url, allowed: true, class: 'media-content') do %>
     <%= yield %>
   <% end %>
   <div class="media-right">
