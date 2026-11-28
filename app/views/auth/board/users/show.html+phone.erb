@@ -1,22 +1,3 @@
 <dl class="as-show as-boxed is-striped">
-  <div>
-    <dt><%= Auth::User.human_attribute_name(:avatar) %></dt>
-    <dd>
-      <%= link_to({ action: 'edit', item: 'image' }) do %>
-        <%= image_tag @user.avatar, class: 'image is-64x64' if @user.avatar.attached? %>
-      <% end %>
-    </dd>
-  </div>
-  <div>
-    <dt><%= Auth::User.human_attribute_name(:name) %></dt>
-    <dd><%= @user.name %></dd>
-  </div>
-  <div>
-    <dt><%= Auth::User.human_attribute_name(:accounts) %></dt>
-    <dd>
-    <% @user.accounts.each do |account| %>
-      <p><%= account.identity %></p>
-    <% end %>
-    </dd>
-  </div>
+  <%= render 'show_table' %>
 </dl>

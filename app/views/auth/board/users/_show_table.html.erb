@@ -1,9 +1,11 @@
 <div>
   <dt><%= Auth::User.human_attribute_name(:avatar) %></dt>
   <dd>
-    <figure class="image is-64x64">
-      <%= image_tag current_user.avatar.variant(resize_to_limit: [200, 200]) if current_user.avatar.present? %>
-    </figure>
+    <%= link_to({ action: 'edit', item: 'image' }) do %>
+      <figure class="image is-64x64">
+        <%= image_tag current_user.avatar.variant(resize_to_limit: [200, 200]) if current_user.avatar.attached? %>
+      </figure>
+    <% end %>
   </dd>
 </div>
 <div>
