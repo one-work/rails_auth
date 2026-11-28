@@ -64,6 +64,14 @@ module Auth
       self.identity = params[:identity]
     end
 
+    def display_identity
+      if identity != uid
+        identity
+      else
+        nil
+      end
+    end
+
     def init_identity
       self.identity = uid
     end
